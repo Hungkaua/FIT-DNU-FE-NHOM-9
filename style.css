@@ -11,10 +11,11 @@ body{
 
 .header{
     background:linear-gradient(to right,#587ca7,#7ca2cf);
-    padding:20px 60px;
+    padding:40px 50px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap:wrap;
 }
 
 .logo{
@@ -24,18 +25,25 @@ body{
 }
 
 .navbar{
+    width:100%;
     display:flex;
+    justify-content:center;
+    align-items:center;
     gap:35px;
+    background:#eef3fb;
+    padding:15px 50px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    border-radius:0 0;
 }
 
 .navbar a{
-    color:white;
+    color:#1f3554;
     text-decoration:none;
     font-size:20px;
 }
 
 .navbar .active{
-    border-bottom:3px solid white;
+    border-bottom:3px solid #587ca7;
     padding-bottom:5px;
 }
 
@@ -174,4 +182,8 @@ button{
     display:flex;
     gap:10px;
     margin-top:10px;
+}
+.home-link {
+    text-decoration: none;
+    color: inherit;        
 }
