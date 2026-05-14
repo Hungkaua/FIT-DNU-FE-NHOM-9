@@ -1,12 +1,24 @@
+//index.html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< Updated upstream
 <title>My Blog</title>
+=======
+    <title>My Blog</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+>>>>>>> Stashed changes
 </head>
+
 <body>
 
+<<<<<<< Updated upstream
 <header class="header">
 
     <div class="logo">
@@ -94,6 +106,132 @@
 
 <script type="module" src="./js/main.js"></script>
 <script type="module" src="./js/comments.js"></script>
+=======
+    <header class="header">
+
+        <div class="logo">My Blog</div>
+
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="#">About</a>
+            <a href="#">Categories</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <a href="login.html" class="login-btn">
+                <i class="fa-solid fa-user"></i>
+                Login
+            </a>
+
+        </div>
+
+    </header>
+
+    <div class="container">
+
+        <main class="main-content">
+
+            <div id="post-container"></div>
+
+            <section class="comment-section">
+
+                <h2>Bình Luận</h2>
+
+                <div class="comment-form">
+
+                    <input type="text" id="comment-username" placeholder="Tên của bạn">
+
+                    <textarea id="comment-input" placeholder="Viết bình luận..."></textarea>
+
+                    <button id="comment-btn">
+                        Gửi
+                    </button>
+
+                </div>
+
+                <div id="comment-list"></div>
+
+            </section>
+
+        </main>
+
+        <aside class="sidebar">
+
+            <div class="sidebar-box">
+
+                <h3>Bài viết mới</h3>
+
+                <ul>
+                    <li>Khám phá ẩm thực Hà Nội</li>
+                    <li>Kinh nghiệm trekking Đà Nẵng</li>
+                    <li>Mùa hoa cải vàng ở Mộc Châu</li>
+                </ul>
+
+            </div>
+
+            <div class="sidebar-box">
+
+                <h3>Chủ đề nổi bật</h3>
+
+                <ul>
+                    <li>Du lịch</li>
+                    <li>Ẩm thực</li>
+                    <li>Phong cách sống</li>
+                </ul>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/comments.js"></script>
+>>>>>>> Stashed changes
 
 </body>
+
 </html>
+if(!newMessage) return;
+
+comment.message = newMessage;
+
+saveComments(comments);
+
+renderComments();
+});
+});
+}
+
+function setupReply(){
+
+document.querySelectorAll('.reply-btn')
+.forEach(btn=>{
+
+btn.addEventListener('click',()=>{
+
+const id = Number(btn.dataset.id);
+
+const comments = getComments();
+
+const comment = comments.find(c=>c.id === id);
+
+const reply = prompt('Nhập phản hồi');
+
+if(!reply) return;
+
+comment.replies.push({
+username:'Reader',
+message:reply
+});
+
+saveComments(comments);
+
+renderComments();
+});
+});
+}
+
+renderComments();
