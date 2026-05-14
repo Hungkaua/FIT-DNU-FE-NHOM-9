@@ -22,8 +22,8 @@ body {
 /* --- 2/3 BÊN TRÁI: Ảnh nền --- */
 .login-image-side {
     flex: 2; 
-    background-image: url('../media/img/1.png'); 
-    background-size: contain; /* SỬA Ở ĐÂY: Thu nhỏ ảnh lại cho vừa khít khung */
+    background-image: url('../media/img/brglog.webp'); 
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-color: #000; /* Nên thêm màu nền (ví dụ màu đen) để lấp vào các khoảng trống bị hở */

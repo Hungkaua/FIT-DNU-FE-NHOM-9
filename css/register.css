@@ -21,7 +21,7 @@ body {
 /* --- NỬA TRÁI: Ảnh nền --- */
 .register-image-side {
     flex: 1; 
-    background-image: url('../media/img/1.png'); 
+    background-image: url('../media/img/brglog.webp'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
