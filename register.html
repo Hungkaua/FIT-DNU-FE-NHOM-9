@@ -3,48 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-
-    <link rel="stylesheet" href="stylreg.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Đăng ký - My Blog</title>
+    <!-- Trỏ đến file css dành riêng cho trang đăng ký -->
+    <link rel="stylesheet" href="css/register.css">
+    <!-- Nhúng FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
-    <header class="header">
 
-    <div class="logo">
-    <a href="index.html" class="home-link">My Blog</a>
+    <div class="register-split-container">
+        <!-- Nửa trái: Ảnh nền (Sử dụng ảnh 1.jpg trong media/img) -->
+        <div class="register-image-side"></div>
 
-    <div class="header-actions">
+        <!-- Nửa phải: Khu vực form đăng ký -->
+        <div class="register-form-side">
+            <div class="register-box">
+                
+                <div class="register-header">
+                    <!-- Logo của bạn -->
+                    <img src="media/img/image.png" alt="Logo" class="register-logo" onerror="this.style.display='none'">
+                    <p>Tạo tài khoản mới</p>
+                </div>
+
+                <form class="register-form">
+                    
+                    <!-- Dòng 1: Họ và Tên (Ngang nhau) -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="lastName" placeholder="Họ của bạn" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="firstName" placeholder="Tên" required>
+                        </div>
+                    </div>
+
+                    <!-- Dòng 2: Ngày tháng năm sinh -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="text" id="dob" placeholder="Ngày tháng năm sinh" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+                    </div>
+
+                    <!-- Dòng 3: Biệt danh -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-at"></i>
+                        <input type="text" id="nickname" placeholder="Biệt danh (Hiển thị trên blog)" required>
+                    </div>
+
+                    <!-- Dòng 4: Email -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Email đăng ký" required>
+                    </div>
+
+                    <!-- Dòng 5: Chọn chức vụ -->
+                    <div class="input-group">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <select id="role" required>
+                            <option value="" disabled selected>Chọn chức vụ của bạn</option>
+                            <option value="reader">Người đọc</option>
+                            <option value="admin">Quản trị viên</option>
+                        </select>
+                    </div>
+
+                    <!-- Dòng 6: Mật khẩu (Ngang nhau) -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" placeholder="Mật khẩu" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" required>
+                        </div>
+                    </div>
+
+                    <!-- Dòng 7: Tích chọn Điều khoản -->
+                    <div class="terms-group">
+                        <label>
+                            <input type="checkbox" id="agree-terms" required>
+                            <span>Tôi đã đọc và đồng ý với các <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a></span>
+                        </label>
+                    </div>
+
+                    <!-- Nút Đăng ký -->
+                    <button type="submit" class="register-btn">Đăng ký tài khoản</button>
+                </form>
+
+                <div class="register-footer">
+                    <p>Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></p>
+                    <div class="back-to-home">
+                        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
-
-</header>
-</div>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="#">About</a>
-        <a href="#">Categories</a>
-        <a href="#">Contact</a>
-    </nav>
-
-
-        <h1>Đăng Ký</h1>
-
-        <input type="text" id="register-username" placeholder="Tên đăng nhập">
-
-        <input type="password" id="register-password" placeholder="Mật khẩu">
-
-        <button id="register-btn">Đăng ký</button>
-
-        <p>
-            Đã có tài khoản?
-            <a href="login.html">Đăng nhập</a>
-        </p>
-
-    </div>
-
-</div>
-
-<script type="module" src="./js/auth.js"></script>
 
 </body>
 </html>
