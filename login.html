@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang đăng nhập</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    
+    <div class="container">
+        <!-- BÊN TRÁI -->
+        <div class="left-box">
+            <h1>Trang web bàn luận và đánh giá</h1>
+            <h2>về các tác phẩm viễn tưởng</h2>
+            <p>(Phim, Tiểu thuyết, Anime, Manga, Game,...)</p>
+        </div>
+
+        <!-- BÊN PHẢI -->
+        <div class="right-box">
+            <div class="login-card" id="loginSection">
+                <h1>Đăng nhập</h1>
+                <form id="loginForm">
+                    <input type="text" placeholder="Email hoặc số điện thoại" required>
+                    <input type="password" placeholder="Mật khẩu" required>
+                    <button type="submit" class="login-btn">Đăng nhập</button>
+                </form>
+
+                <div class="login-actions">
+                    <a href="#" class="forgot" id="showForgot">Quên mật khẩu?</a>
+                </div>
+            </div>
+
+            <div class="register-card">
+                <h2>Tạo tài khoản mới</h2>
+                <p>Tạo tài khoản để kết nối và bình luận nhanh chóng.</p>
+                <form id="registerForm">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Mật khẩu" required>
+                    <button type="submit" class="login-btn">Đăng ký</button>
+                </form>
+            </div>
+
+            <div class="forgot-card hidden" id="forgotSection">
+                <h2>Quên mật khẩu</h2>
+                <p>Nhập email để nhận hướng dẫn lấy lại mật khẩu.</p>
+                <form id="forgotForm">
+                    <input type="email" placeholder="Email của bạn" required>
+                    <button type="submit" class="login-btn">Gửi yêu cầu</button>
+                </form>
+                <p class="register-text">
+                    Quay lại <a href="#" id="showLoginFromForgot">Đăng nhập</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="auth.js"></script>
+</html>

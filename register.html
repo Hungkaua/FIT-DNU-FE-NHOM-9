@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Trang đăng ký</title>
 
-    <link rel="stylesheet" href="stylreg.css">
+    <!-- Kết nối CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-
-<div class="auth-container">
-
-    <div class="auth-box">
-
-        <h1>Đăng Ký</h1>
-
-        <input type="text" id="register-username" placeholder="Tên đăng nhập">
-
-        <input type="password" id="register-password" placeholder="Mật khẩu">
-
-        <button id="register-btn">Đăng ký</button>
-
-        <p>
-            Đã có tài khoản?
-            <a href="login.html">Đăng nhập</a>
-        </p>
-
+    <div class="overlay"></div>
+    
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
     </div>
+    
+    <div class="container">
+        <!-- BÊN TRÁI -->
+        <div class="left-box">
+            <h1>Trang web bàn luận và đánh giá</h1>
+            <h2>về các tác phẩm viễn tưởng</h2>
+            <p>(Phim, Tiểu thuyết, Anime, Manga, Game,...)</p>
+        </div>
 
-</div>
-
-<script type="module" src="./js/auth.js"></script>
-
+        <!-- BÊN PHẢI -->
+        <div class="right-box">
+            <div class="login-card">
+                <h1>Đăng ký / Quên mật khẩu</h1>
+                <p>Bạn đang ở trang Register. Để đăng ký hoặc lấy lại mật khẩu, vui lòng chuyển sang trang Login.</p>
+                <p class="register-text"><a href="login.html">Mở trang đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
