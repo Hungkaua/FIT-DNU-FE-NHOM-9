@@ -22,7 +22,7 @@ body {
 /* --- 2/3 BÊN TRÁI: Ảnh nền --- */
 .login-image-side {
     flex: 2; 
-    background-image: url('../media/img/1.jpg'); 
+    background-image: url('../media/img/1.png'); 
     background-size: contain; /* SỬA Ở ĐÂY: Thu nhỏ ảnh lại cho vừa khít khung */
     background-position: center;
     background-repeat: no-repeat;
