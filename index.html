@@ -90,9 +90,9 @@
                 <article class="post-card">
                     <div class="post-header">
                         <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
-                        <div class="post-meta">
-                            <span class="subreddit">r/Anime</span>
-                            <span class="time">• 1 giờ trước</span>
+                        <div class="post-info">
+                            <span class="community-name">r/Anime</span>
+                            <span class="post-time">• 1 giờ trước</span>
                         </div>
                     </div>
                     
@@ -103,18 +103,29 @@
                     <p class="post-snippet">Năm nay có rất nhiều anime hay. Các bạn đã xem những anime nào mà thích? Hiện tại năm 2026 là một năm bùng nổ cho các fan anime, manga với rất nhiều bộ liên quan đến viễn tưởng - xuyên không, rơi xuống dị giới...</p>
                     
                     <div class="post-actions">
-                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 3.5K</button>
-                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 892</button>
-                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn">👍 3.5K</button>
+                        <button class="action-btn comment-toggle-btn" type="button">
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="comment-count">892</span>
+                        </button>
+                        <button class="action-btn">↗️ Chia sẻ</button>
+                    </div>
+                    <div class="post-comments hidden">
+                        <div class="comment-list"></div>
+                        <form class="comment-form">
+                            <input class="comment-username" type="text" placeholder="Tên của bạn">
+                            <textarea class="comment-input" placeholder="Viết bình luận..." rows="3" required></textarea>
+                            <button type="submit" class="btn-submit">Gửi bình luận</button>
+                        </form>
                     </div>
                 </article>
 
                 <article class="post-card">
                     <div class="post-header">
                         <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
-                        <div class="post-meta">
-                            <span class="subreddit">r/Gaming</span>
-                            <span class="time">• 6 giờ trước</span>
+                        <div class="post-info">
+                            <span class="community-name">r/Gaming</span>
+                            <span class="post-time">• 6 giờ trước</span>
                         </div>
                     </div>
                     
@@ -125,18 +136,29 @@
                     <p class="post-snippet">Năm nay có rất nhiều game RPG hay. Các bạn đã chơi những game nào mà thích? Hiện tại năm 2026 là một năm bùng nổ cho các game thủ thích thể loại hành động, kinh dị và viễn tưởng. Các game RE9: Requiem, PRAGMATA và Directive 8020 luôn được các game thủ săn đón từ khi mới ra mắt.</p>
                     
                     <div class="post-actions">
-                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 4.8K</button>
-                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 1.2K</button>
-                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn">👍 4.8K</button>
+                        <button class="action-btn comment-toggle-btn" type="button">
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="comment-count">1.2K</span>
+                        </button>
+                        <button class="action-btn">↗️ Chia sẻ</button>
+                    </div>
+                    <div class="post-comments hidden">
+                        <div class="comment-list"></div>
+                        <form class="comment-form">
+                            <input class="comment-username" type="text" placeholder="Tên của bạn">
+                            <textarea class="comment-input" placeholder="Viết bình luận..." rows="3" required></textarea>
+                            <button type="submit" class="btn-submit">Gửi bình luận</button>
+                        </form>
                     </div>
                 </article>
 
                 <article class="post-card">
                     <div class="post-header">
                         <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
-                        <div class="post-meta">
-                            <span class="subreddit">r/Movies</span>
-                            <span class="time">• 8 giờ trước</span>
+                        <div class="post-info">
+                            <span class="community-name">r/Movies</span>
+                            <span class="post-time">• 8 giờ trước</span>
                         </div>
                     </div>
                     
@@ -147,9 +169,20 @@
                     <p class="post-snippet">Hiện tại năm 2026, phim viễn tưởng không chỉ là giải trí mà còn phản ánh nỗi lo và khát vọng của nhân loại trước tương lai. Đặc biệt là những bộ phim khai thác chủ đề về trí tuệ nhân tạo, du hành thời gian, và khám phá vũ trụ đã thu hút sự chú ý lớn từ khán giả...</p>
                     
                     <div class="post-actions">
-                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 7.1K</button>
-                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 2.4K</button>
-                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn">👍 7.1K</button>
+                        <button class="action-btn comment-toggle-btn" type="button">
+                            <i class="fa-regular fa-comment"></i>
+                            <span class="comment-count">2.4K</span>
+                        </button>
+                        <button class="action-btn">↗️ Chia sẻ</button>
+                    </div>
+                    <div class="post-comments hidden">
+                        <div class="comment-list"></div>
+                        <form class="comment-form">
+                            <input class="comment-username" type="text" placeholder="Tên của bạn">
+                            <textarea class="comment-input" placeholder="Viết bình luận..." rows="3" required></textarea>
+                            <button type="submit" class="btn-submit">Gửi bình luận</button>
+                        </form>
                     </div>
                 </article>
 

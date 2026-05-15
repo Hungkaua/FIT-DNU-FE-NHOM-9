@@ -1,0 +1,26 @@
+/* Căn chỉnh lại tiêu đề cho gọn gàng hơn */
+.login-header h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #2c3e50; /* Đổi màu chữ tiêu đề thành xám đen cho trang nhã */
+}
+
+/* Định dạng đoạn văn bản hướng dẫn người dùng */
+.help-text {
+    color: #666;
+    font-size: 14.5px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding: 0 10px;
+}
+
+/* Đổi màu nút Khôi phục thành màu Cam để khác biệt với nút Đăng nhập màu Xanh */
+.reset-btn {
+    background-color: #e67e22; 
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3); /* Thêm bóng đổ màu cam nhẹ */
+}
+
+.reset-btn:hover {
+    background-color: #d35400; /* Màu cam đậm hơn khi di chuột vào */
+}

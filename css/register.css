@@ -9,7 +9,7 @@
 
 body {
     min-height: 100vh; 
-    background-color: #ffffff;
+    background-color: #faf9f9;
 }
 
 .register-split-container {
@@ -21,7 +21,7 @@ body {
 /* --- NỬA TRÁI: Ảnh nền --- */
 .register-image-side {
     flex: 1; 
-    background-image: url('../media/img/1.jpg'); 
+    background-image: url('../media/img/brglog.webp'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -37,34 +37,36 @@ body {
 
 /* --- NỬA PHẢI: Khung Form --- */
 .register-form-side {
-    flex: 1; 
-    min-width: 500px; 
-    background-color: #ffffff;
+    flex: 1;
+    min-width: 100px;
+    background-image: url('../media/img/brglog.jpg'); /* Ảnh nền phía sau form */
+    /* ảnh nền phía trên cùng */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 20px; 
+    padding: 40px 20px;
     z-index: 10;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
-}
-
-.register-box {
-    width: 100%;
-    max-width: 500px; 
-    background: transparent;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
 }
 
 /* --- Header & Logo --- */
 .register-header {
     text-align: center;
-    margin-bottom: 30px;
-}
-
+    margin-bottom: 35px;
+    }
 .register-logo {
-    max-width: 250px; /* Bạn có thể chỉnh to/nhỏ tùy ý ở đây */
+    max-width: 100px;
     height: auto;
     margin-bottom: 10px;
-    mix-blend-mode: multiply; /* Làm trong suốt nền trắng của logo */
+    mix-blend-mode: multiply;
+    /* hòa logo với nền */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    /* thêm bóng để nổi bật */
+    background: transparent;
+
 }
 
 .register-header p {
@@ -108,7 +110,7 @@ body {
     font-size: 15px;
     transition: all 0.3s ease;
     outline: none;
-    background-color: #fafafa;
+    background-color: transparent;
 }
 
 .input-group input:focus,
