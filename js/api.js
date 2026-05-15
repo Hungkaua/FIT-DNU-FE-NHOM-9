@@ -64,6 +64,16 @@ async function createComment(data) {
     return await postData(api_url.COMMENT_API_URL, data);
 }
 
+async function getCommentsByPost(postId) {
+    try {
+        const comments = await get(`${api_url.COMMENT_API_URL}?postId=${encodeURIComponent(postId)}`);
+        return Array.isArray(comments) ? comments : [];
+    } catch (error) {
+        console.error("Lỗi lấy bình luận theo bài viết:", error);
+        return [];
+    }
+}
+
 // ========== AUTH FUNCTIONS (DÙNG LOGIN API) ==========
 
 // ĐĂNG NHẬP
@@ -161,4 +171,4 @@ function protectAdminPage() {
 }
 
 // Export các hàm cần thiết
-export { getAllPosts, createPost, deletePost, getAllComments, createComment, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage };
+export { getAllPosts, createPost, deletePost, getAllComments, getCommentsByPost, createComment, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage };
