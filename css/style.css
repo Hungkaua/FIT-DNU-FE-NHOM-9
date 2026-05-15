@@ -87,13 +87,20 @@ a {
     font-size: 14px;
 }
 
-/* Nút Đăng nhập trên Header */
+/* --- Cụm nút bấm góc phải Header --- */
+.header-actions {
+    display: flex;
+    gap: 15px; /* Tạo khoảng cách 15px giữa nút Đăng nhập và Đăng ký */
+    align-items: center;
+}
+
+/* Nút Đăng nhập: Nền xanh, chữ trắng nổi bật */
 .btn-login {
     display: inline-block; 
     padding: 8px 22px;
-    background-color: transparent;
+    background-color: #0079D3; /* Nền màu xanh dương */
     border: 1px solid #0079D3;
-    color: #0079D3;
+    color: #ffffff; /* Chữ màu trắng */
     border-radius: 20px;
     font-weight: 600;
     text-decoration: none; 
@@ -102,9 +109,27 @@ a {
 }
 
 .btn-login:hover {
-    background-color: #0079D3; 
-    color: #ffffff; 
-    box-shadow: 0 2px 8px rgba(0, 121, 211, 0.3); 
+    background-color: #005596; /* Xanh đậm hơn khi di chuột vào */
+    border-color: #005596;
+    box-shadow: 0 2px 8px rgba(0, 121, 211, 0.4); 
+}
+
+/* Nút Đăng ký: Nền trong suốt, viền xanh, chữ xanh */
+.btn-register {
+    display: inline-block; 
+    padding: 8px 22px;
+    background-color: transparent; /* Nền trong suốt */
+    border: 1px solid #0079D3;     /* Viền xanh */
+    color: #0079D3;                /* Chữ xanh */
+    border-radius: 20px;
+    font-weight: 600;
+    text-decoration: none; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+    background-color: #f5fafd; /* Nền xanh thật nhạt khi di chuột vào */
 }
 
 /* --- BỐ CỤC CHÍNH (GRID 2 CỘT) --- */
