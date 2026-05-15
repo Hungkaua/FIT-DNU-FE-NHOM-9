@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khám phá - Diễn Đàn Viễn Tưởng</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/empty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="media/img/image.png" alt="Logo Diễn Đàn" class="logo-img" onerror="this.style.display='none'">
+                <span>DIỄN ĐÀN VIỄN TƯỞNG</span>
+            </a>
+
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm...">
+            </div>
+
+            <div class="header-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire"></i> Phổ biến</a></li>
+                    <li><a href="latest.html"><i class="fa-solid fa-certificate"></i> Mới nhất</a></li>
+                    <li><a href="discover.html" class="active"><i class="fa-solid fa-compass"></i> Khám phá</a></li>
+                </ul>
+
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">TÀI NGUYÊN</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-circle-info"></i> Về chúng tôi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bullhorn"></i> Quảng cáo</a></li>
+                    <li><a href="#"><i class="fa-solid fa-code"></i> Phát triển</a></li>
+                    <li><a href="#"><i class="fa-solid fa-circle-question"></i> Trợ giúp</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="feed-filters">
+                <button class="filter-btn"><i class="fa-solid fa-rocket"></i> Tốt nhất</button>
+                <button class="filter-btn"><i class="fa-solid fa-certificate"></i> Mới nhất</button>
+                <button class="filter-btn active"><i class="fa-solid fa-fire"></i> Bình luận nhiều</button>
+            </div>
+
+            <div class="post-feed">
+                <div class="empty-state">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <h3>Vũ trụ đang mở rộng</h3>
+                    <p>Chức năng khám phá các chủ đề ngẫu nhiên đang được chúng tôi xây dựng. Cùng chờ đón những bất ngờ nhé!</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
