@@ -1,19 +1,19 @@
-const COMMENT_STORAGE_KEY = 'blog-comments';
+import { getAllComments, createComment, getCurrentUser, isLoggedIn } from './api.js';
 
-function getSavedComments() {
-  const saved = localStorage.getItem(COMMENT_STORAGE_KEY);
-  return saved ? JSON.parse(saved) : [];
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
-function saveComments(comments) {
-  localStorage.setItem(COMMENT_STORAGE_KEY, JSON.stringify(comments));
-}
-
-function renderComments() {
+async function renderComments() {
   const commentList = document.getElementById('comment-list');
   if (!commentList) return;
 
-  const comments = getSavedComments();
+  const comments = await getAllComments();
   if (comments.length === 0) {
     commentList.innerHTML = '<p class="no-comments">Chưa có bình luận nào. Hãy viết bình luận đầu tiên!</p>';
     return;
@@ -34,27 +34,24 @@ function renderComments() {
     .join('');
 }
 
-function escapeHtml(text) {
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
   const commentForm = document.querySelector('.comment-form');
   const usernameInput = document.getElementById('comment-username');
   const messageInput = document.getElementById('comment-input');
 
-  renderComments();
+  const currentUser = getCurrentUser();
+  if (currentUser && usernameInput) {
+    usernameInput.value = currentUser.nickname || currentUser.username || '';
+    usernameInput.readOnly = true;
+  }
+
+  await renderComments();
 
   if (!commentForm) return;
 
-  commentForm.addEventListener('submit', function (event) {
+  commentForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-    const username = usernameInput.value.trim() || 'Khách vãng lai';
+    const username = (usernameInput.value || '').trim() || 'Khách vãng lai';
     const message = messageInput.value.trim();
 
     if (!message) {
@@ -62,15 +59,17 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    const comments = getSavedComments();
-    comments.push({
-      username,
-      message,
-      createdAt: new Date().toISOString()
-    });
-
-    saveComments(comments);
-    renderComments();
-    messageInput.value = '';
+    try {
+      await createComment({
+        username,
+        message,
+        createdAt: new Date().toISOString(),
+      });
+      messageInput.value = '';
+      await renderComments();
+    } catch (error) {
+      console.error('Lỗi gửi bình luận:', error);
+      alert('Không thể gửi bình luận. Vui lòng thử lại.');
+    }
   });
 });
