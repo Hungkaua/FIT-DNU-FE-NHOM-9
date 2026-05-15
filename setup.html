@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogHub - Setup Tài Khoản Mẫu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .setup-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 650px;
+            padding: 40px;
+        }
+
+        .account-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .account-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .info-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .info-item strong {
+            color: #667eea;
+            margin-right: 8px;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 10px;
+            background: #667eea;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-register:hover {
+            background: #5568d3;
+        }
+
+        .success-message,
+        .error-message {
+            font-size: 14px;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #28a745;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #dc3545;
+            border: 1px solid #f5c6cb;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="setup-container">
+        <div class="text-center mb-4">
+            <h2><i class="bi bi-gear"></i> Setup Tài Khoản Mẫu</h2>
+            <p class="text-muted">Tạo tài khoản admin và user để test ứng dụng</p>
+        </div>
+
+        <div class="success-message" id="success-message"></div>
+        <div class="error-message" id="error-message"></div>
+
+        <!-- Admin Account -->
+        <div class="account-card">
+            <h5><i class="bi bi-shield-lock"></i> Tài Khoản Admin</h5>
+            <div class="account-info">
+                <div class="info-item"><strong>Username:</strong> admin</div>
+                <div class="info-item"><strong>Nickname:</strong> Administrator</div>
+                <div class="info-item"><strong>Password:</strong> 123456</div>
+                <div class="info-item"><strong>Email:</strong> admin@bloghub.com</div>
+                <div class="info-item"><strong>Role:</strong> admin</div>
+                <div class="info-item"><strong>Birthday:</strong> 2000-01-01</div>
+            </div>
+            <button class="btn-register" onclick="registerAdmin()">
+                <i class="bi bi-plus-circle"></i> Tạo Tài Khoản Admin
+            </button>
+        </div>
+
+        <!-- User Account -->
+        <div class="account-card">
+            <h5><i class="bi bi-person"></i> Tài Khoản User</h5>
+            <div class="account-info">
+                <div class="info-item"><strong>Username:</strong> user</div>
+                <div class="info-item"><strong>Nickname:</strong> User Name</div>
+                <div class="info-item"><strong>Password:</strong> 123456</div>
+                <div class="info-item"><strong>Email:</strong> user@bloghub.com</div>
+                <div class="info-item"><strong>Role:</strong> user</div>
+                <div class="info-item"><strong>Birthday:</strong> 2001-05-14</div>
+            </div>
+            <button class="btn-register" onclick="registerUser()">
+                <i class="bi bi-plus-circle"></i> Tạo Tài Khoản User
+            </button>
+        </div>
+
+        <hr>
+        <div class="text-center">
+            <p class="text-muted">Sau khi tạo tài khoản, bạn có thể <a href="login.html">đăng nhập</a> với thông tin
+                trên.</p>
+            <a href="index.html" class="back-link">← Quay lại trang chủ</a>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        async function registerAdmin() {
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            try {
+                await register({
+                    username: 'admin',
+                    nickname: 'Administrator',
+                    password: '123456',
+                    email: 'admin@bloghub.com',
+                    role: 'admin',
+                    birthday: '2000-01-01'
+                });
+                successMsg.innerHTML = '<i class="bi bi-check-circle"></i> Tài khoản Admin đã được tạo thành công!';
+                successMsg.style.display = 'block';
+            } catch (error) {
+                errorMsg.innerHTML = '<i class="bi bi-exclamation-triangle"></i> ' + (error.message || 'Không thể tạo tài khoản.');
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        async function registerUser() {
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+
+            successMsg.style.display = 'none';
+            errorMsg.style.display = 'none';
+
+            try {
+                await register({
+                    username: 'user',
+                    nickname: 'User Name',
+                    password: '123456',
+                    email: 'user@bloghub.com',
+                    role: 'user',
+                    birthday: '2001-05-14'
+                });
+                successMsg.innerHTML = '<i class="bi bi-check-circle"></i> Tài khoản User đã được tạo thành công!';
+                successMsg.style.display = 'block';
+            } catch (error) {
+                errorMsg.innerHTML = '<i class="bi bi-exclamation-triangle"></i> ' + (error.message || 'Không thể tạo tài khoản.');
+                errorMsg.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

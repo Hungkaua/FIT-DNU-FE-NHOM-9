@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,11 @@
             </div>
 
             <div class="header-actions">
+                <div id="userInfo" class="user-info hidden">
+                    <img id="userAvatar" src="https://via.placeholder.com/32" alt="Avatar" class="user-avatar">
+                    <span id="userName" class="user-name"></span>
+                    <button id="logoutButton" class="btn-logout">Đăng xuất</button>
+                </div>
                 <a href="login.html" class="btn-login">Đăng nhập</a>
                 <a href="register.html" class="btn-register">Đăng ký</a>
             </div>
@@ -54,6 +59,26 @@
 
         <main class="main-content">
             
+            <div class="post-toolbar">
+                <button id="openCreatePost" class="btn-create-post"><i class="fa-solid fa-plus"></i> Tạo Bài</button>
+            </div>
+
+            <div id="createPostCard" class="create-post-card hidden">
+                <h3>Tạo bài viết mới</h3>
+                <form id="createPostForm" class="create-post-form">
+                    <div class="form-row">
+                        <input id="postCommunity" type="text" placeholder="Chủ đề (ví dụ: r/Anime)" required>
+                        <input id="postTitle" type="text" placeholder="Tiêu đề bài viết" required>
+                    </div>
+                    <textarea id="postContent" placeholder="Nội dung bài viết..." rows="4" required></textarea>
+                    <div class="form-row">
+                        <input id="postImage" type="url" placeholder="URL ảnh (tùy chọn)">
+                        <button type="submit" class="btn-submit">Đăng bài</button>
+                    </div>
+                </form>
+                <p class="note">Bài viết mới sẽ được lưu vào MockAPI và hiển thị ngay.</p>
+            </div>
+
             <div class="feed-filters">
                 <button class="filter-btn active"><i class="fa-solid fa-rocket"></i> Tốt nhất</button>
                 <button class="filter-btn"><i class="fa-solid fa-certificate"></i> Mới nhất</button>
@@ -132,5 +157,6 @@
         </main>
     </div>
 
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
