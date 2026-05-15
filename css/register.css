@@ -21,7 +21,7 @@ body {
 /* --- NỬA TRÁI: Ảnh nền --- */
 .register-image-side {
     flex: 1; 
-    background-image: url('../media/img/1.jpg'); 
+    background-image: url('../media/img/brglog.webp'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@ body {
 }
 
 .register-logo {
-    max-width: 250px; /* Bạn có thể chỉnh to/nhỏ tùy ý ở đây */
+    max-width: 250px;
     height: auto;
     margin-bottom: 10px;
     mix-blend-mode: multiply; /* Làm trong suốt nền trắng của logo */
