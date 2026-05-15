@@ -3,6 +3,7 @@
 // LOGIN_API_URL: cho chức năng đăng nhập/đăng ký người dùng
 const api_url = {
     POST_API_URL: "https://69fd353c30ad0a6fd1c09463.mockapi.io/apis/Post",
+    COMMENT_API_URL: "https://69fd353c30ad0a6fd1c09463.mockapi.io/apis/Comment",
     LOGIN_API_URL: "https://6a05f22eaa826ca75c0ae2f4.mockapi.io/apis/login",
 };
 
@@ -46,6 +47,21 @@ async function createPost(data) {
 
 async function deletePost(id) {
     return await deleteData(api_url.POST_API_URL, id);
+}
+
+// ========== COMMENT FUNCTIONS ==========
+async function getAllComments() {
+    try {
+        const comments = await get(api_url.COMMENT_API_URL);
+        return Array.isArray(comments) ? comments : [];
+    } catch (error) {
+        console.error("Lỗi lấy bình luận:", error);
+        return [];
+    }
+}
+
+async function createComment(data) {
+    return await postData(api_url.COMMENT_API_URL, data);
 }
 
 // ========== AUTH FUNCTIONS (DÙNG LOGIN API) ==========
@@ -145,4 +161,4 @@ function protectAdminPage() {
 }
 
 // Export các hàm cần thiết
-export { getAllPosts, createPost, deletePost, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage };
+export { getAllPosts, createPost, deletePost, getAllComments, createComment, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage };

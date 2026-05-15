@@ -28,8 +28,8 @@
                     <span id="userName" class="user-name"></span>
                     <button id="logoutButton" class="btn-logout">Đăng xuất</button>
                 </div>
-                <a href="login.html" class="btn-login">Đăng nhập</a>
-                <a href="register.html" class="btn-register">Đăng ký</a>
+                <a href="./login.html" class="btn-login">Đăng nhập</a>
+                <a href="./register.html" class="btn-register">Đăng ký</a>
             </div>
         </div>
     </header>
@@ -154,9 +154,27 @@
                 </article>
 
             </div>
+
+            <div class="comment-section">
+                <div class="comment-card">
+                    <div class="comment-card-header">
+                        <h3>Bình luận</h3>
+                        <p>Gửi bình luận của bạn và lưu vào MockAPI.</p>
+                    </div>
+                    <form class="comment-form">
+                        <div class="comment-input-row">
+                            <input id="comment-username" type="text" placeholder="Tên của bạn">
+                        </div>
+                        <textarea id="comment-input" placeholder="Viết bình luận..." rows="4" required></textarea>
+                        <button type="submit" class="btn-submit">Gửi bình luận</button>
+                    </form>
+                    <div id="comment-list" class="comment-list"></div>
+                </div>
+            </div>
         </main>
     </div>
 
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/comments.js"></script>
 </body>
 </html>

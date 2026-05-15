@@ -7,7 +7,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const redirectTarget = urlParams.get('redirect') || 'index.html';
-    const redirectUrl = redirectTarget.startsWith('http') ? redirectTarget : `./${redirectTarget.replace(/^\/+/, '')}`;
+    const path = window.location.pathname;
+    const base = path.substring(0, path.lastIndexOf('/') + 1);
+    let redirectUrl;
+
+    if (redirectTarget.startsWith('http')) {
+        redirectUrl = redirectTarget;
+    } else if (redirectTarget.startsWith('/')) {
+        redirectUrl = redirectTarget;
+    } else {
+        redirectUrl = `${base}${redirectTarget}`;
+    }
 
     if (isLoggedIn()) {
         window.location.href = redirectUrl;
