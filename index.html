@@ -1,516 +1,136 @@
-
 <!DOCTYPE html>
 <html lang="vi">
-<<<<<<< HEAD <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chính - Diễn đàn Viễn Tưởng</title>
-<<<<<<< HEAD
-    <!-- Kết nối CSS -->
+    <title>Diễn Đàn Viễn Tưởng</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
 </head>
-=======
-    =======
+<body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <<<<<<< Updated upstream <title>My Blog</title>
-            =======
-            <title>My Blog</title>
-
-            <link rel="stylesheet" href="css/style.css">
->>>>>>> 1d2639f32939d3008abba0992e06a4663800bab0
-
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-            >>>>>>> Stashed changes
-            >>>>>>> 5675bab842b1c10ea7b7af364e21cfda49faa8a9
-    </head>
-
-<<<<<<< HEAD
-    <!-- HEADER -->
     <header class="header">
         <div class="header-content">
-            <!-- LOGO -->
-            <div class="logo-section">
-                <img src="logo.png" alt="Logo" class="logo">
-                <span class="site-name">DIỄN ĐÀN VIỄN TƯỞNG</span>
+            
+            <a href="index.html" class="logo">
+                <img src="media/img/image.png" alt="Logo Diễn Đàn" class="logo-img" onerror="this.style.display='none'">
+                <span>DIỄN ĐÀN VIỄN TƯỞNG</span>
+            </a>
+
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Tìm kiếm...">
             </div>
 
-            <div class="search-section">
-                <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-            </div>
-
-
-            <div class="header-buttons">
-                <button class="btn-logout">Đăng xuất</button>
+            <div class="header-actions">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
             </div>
         </div>
     </header>
 
-  
-    <div class="main-container">
+    <div class="app-container">
         
-    
-        <aside class="sidebar-left">
+        <aside class="sidebar">
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#" class="nav-item active">🏠 Trang chủ</a></li>
-                    <li><a href="#" class="nav-item">⭐ Phổ biến</a></li>
-                    <li><a href="#" class="nav-item">📰 Mới nhất</a></li>
-                    <li><a href="#" class="nav-item">🔍 Khám phá</a></li>
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
+                    <li><a href="#"><i class="fa-solid fa-fire"></i> Phổ biến</a></li>
+                    <li><a href="#"><i class="fa-solid fa-certificate"></i> Mới nhất</a></li>
+                    <li><a href="#"><i class="fa-solid fa-compass"></i> Khám phá</a></li>
+                </ul>
+
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">TÀI NGUYÊN</h4>
+                
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-circle-info"></i> Về chúng tôi</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bullhorn"></i> Quảng cáo</a></li>
+                    <li><a href="#"><i class="fa-solid fa-code"></i> Phát triển</a></li>
+                    <li><a href="#"><i class="fa-solid fa-circle-question"></i> Trợ giúp</a></li>
                 </ul>
             </nav>
-
-            <div class="resources-section">
-                <h3>TÀI NGUYÊN</h3>
-                <ul>
-                    <li><a href="#" class="resource-item">ℹ️ Về chúng tôi</a></li>
-                    <li><a href="#" class="resource-item">📢 Quảng cáo</a></li>
-                    <li><a href="#" class="resource-item">👨‍💻 Phát triển</a></li>
-                    <li><a href="#" class="resource-item">💬 Trợ giúp</a></li>
-                </ul>
-            </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
         <main class="main-content">
             
-            <!-- FILTER TABS -->
-            <div class="filter-tabs">
-                <button class="tab-btn active">Tốt nhất</button>
-                <button class="tab-btn">Mới nhất</button>
-                <button class="tab-btn">Bình luận nhiều</button>
+            <div class="feed-filters">
+                <button class="filter-btn active"><i class="fa-solid fa-rocket"></i> Tốt nhất</button>
+                <button class="filter-btn"><i class="fa-solid fa-certificate"></i> Mới nhất</button>
+                <button class="filter-btn"><i class="fa-solid fa-fire"></i> Bình luận nhiều</button>
             </div>
 
-            <!-- POST 2 -->
-            <article class="post">
-                <div class="post-header">
-                    <img src="" alt="Avatar" class="avatar">
-                    <div class="post-info">
-                        <span class="community-name">r/Anime</span>
-                        <span class="post-time">• 1 giờ trước</span>
-                    </div>
-=======
-    <body>
-        <<<<<<< HEAD <!-- HEADER -->
-            <header class="header">
-                <div class="header-content">
-                    <!-- LOGO -->
-                    <div class="logo-section">
-                        <img src="logo.png" alt="Logo" class="logo">
-                        <span class="site-name">DIỄN ĐÀN VIỄN TƯỞNG</span>
-                    </div>
-
-                    <!-- SEARCH BAR -->
-                    <div class="search-section">
-                        <input type="text" class="search-bar" placeholder="Tìm kiếm...">
-                    </div>
-
-                    <!-- HEADER BUTTONS -->
-                    <div class="header-buttons">
-                        <button class="btn-logout">Đăng xuất</button>
-                    </div>
-                </div>
-            </header>
-
-            <!-- MAIN CONTAINER -->
-            <div class="main-container">
-
-                <!-- SIDEBAR LEFT -->
-                <aside class="sidebar-left">
-                    <nav class="nav-menu">
-                        <ul>
-                            <li><a href="#" class="nav-item active">🏠 Trang chủ</a></li>
-                            <li><a href="#" class="nav-item">⭐ Phổ biến</a></li>
-                            <li><a href="#" class="nav-item">📰 Mới nhất</a></li>
-                            <li><a href="#" class="nav-item">🔍 Khám phá</a></li>
-                        </ul>
-                    </nav>
-
-                    <div class="resources-section">
-                        <h3>TÀI NGUYÊN</h3>
-                        <ul>
-                            <li><a href="#" class="resource-item">ℹ️ Về chúng tôi</a></li>
-                            <li><a href="#" class="resource-item">📢 Quảng cáo</a></li>
-                            <li><a href="#" class="resource-item">👨‍💻 Phát triển</a></li>
-                            <li><a href="#" class="resource-item">💬 Trợ giúp</a></li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <!-- MAIN CONTENT -->
-                <main class="main-content">
-
-                    <!-- FILTER TABS -->
-                    <div class="filter-tabs">
-                        <button class="tab-btn active">Tốt nhất</button>
-                        <button class="tab-btn">Mới nhất</button>
-                        <button class="tab-btn">Bình luận nhiều</button>
-                    </div>
-
-                    <!-- POST 2 -->
-                    <article class="post">
-                        <div class="post-header">
-                            <img src="" alt="Avatar" class="avatar">
-                            <div class="post-info">
-                                <span class="community-name">r/Anime</span>
-                                <span class="post-time">• 1 giờ trước</span>
-                            </div>
-                        </div>
-                        <h2 class="post-title">Anime viễn tưởng hay nhất năm 2026</h2>
-                        <p class="post-content">Năm nay có rất nhiều anime hay. Các bạn đã xem những anime nào mà thích?
-                            hiện tại năm 2026 là một năm bùng nổ cho các fan anime ,manga với rất nhiều bộ liên quan đến
-                            viễn tượng - xuyên không , rơi xuống dị giới ,...</p>
-                        <!-- POST 3 -->
-                        <article class="post">
-                            <div class="post-header">
-                                <img src="" alt="Avatar" class="avatar">
-                                <div class="post-info">
-                                    <span class="community-name">r/Gaming</span>
-                                    <span class="post-time">• 6 giờ trước</span>
-                                </div>
-                            </div>
-                            <h2 class="post-title">Game viễn tưởng nhập vai hay nhất năm 2026</h2>
-                            <p class="post-content">Năm nay có rất nhiều game RPG hay. Các bạn đã chơi những game nào mà
-                                thích? hiện tại năm 2026 là một năm bùng nổ cho các game thủ thích thể loại hành động ,
-                                kinh dị và viễn tưởng . các game RE9 : Requiem, PRAGMATA và Directive 8020 luôn được các
-                                game thủ săn đón từ khi mới ra mắt </p>
-                            <div class="post-actions">
-                                <button class="action-btn">👍 3.5K</button>
-                                <button class="action-btn">💬 892</button>
-                                <button class="action-btn">↗️ Chia sẻ</button>
-                            </div>
-                        </article>
-
-                        <!-- POST 4 -->
-                        <article class="post">
-                            <div class="post-header">
-                                <img src="" alt="Avatar" class="avatar">
-                                <div class="post-info">
-                                    <span class="community-name">r/Movies</span>
-                                    <span class="post-time">• 8 giờ trước</span>
-                                </div>
-                            </div>
-                            <h2 class="post-title">Phim viễn tưởng hay nhất năm 2026</h2>
-                            <p class="post-content">Hiện tại năm 2026, phim viễn tưởng không chỉ là giải trí mà còn phản
-                                ánh nỗi lo và khát vọng của nhân loại trước tương lai. Đặc biệt là những bộ phim khai
-                                thác chủ đề về trí tuệ nhân tạo, du hành thời gian, và khám phá vũ trụ đã thu hút sự chú
-                                ý lớn từ khán giả như Hành tinh Cát của đạo diễn Denis Villeneuve người Canada.</p>
-                            <div class="post-actions">
-                                <button class="action-btn">👍 4.8K</button>
-                                <button class="action-btn">💬 1.2K</button>
-                                <button class="action-btn">↗️ Chia sẻ</button>
-                            </div>
-                        </article>
-                </main>
-
-                <!-- SIDEBAR RIGHT -->
-                <aside class="sidebar-right">
-                    <section class="popular-communities">
-                        <h3>CỘNG ĐỒNG PHỔ BIẾN</h3>
-
-                        <div class="community-card">
-                            <h4 class="community-title">r/Anime</h4>
-                            <p class="community-desc">Anime yêu thích</p>
-                            <p class="community-members">234K thành viên</p>
-                            <button class="btn-join">Tham gia</button>
-                        </div>
-
-                        <div class="community-card">
-                            <h4 class="community-title">r/Manga</h4>
-                            <p class="community-desc">Manga và truyện tranh</p>
-                            <p class="community-members">189K thành viên</p>
-                            <button class="btn-join">Tham gia</button>
-                        </div>
-
-                        <div class="community-card">
-                            <h4 class="community-title">r/Gaming</h4>
-                            <p class="community-desc">Game và những trò chơi</p>
-                            <p class="community-members">567K thành viên</p>
-                            <button class="btn-join">Tham gia</button>
-                        </div>
-
-                        <div class="community-card">
-                            <h4 class="community-title">r/Movies</h4>
-                            <p class="community-desc">Phim ảnh thế giới</p>
-                            <p class="community-members">412K thành viên</p>
-                            <button class="btn-join">Tham gia</button>
-                        </div>
-
-                        <a href="#" class="see-more">Xem thêm →</a>
-                    </section>
-
-                    <footer class="sidebar-footer">
-                        <a href="#">Quy tắc</a>
-                        <a href="#">Chính sách riêng tư</a>
-                        <a href="#">Điều khoản</a>
-                        <a href="#">Tiếp cận</a>
-                    </footer>
-                </aside>
-
-            </div>
-            <header class="header">
-
-                <div class="logo">
-                    <a href="index.html" class="home-link">My Blog</a>
-                </div>
-                <div class="header-actions">
-
-                    <a href="register.html" class="login-btn">
-                        <i class="fa-solid fa-user"></i>
-                        Đăng ký
-                    </a>
-
-                </div>
-            </header>
-            <nav class="navbar">
-                <a href="#" class="active">Home</a>
-                <a href="#">About</a>
-                <a href="#">Categories</a>
-                <a href="#">Contact</a>
-            </nav>
-
-
-            <div class="container">
-
-                <main class="main-content">
-
-                    <div id="post-container"></div>
-
-                    <section class="comment-section">
-
-                        <h2>Bình Luận</h2>
-
-                        <div class="comment-form">
-
-                            <input type="text" id="comment-username" placeholder="Tên của bạn">
-
-                            <textarea id="comment-input" placeholder="Viết bình luận..."></textarea>
-
-                            <button id="comment-btn">
-                                Gửi
-                            </button>
-                        </div>
-
-                        <div id="comment-list"></div>
-
-                    </section>
-
-                </main>
-
-                <aside class="sidebar">
-
-                    <div class="sidebar-box">
-
-                        <h3>Bài viết mới</h3>
-
-                        <ul>
-                            <li>Khám phá ẩm thực Hà Nội</li>
-                            <li>Kinh nghiệm trekking Đà Nẵng</li>
-                            <li>Mùa hoa cải vàng ở Mộc Châu</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="sidebar-box">
-
-                        <h3>Chủ đề nổi bật</h3>
-
-                        <ul>
-                            <li>Du lịch</li>
-                            <li>Ẩm thực</li>
-                            <li>Phong cách sống</li>
-                        </ul>
-
-                    </div>
-
-                </aside>
-
-            </div>
-
-            <script type="module" src="./js/main.js"></script>
-            <script type="module" src="./js/comments.js"></script>
-            =======
-            <header class="header">
-
-                <div class="logo">My Blog</div>
-
-                <nav class="navbar">
-                    <a href="#" class="active">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Categories</a>
-                    <a href="#">Contact</a>
-                </nav>
-
-                <div class="header-actions">
-
-                    <a href="login.html" class="login-btn">
-                        <i class="fa-solid fa-user"></i>
-                        Login
-                    </a>
-
->>>>>>> 1d2639f32939d3008abba0992e06a4663800bab0
-                </div>
-                <h2 class="post-title">Anime viễn tưởng hay nhất năm 2026</h2>
-                <p class="post-content">Năm nay có rất nhiều anime hay. Các bạn đã xem những anime nào mà thích? hiện tại năm 2026 là một năm bùng nổ cho các fan anime ,manga với rất nhiều bộ liên quan đến viễn tượng - xuyên không , rơi xuống dị giới ,...</p>
-            <!-- POST 3 -->
-            <article class="post">
-                <div class="post-header">
-                    <img src="" alt="Avatar" class="avatar">
-                    <div class="post-info">
-                        <span class="community-name">r/Gaming</span>
-                        <span class="post-time">• 6 giờ trước</span>
-                    </div>
-                </div>
-                <h2 class="post-title">Game viễn tưởng nhập vai hay nhất năm 2026</h2>
-                <p class="post-content">Năm nay có rất nhiều game RPG hay. Các bạn đã chơi những game nào mà thích? hiện tại năm 2026 là một năm bùng nổ cho các game thủ thích thể loại hành động , kinh dị và viễn tưởng . các game RE9 : Requiem, PRAGMATA và Directive 8020 luôn được các game thủ săn đón từ khi mới ra mắt </p>
-                <div class="post-actions">
-                    <button class="action-btn">👍 3.5K</button>
-                    <button class="action-btn">💬 892</button>
-                    <button class="action-btn">↗️ Chia sẻ</button>
-                </div>
-            </article>
-
-<<<<<<< HEAD
-            <!-- POST 4 -->
-            <article class="post">
-                <div class="post-header">
-                    <img src="" alt="Avatar" class="avatar">
-                    <div class="post-info">
-                        <span class="community-name">r/Movies</span>
-                        <span class="post-time">• 8 giờ trước</span>
-                    </div>
-                </div>
-                <h2 class="post-title">Phim viễn tưởng hay nhất năm 2026</h2>
-                <p class="post-content">Hiện tại năm 2026, phim viễn tưởng không chỉ là giải trí mà còn phản ánh nỗi lo và khát vọng của nhân loại trước tương lai. Đặc biệt là những bộ phim khai thác chủ đề về trí tuệ nhân tạo, du hành thời gian, và khám phá vũ trụ đã thu hút sự chú ý lớn từ khán giả như Hành tinh Cát của đạo diễn Denis Villeneuve người Canada.</p>
-                <div class="post-actions">
-                    <button class="action-btn">👍 4.8K</button>
-                    <button class="action-btn">💬 1.2K</button>
-                    <button class="action-btn">↗️ Chia sẻ</button>
-                </div>
-            </article>
-=======
-            </header>
-
-            <div class="container">
->>>>>>> 1d2639f32939d3008abba0992e06a4663800bab0
-
-                <main class="main-content">
-
-<<<<<<< HEAD
-        <!-- SIDEBAR RIGHT -->
-        <aside class="sidebar-right">
-            <section class="popular-communities">
-                <h3>CỘNG ĐỒNG PHỔ BIẾN</h3>
+            <div class="post-feed">
                 
-                <div class="community-card">
-                    <h4 class="community-title">r/Anime</h4>
-                    <p class="community-desc">Anime yêu thích</p>
-                    <p class="community-members">234K thành viên</p>
-                    <button class="btn-join">Tham gia</button>
-                </div>
+                <article class="post-card">
+                    <div class="post-header">
+                        <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
+                        <div class="post-meta">
+                            <span class="subreddit">r/Anime</span>
+                            <span class="time">• 1 giờ trước</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="post-title">
+                        <a href="#">Anime viễn tưởng hay nhất năm 2026</a>
+                    </h2>
+                    
+                    <p class="post-snippet">Năm nay có rất nhiều anime hay. Các bạn đã xem những anime nào mà thích? Hiện tại năm 2026 là một năm bùng nổ cho các fan anime, manga với rất nhiều bộ liên quan đến viễn tưởng - xuyên không, rơi xuống dị giới...</p>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 3.5K</button>
+                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 892</button>
+                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                    </div>
+                </article>
 
-                <div class="community-card">
-                    <h4 class="community-title">r/Manga</h4>
-                    <p class="community-desc">Manga và truyện tranh</p>
-                    <p class="community-members">189K thành viên</p>
-                    <button class="btn-join">Tham gia</button>
-                </div>
+                <article class="post-card">
+                    <div class="post-header">
+                        <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
+                        <div class="post-meta">
+                            <span class="subreddit">r/Gaming</span>
+                            <span class="time">• 6 giờ trước</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="post-title">
+                        <a href="#">Game viễn tưởng nhập vai hay nhất năm 2026</a>
+                    </h2>
+                    
+                    <p class="post-snippet">Năm nay có rất nhiều game RPG hay. Các bạn đã chơi những game nào mà thích? Hiện tại năm 2026 là một năm bùng nổ cho các game thủ thích thể loại hành động, kinh dị và viễn tưởng. Các game RE9: Requiem, PRAGMATA và Directive 8020 luôn được các game thủ săn đón từ khi mới ra mắt.</p>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 4.8K</button>
+                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 1.2K</button>
+                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                    </div>
+                </article>
 
-                <div class="community-card">
-                    <h4 class="community-title">r/Gaming</h4>
-                    <p class="community-desc">Game và những trò chơi</p>
-                    <p class="community-members">567K thành viên</p>
-                    <button class="btn-join">Tham gia</button>
-                </div>
+                <article class="post-card">
+                    <div class="post-header">
+                        <img src="https://via.placeholder.com/30" alt="Avatar" class="avatar">
+                        <div class="post-meta">
+                            <span class="subreddit">r/Movies</span>
+                            <span class="time">• 8 giờ trước</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="post-title">
+                        <a href="#">Phim viễn tưởng hay nhất năm 2026</a>
+                    </h2>
+                    
+                    <p class="post-snippet">Hiện tại năm 2026, phim viễn tưởng không chỉ là giải trí mà còn phản ánh nỗi lo và khát vọng của nhân loại trước tương lai. Đặc biệt là những bộ phim khai thác chủ đề về trí tuệ nhân tạo, du hành thời gian, và khám phá vũ trụ đã thu hút sự chú ý lớn từ khán giả...</p>
+                    
+                    <div class="post-actions">
+                        <button class="action-btn"><i class="fa-solid fa-arrow-up"></i> 7.1K</button>
+                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 2.4K</button>
+                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                    </div>
+                </article>
 
-                <div class="community-card">
-                    <h4 class="community-title">r/Movies</h4>
-                    <p class="community-desc">Phim ảnh thế giới</p>
-                    <p class="community-members">412K thành viên</p>
-                    <button class="btn-join">Tham gia</button>
-                </div>
-
-                <a href="#" class="see-more">Xem thêm →</a>
-            </section>
-
-            <footer class="sidebar-footer">
-                <a href="#">Quy tắc</a>
-                <a href="#">Chính sách riêng tư</a>
-                <a href="#">Điều khoản</a>
-                <a href="#">Tiếp cận</a>
-            </footer>
-        </aside>
-
+            </div>
+        </main>
     </div>
-<script type="module" src="./js/main.js"></script>
-<script type="module" src="./js/comments.js"></script>
 
 </body>
-
 </html>
-=======
-                    <div id="post-container"></div>
-
-                    <section class="comment-section">
-
-                        <h2>Bình Luận</h2>
-
-                        <div class="comment-form">
-
-                            <input type="text" id="comment-username" placeholder="Tên của bạn">
-
-                            <textarea id="comment-input" placeholder="Viết bình luận..."></textarea>
-
-                            <button id="comment-btn">
-                                Gửi
-                            </button>
-
-                        </div>
-
-                        <div id="comment-list"></div>
-
-                    </section>
-
-                </main>
-
-                <aside class="sidebar">
-
-                    <div class="sidebar-box">
-
-                        <h3>Bài viết mới</h3>
-
-                        <ul>
-                            <li>Khám phá ẩm thực Hà Nội</li>
-                            <li>Kinh nghiệm trekking Đà Nẵng</li>
-                            <li>Mùa hoa cải vàng ở Mộc Châu</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="sidebar-box">
-
-                        <h3>Chủ đề nổi bật</h3>
-
-                        <ul>
-                            <li>Du lịch</li>
-                            <li>Ẩm thực</li>
-                            <li>Phong cách sống</li>
-                        </ul>
-
-                    </div>
-
-                </aside>
-
-            </div>
-
-            <script type="module" src="./js/main.js"></script>
-            <script type="module" src="./js/comments.js"></script>
-
-    </body>
-
-</html>
->>>>>>> 1d2639f32939d3008abba0992e06a4663800bab0
