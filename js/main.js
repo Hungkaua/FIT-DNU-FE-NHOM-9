@@ -61,7 +61,7 @@ function handleLogout() {
 function handleOpenCreatePost(createPostCard) {
     if (!isLoggedIn()) {
         alert('Bạn cần đăng nhập để tạo bài viết.');
-        window.location.href = 'login.html?redirect=index.html';
+        window.location.href = './login.html?redirect=index.html';
         return;
     }
 

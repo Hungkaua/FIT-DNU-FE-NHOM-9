@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const redirectTarget = urlParams.get('redirect') || 'index.html';
+    const redirectUrl = redirectTarget.startsWith('http') ? redirectTarget : `./${redirectTarget.replace(/^\/+/, '')}`;
 
     if (isLoggedIn()) {
-        window.location.href = redirectTarget;
+        window.location.href = redirectUrl;
         return;
     }
 
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             await login(identifier, password);
             alert('Đăng nhập thành công!');
-            window.location.href = redirectTarget;
+            window.location.href = redirectUrl;
         } catch (error) {
             console.error('Lỗi đăng nhập:', error);
             alert(error.message || 'Đăng nhập thất bại. Vui lòng thử lại.');
