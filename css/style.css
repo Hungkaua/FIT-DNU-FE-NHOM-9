@@ -390,6 +390,13 @@ a {
     display: none;
 }
 
+.no-posts {
+    text-align: center;
+    color: #6b7280;
+    font-size: 16px;
+    padding: 40px 20px;
+}
+
 .action-btn:hover {
     background-color: #f1f2f4;
 }

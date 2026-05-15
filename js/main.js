@@ -83,9 +83,12 @@ async function loadPosts(postFeed) {
                 const postElement = await createPostElement(post);
                 postFeed.appendChild(postElement);
             }
+        } else {
+            postFeed.innerHTML = '<p class="no-posts">Chưa có bài viết nào. Hãy tạo bài viết đầu tiên!</p>';
         }
     } catch (error) {
         console.error('Lỗi tải bài viết:', error);
+        postFeed.innerHTML = '<p class="no-posts">Không thể tải bài viết. Vui lòng thử lại sau.</p>';
     }
 }
 
