@@ -28,9 +28,11 @@
                     <span id="userName" class="user-name"></span>
                     <button id="logoutButton" class="btn-logout">Đăng xuất</button>
                 </div>
+                
                 <a href="./login.html" class="btn-login">Đăng nhập</a>
                 <a href="./register.html" class="btn-register">Đăng ký</a>
             </div>
+            
         </div>
     </header>
 
@@ -85,9 +87,15 @@
                 <button class="filter-btn"><i class="fa-solid fa-fire"></i> Bình luận nhiều</button>
             </div>
 
-            <div class="post-feed">
+            <div class="post-feed" id="post-feed-container">
                 
+                <div class="empty-state">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <p>Chưa có bài viết nào.<br>Hãy là người đầu tiên tạo bài viết!</p>
+                </div>
+
             </div>
+            
         </main>
     </div>
 

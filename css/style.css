@@ -40,7 +40,7 @@ a {
     margin: 0 auto;
 }
 
-/* Định dạng cho khối Logo */
+/* Khối Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -50,11 +50,9 @@ a {
     color: #0079D3; 
 }
 
-/* Ảnh Logo */
 .logo-img {
     height: 40px; 
     width: auto;
-    /* mix-blend-mode: multiply; (Bật lên nếu muốn xóa phông trắng của logo) */
 }
 
 /* Thanh tìm kiếm */
@@ -87,10 +85,10 @@ a {
     font-size: 14px;
 }
 
-/* --- Cụm nút bấm góc phải Header --- */
+/* --- Cụm góc phải Header (User & Buttons) --- */
 .header-actions {
     display: flex;
-    gap: 15px; /* Tạo khoảng cách 15px giữa nút Đăng nhập và Đăng ký */
+    gap: 15px; 
     align-items: center;
 }
 
@@ -111,6 +109,7 @@ a {
 
 .user-name {
     font-weight: 600;
+    font-size: 14px;
 }
 
 .btn-logout {
@@ -119,6 +118,7 @@ a {
     background: #ffffff;
     color: #1c1c1c;
     border-radius: 20px;
+    font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -127,50 +127,47 @@ a {
     background-color: #f1f2f4;
 }
 
-/* Nút Đăng nhập: Nền xanh, chữ trắng nổi bật */
+/* Nút Đăng nhập / Đăng ký */
 .btn-login {
     display: inline-block; 
     padding: 8px 22px;
-    background-color: #0079D3; /* Nền màu xanh dương */
+    background-color: #0079D3; 
     border: 1px solid #0079D3;
-    color: #ffffff; /* Chữ màu trắng */
+    color: #ffffff; 
     border-radius: 20px;
     font-weight: 600;
-    text-decoration: none; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-    background-color: #005596; /* Xanh đậm hơn khi di chuột vào */
+    background-color: #005596; 
     border-color: #005596;
     box-shadow: 0 2px 8px rgba(0, 121, 211, 0.4); 
 }
 
-/* Nút Đăng ký: Nền trong suốt, viền xanh, chữ xanh */
 .btn-register {
     display: inline-block; 
     padding: 8px 22px;
-    background-color: transparent; /* Nền trong suốt */
-    border: 1px solid #0079D3;     /* Viền xanh */
-    color: #0079D3;                /* Chữ xanh */
+    background-color: transparent; 
+    border: 1px solid #0079D3;     
+    color: #0079D3;                
     border-radius: 20px;
     font-weight: 600;
-    text-decoration: none; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .btn-register:hover {
-    background-color: #f5fafd; /* Nền xanh thật nhạt khi di chuột vào */
+    background-color: #f5fafd; 
 }
 
 /* --- BỐ CỤC CHÍNH (GRID 2 CỘT) --- */
 .app-container {
     display: grid;
-    grid-template-columns: 250px 1fr; /* Cột trái 250px, cột phải tự co giãn */
+    grid-template-columns: 250px 1fr; 
     max-width: 1200px; 
-    margin: 60px auto 0; /* Cách header cố định 60px */
+    margin: 60px auto 0; 
     padding: 20px;
     gap: 20px;
 }
@@ -238,6 +235,112 @@ a {
     width: 100%;
 }
 
+/* Thanh công cụ (Nút Tạo Bài) */
+.post-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.btn-create-post {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border: 1px solid #0079D3;
+    background: #0079D3;
+    color: #ffffff;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-create-post:hover {
+    background-color: #005596;
+}
+
+.btn-create-post:active, .btn-submit:active {
+    transform: scale(0.98); /* Hiệu ứng lún xuống khi click */
+}
+
+/* Form Tạo Bài Viết */
+.create-post-card {
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.create-post-card h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #1c1c1c;
+}
+
+.create-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.create-post-form .form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.create-post-form .form-row input {
+    flex: 1; /* Căn đều 2 ô input ngang nhau */
+}
+
+.create-post-form input,
+.create-post-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d3d6db;
+    border-radius: 10px;
+    background: #f7f8fa;
+    color: #1c1c1c;
+    font-size: 14px;
+    resize: vertical;
+    transition: all 0.2s;
+}
+
+/* Thêm hiệu ứng Focus cho các ô nhập liệu */
+.create-post-form input:focus,
+.create-post-form textarea:focus {
+    background: #ffffff;
+    border-color: #0079D3;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 121, 211, 0.15);
+}
+
+.btn-submit {
+    padding: 12px 24px;
+    border: none;
+    background-color: #0079D3;
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-submit:hover {
+    background-color: #005596;
+}
+
+.note {
+    margin-top: 12px;
+    color: #878a8c;
+    font-size: 13px;
+    text-align: right;
+}
+
 /* Bộ lọc (Tốt nhất, Mới nhất...) */
 .feed-filters {
     display: flex;
@@ -260,6 +363,7 @@ a {
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: background-color 0.2s;
 }
 
 .filter-btn:hover {
@@ -281,7 +385,7 @@ a {
 .post-card {
     background: #ffffff;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 15px;
     transition: border-color 0.2s;
 }
@@ -316,16 +420,11 @@ a {
     color: #787c7e;
 }
 
-/* Tiêu đề bài viết có thể click */
 .post-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 8px;
-}
-
-.post-title a {
-    color: #1c1c1c;
-    text-decoration: none;
+    line-height: 1.3;
 }
 
 .post-title a:hover {
@@ -333,20 +432,26 @@ a {
     color: #0079D3;
 }
 
-/* Đoạn text tóm tắt */
 .post-snippet {
     font-size: 14px;
     color: #4a4a4a;
     line-height: 1.5;
     margin-bottom: 15px;
-    /* Tự động hiện dấu ... nếu text dài quá 3 dòng */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Nút tương tác (Upvote, Comment, Share) */
+.post-image {
+    width: 100%;
+    max-height: 400px; /* Tăng độ cao tối đa lên xíu để xem ảnh rõ hơn */
+    object-fit: cover;
+    margin: 0 0 15px 0;
+    border-radius: 8px;
+    border: 1px solid #edeff1;
+}
+
 .post-actions {
     display: flex;
     gap: 5px;
@@ -364,215 +469,45 @@ a {
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.comment-toggle-btn {
-    gap: 8px;
-}
-
-.post-image {
-    width: 100%;
-    max-height: 320px;
-    object-fit: cover;
-    margin: 15px 0;
-    border-radius: 10px;
-}
-
-.post-comments {
-    margin-top: 20px;
-    padding: 16px;
-    background: #f8fafc;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-}
-
-.post-comments.hidden {
-    display: none;
-}
-
-.no-posts {
-    text-align: center;
-    color: #6b7280;
-    font-size: 16px;
-    padding: 40px 20px;
+    transition: background-color 0.2s;
 }
 
 .action-btn:hover {
     background-color: #f1f2f4;
 }
 
-.create-post-card {
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 18px;
-    margin-bottom: 20px;
-}
-
-.create-post-card h3 {
-    margin-bottom: 12px;
-    font-size: 18px;
-    color: #1c1c1c;
-}
-
-.create-post-form {
+/* --- GIAO DIỆN BÁO TRỐNG (EMPTY STATE) --- */
+.empty-state {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.create-post-form .form-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.create-post-form input,
-.create-post-form textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #d3d6db;
-    border-radius: 10px;
-    background: #f7f8fa;
-    color: #1c1c1c;
-    font-size: 14px;
-    resize: vertical;
-}
-
-.create-post-form input[type="url"] {
-    flex: 1;
-}
-
-.btn-submit {
-    padding: 12px 20px;
-    border: none;
-    background-color: #0079D3;
-    color: #ffffff;
-    font-weight: 700;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.btn-submit:hover {
-    background-color: #005596;
-}
-
-.note {
-    margin-top: 8px;
-    color: #6b7280;
-    font-size: 13px;
-}
-
-.comment-section {
-    margin-top: 20px;
-}
-
-.comment-card {
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 18px;
-}
-
-.comment-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
-}
-
-.comment-card-header h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.comment-card-header p {
-    margin: 0;
-    color: #6b7280;
-    font-size: 13px;
-}
-
-.comment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.comment-input-row {
-    display: flex;
-    gap: 12px;
-}
-
-.comment-input-row input,
-.comment-form textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #d3d6db;
-    border-radius: 10px;
-    background: #f7f8fa;
-    color: #1c1c1c;
-    font-size: 14px;
-    resize: vertical;
-}
-
-.comment-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.comment-item {
-    border: 1px solid #e5e7eb;
-    background: #f9fafb;
-    border-radius: 10px;
-    padding: 14px;
-}
-
-.comment-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 8px;
-    font-size: 13px;
-    color: #6b7280;
-}
-
-.comment-item strong {
-    color: #1c1c1c;
-}
-
-.no-comments {
-    color: #6b7280;
-    font-size: 14px;
-    margin: 0;
-}
-
-.btn-create-post {
-    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 18px;
-    border: 1px solid #0079D3;
-    background: #0079D3;
-    color: #ffffff;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.2s ease;
-    margin-bottom: 20px;
+    justify-content: center;
+    padding: 60px 20px;
+    background-color: transparent; 
+    text-align: center;
+    margin-top: 10px;
 }
 
-.btn-create-post:hover {
-    background-color: #005596;
+.empty-state i {
+    font-size: 50px;
+    color: #c1c3c5; 
+    margin-bottom: 15px;
 }
 
-.post-toolbar {
-    display: flex;
-    justify-content: flex-start;
+.empty-state h3 {
+    font-size: 18px;
+    color: #1c1c1c;
+    margin-bottom: 8px;
 }
 
+.empty-state p {
+    font-size: 15px;
+    color: #878a8c;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Class tiện ích */
 .hidden {
     display: none !important;
 }
@@ -580,12 +515,15 @@ a {
 /* --- REPONSIVE CHO ĐIỆN THOẠI --- */
 @media (max-width: 900px) {
     .app-container {
-        grid-template-columns: 1fr; /* Trở về 1 cột */
+        grid-template-columns: 1fr; 
     }
     .sidebar {
-        display: none; /* Ẩn sidebar bên trái để lấy chỗ hiển thị bài viết */
+        display: none; 
     }
     .search-bar {
-        display: none; /* Ẩn thanh tìm kiếm trên mobile */
+        display: none; 
+    }
+    .create-post-form .form-row {
+        flex-direction: column; /* Xếp dọc các ô input trên điện thoại */
     }
 }
