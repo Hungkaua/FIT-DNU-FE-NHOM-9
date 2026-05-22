@@ -1,4 +1,6 @@
-/* --- RESET CƠ BẢN --- */
+/* =========================================
+   1. RESET & CÀI ĐẶT CƠ BẢN
+   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
@@ -9,7 +11,7 @@
 }
 
 body {
-    background-color: #DAE0E6; /* Màu nền xám nhạt đặc trưng của Reddit */
+    background-color: #DAE0E6; /* Màu nền xám nhạt đặc trưng của diễn đàn */
     color: #1c1c1c;
 }
 
@@ -18,7 +20,14 @@ a {
     color: inherit;
 }
 
-/* --- HEADER --- */
+/* Class tiện ích dùng chung */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   2. HEADER & THANH ĐIỀU HƯỚNG TRÊN CÙNG
+   ========================================= */
 .header {
     background-color: #ffffff;
     border-bottom: 1px solid #edeff1;
@@ -40,7 +49,7 @@ a {
     margin: 0 auto;
 }
 
-/* Khối Logo */
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -85,7 +94,7 @@ a {
     font-size: 14px;
 }
 
-/* --- Cụm góc phải Header (User & Buttons) --- */
+/* Góc phải Header (Thông tin User & Nút bấm) */
 .header-actions {
     display: flex;
     gap: 15px; 
@@ -127,7 +136,6 @@ a {
     background-color: #f1f2f4;
 }
 
-/* Nút Đăng nhập / Đăng ký */
 .btn-login {
     display: inline-block; 
     padding: 8px 22px;
@@ -162,7 +170,9 @@ a {
     background-color: #f5fafd; 
 }
 
-/* --- BỐ CỤC CHÍNH (GRID 2 CỘT) --- */
+/* =========================================
+   3. BỐ CỤC CHÍNH (GRID 2 CỘT)
+   ========================================= */
 .app-container {
     display: grid;
     grid-template-columns: 250px 1fr; 
@@ -172,7 +182,7 @@ a {
     gap: 20px;
 }
 
-/* --- NAVBAR (CỘT TRÁI) --- */
+/* --- NAVBAR BÊN TRÁI --- */
 .sidebar {
     position: sticky;
     top: 80px; 
@@ -229,13 +239,15 @@ a {
     letter-spacing: 0.5px;
 }
 
-/* --- MAIN CONTENT (CỘT PHẢI) --- */
+/* --- NỘI DUNG CHÍNH BÊN PHẢI --- */
 .main-content {
     max-width: 800px;
     width: 100%;
 }
 
-/* Thanh công cụ (Nút Tạo Bài) */
+/* =========================================
+   4. CÔNG CỤ & TẠO BÀI VIẾT
+   ========================================= */
 .post-toolbar {
     display: flex;
     justify-content: flex-start;
@@ -261,10 +273,9 @@ a {
 }
 
 .btn-create-post:active, .btn-submit:active {
-    transform: scale(0.98); /* Hiệu ứng lún xuống khi click */
+    transform: scale(0.98);
 }
 
-/* Form Tạo Bài Viết */
 .create-post-card {
     background: #ffffff;
     border: 1px solid #ccc;
@@ -293,7 +304,7 @@ a {
 }
 
 .create-post-form .form-row input {
-    flex: 1; /* Căn đều 2 ô input ngang nhau */
+    flex: 1;
 }
 
 .create-post-form input,
@@ -309,7 +320,6 @@ a {
     transition: all 0.2s;
 }
 
-/* Thêm hiệu ứng Focus cho các ô nhập liệu */
 .create-post-form input:focus,
 .create-post-form textarea:focus {
     background: #ffffff;
@@ -341,7 +351,9 @@ a {
     text-align: right;
 }
 
-/* Bộ lọc (Tốt nhất, Mới nhất...) */
+/* =========================================
+   5. BỘ LỌC & DANH SÁCH BÀI VIẾT (FEED)
+   ========================================= */
 .feed-filters {
     display: flex;
     gap: 10px;
@@ -375,7 +387,6 @@ a {
     color: #0079D3;
 }
 
-/* --- BÀI VIẾT (POST CARD) --- */
 .post-feed {
     display: flex;
     flex-direction: column;
@@ -394,11 +405,15 @@ a {
     border-color: #878a8c;
 }
 
+/* =========================================
+   6. HEADER CỦA TỪNG BÀI VIẾT & MENU 3 CHẤM
+   ========================================= */
 .post-header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    position: relative; /* Cần thiết cho Dropdown */
 }
 
 .avatar {
@@ -407,29 +422,98 @@ a {
     border-radius: 50%;
 }
 
-.post-meta {
-    font-size: 12px;
+.post-info {
+    flex-grow: 1; /* Đẩy menu 3 chấm sang sát bên phải */
+    display: flex;
+    flex-direction: column;
 }
 
-.subreddit {
+.community-name {
+    font-size: 13px;
     font-weight: 700;
     color: #1c1c1c;
 }
 
-.time {
+.post-time {
+    font-size: 12px;
     color: #787c7e;
 }
 
+/* Nút 3 chấm & Dropdown */
+.post-options {
+    position: relative;
+}
+
+.btn-options {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: #878a8c;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.btn-options:hover {
+    background: #f1f2f4;
+    color: #1c1c1c;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #edeff1;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 140px;
+    display: none; /* Ẩn mặc định, hiển thị bằng JS */
+    flex-direction: column;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.dropdown-menu.show {
+    display: flex; 
+}
+
+.dropdown-item {
+    background: transparent;
+    border: none;
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1c1c1c;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f2f4;
+}
+
+.text-danger {
+    color: #e74c3c !important;
+}
+
+.text-danger:hover {
+    background-color: #feecec !important;
+}
+
+/* =========================================
+   7. NỘI DUNG BÀI VIẾT & TƯƠNG TÁC
+   ========================================= */
 .post-title {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 8px;
     line-height: 1.3;
-}
-
-.post-title a:hover {
-    text-decoration: underline; 
-    color: #0079D3;
 }
 
 .post-snippet {
@@ -445,7 +529,7 @@ a {
 
 .post-image {
     width: 100%;
-    max-height: 400px; /* Tăng độ cao tối đa lên xíu để xem ảnh rõ hơn */
+    max-height: 400px; 
     object-fit: cover;
     margin: 0 0 15px 0;
     border-radius: 8px;
@@ -476,7 +560,157 @@ a {
     background-color: #f1f2f4;
 }
 
-/* --- GIAO DIỆN BÁO TRỐNG (EMPTY STATE) --- */
+/* =========================================
+   8. KHU VỰC BÌNH LUẬN (RE-DESIGN)
+   ========================================= */
+.post-comments {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #edeff1;
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 12px;
+}
+
+.comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #edeff1;
+}
+
+/* Khung bong bóng chat */
+.comment-body {
+    background-color: #f6f7f8;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border-top-left-radius: 2px; /* Tạo góc nhọn dạng hội thoại */
+    flex-grow: 1;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.comment-header strong {
+    font-size: 13px;
+    color: #1c1c1c;
+}
+
+.comment-header span {
+    font-size: 11px;
+    color: #878a8c;
+}
+
+.comment-text {
+    font-size: 14px;
+    color: #1c1c1c;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+/* Form nhập bình luận */
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #edeff1;
+}
+
+.comment-username {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d3d6db;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #ffffff;
+}
+
+.comment-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d3d6db;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: none; 
+}
+
+.comment-input:focus {
+    border-color: #0079D3;
+    outline: none;
+}
+
+.btn-small {
+    padding: 8px 16px;
+    align-self: flex-end; 
+    font-size: 14px;
+}
+
+/* =========================================
+   9. POPUP MODAL CHỈNH SỬA BÀI VIẾT
+   ========================================= */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền đen mờ */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #878a8c;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.close-modal:hover {
+    color: #1c1c1c;
+}
+
+.modal h3 {
+    margin-bottom: 20px;
+    color: #1c1c1c;
+    font-size: 20px;
+}
+
+/* =========================================
+   10. GIAO DIỆN BÁO TRỐNG (EMPTY STATE)
+   ========================================= */
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -507,23 +741,27 @@ a {
     line-height: 1.5;
 }
 
-/* Class tiện ích */
-.hidden {
-    display: none !important;
+.no-comments, .no-posts {
+    color: #6b7280;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
 }
 
-/* --- REPONSIVE CHO ĐIỆN THOẠI --- */
+/* =========================================
+   11. RESPONSIVE DÀNH CHO ĐIỆN THOẠI
+   ========================================= */
 @media (max-width: 900px) {
     .app-container {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr; /* Gộp thành 1 cột */
     }
     .sidebar {
-        display: none; 
+        display: none; /* Ẩn sidebar bên trái */
     }
     .search-bar {
-        display: none; 
+        display: none; /* Ẩn ô tìm kiếm */
     }
     .create-post-form .form-row {
-        flex-direction: column; /* Xếp dọc các ô input trên điện thoại */
+        flex-direction: column; /* Xếp dọc các input */
     }
 }

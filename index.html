@@ -78,7 +78,7 @@
                         <button type="submit" class="btn-submit">Đăng bài</button>
                     </div>
                 </form>
-                <p class="note">Bài viết mới sẽ được lưu vào MockAPI và hiển thị ngay.</p>
+                <p class="note">Bài viết mới sẽ được lưu vào hệ thống và hiển thị ngay.</p>
             </div>
 
             <div class="feed-filters">
@@ -88,15 +88,32 @@
             </div>
 
             <div class="post-feed" id="post-feed-container">
-                
                 <div class="empty-state">
                     <i class="fa-regular fa-folder-open"></i>
                     <p>Chưa có bài viết nào.<br>Hãy là người đầu tiên tạo bài viết!</p>
                 </div>
-
             </div>
             
         </main>
+    </div>
+
+    <div id="editPostModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeEditModal" class="close-modal">&times;</span>
+            <h3>Chỉnh sửa bài viết</h3>
+            <form id="editPostForm" class="create-post-form">
+                <input type="hidden" id="editPostId"> 
+                
+                <div class="form-row">
+                    <input id="editPostTitle" type="text" placeholder="Tiêu đề bài viết" required>
+                </div>
+                <textarea id="editPostContent" placeholder="Nội dung bài viết..." rows="4" required></textarea>
+                <div class="form-row">
+                    <input id="editPostImage" type="url" placeholder="URL ảnh (tùy chọn)">
+                    <button type="submit" class="btn-submit">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script type="module" src="js/main.js"></script>
