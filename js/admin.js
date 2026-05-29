@@ -43,12 +43,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             e.preventDefault();
             const title = (document.getElementById('serverNotifTitle') || {}).value || '';
             const message = (document.getElementById('serverNotifMessage') || {}).value || '';
+            
             if (!title.trim() || !message.trim()) {
                 alert('Vui lòng nhập tiêu đề và nội dung thông báo.');
                 return;
             }
+
+            // 1. Lưu thông báo vào hệ thống (code gốc của bạn)
             createServerNotification({ title: title.trim(), message: message.trim() });
             alert('Đã gửi thông báo toàn server.');
+
+            // 2. TÍCH HỢP ĐẨY THÔNG BÁO RA WINDOWS ACTION CENTER
+            if ("Notification" in window) {
+                if (Notification.permission === "granted") {
+                    pushToWindows(title.trim(), message.trim());
+                } else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then((permission) => {
+                        if (permission === "granted") {
+                            pushToWindows(title.trim(), message.trim());
+                        }
+                    });
+                }
+            }
+
             serverForm.reset();
         });
     }
@@ -258,4 +275,21 @@ function formatTime(dateString) {
     if (diffHours < 24) return `${diffHours} giờ trước`;
     const diffDays = Math.floor(diffHours / 24);
     return `${diffDays} ngày trước`;
+}
+
+// ==========================================
+// 3. HÀM HIỂN THỊ THÔNG BÁO LÊN ACTION CENTER WINDOWS
+// ==========================================
+function pushToWindows(title, bodyText) {
+    const notification = new Notification("BlogHub Admin: " + title, {
+        body: bodyText,
+        // Thay link icon dưới đây bằng logo đồ án của nhóm bạn nếu muốn xịn hơn
+        icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+        silent: false 
+    });
+
+    notification.onclick = function() {
+        window.focus();
+        notification.close();
+    };
 }

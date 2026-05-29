@@ -69,30 +69,61 @@ function renderNotifications() {
 
     if (!notifToggle || !notifDropdown || !notifCount) return;
 
-    // Toggle dropdown
+    // Lắng nghe sự kiện click vào quả chuông
     notifToggle.addEventListener('click', () => {
+        
+        // 1. Gom TẤT CẢ thông báo (User & Admin) và sắp xếp mới nhất lên đầu
+        let allNotifs = [];
+        if (currentUser) {
+            allNotifs.push(...getUserNotifications(currentUser.username || currentUser.nickname || ''));
+        }
+        if (isAdmin()) {
+            allNotifs.push(...getServerNotifications());
+        }
+        // Lệnh sắp xếp theo thời gian
+        allNotifs.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        // CẮT LẤY 3 THÔNG BÁO MỚI NHẤT (BẤT KỂ ĐÃ ĐỌC HAY CHƯA) ĐỂ ĐẨY RA WINDOWS
+        const latestNotifs = allNotifs.slice(0, 3);
+
+        // 2. BẮN THÔNG BÁO RA MÀN HÌNH ACTION CENTER
+        if ("Notification" in window) {
+            if (Notification.permission === "default") {
+                // Xin quyền lần đầu
+                Notification.requestPermission().then((permission) => {
+                    if (permission === "granted") {
+                        if (latestNotifs.length > 0) {
+                            latestNotifs.forEach(n => showOSNotification(n.title, n.message));
+                        } else {
+                            showOSNotification("BlogHub", "Hệ thống thông báo đã sẵn sàng!");
+                        }
+                    }
+                });
+            } else if (Notification.permission === "granted") {
+                // Đã có quyền -> Cứ bấm chuông là bắn 3 cái mới nhất ra màn hình!
+                if (latestNotifs.length > 0) {
+                    latestNotifs.forEach(n => showOSNotification(n.title, n.message));
+                }
+            }
+        }
+
+        // 3. Mở bảng Dropdown trên trang web
         notifDropdown.classList.toggle('hidden');
-        // when opened, render items and mark user notifications read
+        
         if (!notifDropdown.classList.contains('hidden')) {
-            renderNotifList();
-            if (currentUser) markAllUserNotificationsRead(currentUser.username || currentUser.nickname || '');
+            renderNotifList(allNotifs);
+            // Xóa chấm đỏ báo hiệu đã đọc
+            if (currentUser) {
+                markAllUserNotificationsRead(currentUser.username || currentUser.nickname || '');
+            }
             notifCount.classList.add('hidden');
         }
     });
 
-    function renderNotifList() {
-        const items = [];
-        if (currentUser) {
-            const userNotifs = getUserNotifications(currentUser.username || currentUser.nickname || '');
-            for (const n of userNotifs) items.push({ title: n.title, message: n.message, createdAt: n.createdAt });
-        }
-        if (isAdmin()) {
-            const serverNotifs = getServerNotifications();
-            for (const n of serverNotifs) items.push({ title: n.title, message: n.message, createdAt: n.createdAt });
-        }
-
-        if (items.length === 0) {
-            notifDropdown.innerHTML = '<div class="notif-empty">Không có thông báo.</div>';
+    // Hàm render danh sách đổ xuống UI
+    function renderNotifList(items) {
+        if (!items || items.length === 0) {
+            notifDropdown.innerHTML = '<div class="notif-empty" style="padding: 20px; text-align: center; color: var(--text-muted);">Không có thông báo.</div>';
             return;
         }
 
@@ -105,7 +136,7 @@ function renderNotifications() {
         `).join('');
     }
 
-    // update unread count for current user
+    // Cập nhật số đếm chấm đỏ trên quả chuông khi load trang
     if (currentUser) {
         const userNotifs = getUserNotifications(currentUser.username || currentUser.nickname || '');
         const unread = userNotifs.filter(n => !n.read).length;
@@ -155,11 +186,11 @@ async function loadPosts(postFeed) {
                 postFeed.appendChild(postElement);
             }
         } else {
-            postFeed.innerHTML = '<p class="no-posts">Chưa có bài viết nào. Hãy tạo bài viết đầu tiên!</p>';
+            postFeed.innerHTML = '<div class="empty-state">Chưa có bài viết nào. Hãy tạo bài viết đầu tiên!</div>';
         }
     } catch (error) {
         console.error('Lỗi tải bài viết:', error);
-        postFeed.innerHTML = '<p class="no-posts">Không thể tải bài viết. Vui lòng thử lại sau.</p>';
+        postFeed.innerHTML = '<div class="empty-state">Không thể tải bài viết. Vui lòng thử lại sau.</div>';
     }
 }
 
@@ -198,7 +229,19 @@ async function handleCreatePost(event) {
         if (createPostCard) {
             createPostCard.classList.add('hidden');
         }
-        alert(isAdmin() ? 'Bài viết đã được đăng ngay.' : 'Bài viết của bạn đã được gửi đến admin để duyệt.');
+        
+        if (isAdmin()) {
+            alert('Bài viết đã được đăng ngay.');
+            showOSNotification("BlogHub", "Bài viết của bạn đã được xuất bản thành công!");
+        } else {
+            alert('Bài viết của bạn đã được gửi đến admin để duyệt.');
+            showOSNotification("BlogHub", "Bài viết đã được gửi đến Admin để chờ duyệt!");
+        }
+        
+        if (isAdmin()) {
+            await loadPosts(postFeed);
+        }
+        
     } catch (error) {
         console.error('Lỗi tạo bài viết:', error);
         alert('Không thể tạo bài viết. Vui lòng thử lại.');
@@ -211,7 +254,7 @@ async function createPostElement(post) {
 
     article.innerHTML = `
         <div class="post-header">
-            <img src="${post.avatar || ''}" alt="Avatar" class="avatar">
+            <img src="${post.avatar || 'https://via.placeholder.com/40'}" alt="Avatar" class="avatar">
             <div class="post-info">
                 <span class="community-name">${escapeHtml(post.community || 'r/Unknown')}</span>
                 <span class="post-time">• ${formatTime(post.createdAt)}</span>
@@ -312,7 +355,7 @@ async function renderCommentsForPost(postId, commentList, commentCountSpan) {
         if (commentCountSpan) commentCountSpan.textContent = comments.length;
 
         if (comments.length === 0) {
-            commentList.innerHTML = '<p class="no-comments">Chưa có bình luận nào. Hãy viết bình luận đầu tiên!</p>';
+            commentList.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text-muted); font-size:14px; background:#F8FAFC; border-radius:8px;">Chưa có bình luận nào. Hãy viết bình luận đầu tiên!</div>';
             return;
         }
 
@@ -320,12 +363,12 @@ async function renderCommentsForPost(postId, commentList, commentCountSpan) {
             .slice()
             .reverse()
             .map(comment => `
-                <div class="comment-item">
-                    <div class="comment-header">
-                        <strong>${escapeHtml(comment.username)}</strong>
-                        <span>${new Date(comment.createdAt).toLocaleString('vi-VN')}</span>
+                <div class="comment-item" style="padding: 12px; background: #F8FAFC; border-radius: 8px; margin-bottom: 12px;">
+                    <div class="comment-header" style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
+                        <strong style="font-size: 14px; color: var(--text-main);">${escapeHtml(comment.username)}</strong>
+                        <span style="font-size: 12px; color: var(--text-muted);">${new Date(comment.createdAt).toLocaleString('vi-VN')}</span>
                     </div>
-                    <p>${escapeHtml(comment.message)}</p>
+                    <p style="font-size: 14px; color: var(--text-main); line-height: 1.5; margin: 0;">${escapeHtml(comment.message)}</p>
                 </div>
             `)
             .join('');
@@ -355,4 +398,22 @@ function formatTime(dateString) {
     if (diffHours < 24) return `${diffHours} giờ trước`;
     const diffDays = Math.floor(diffHours / 24);
     return `${diffDays} ngày trước`;
+}
+
+// ==========================================
+// HÀM HELPER: HIỂN THỊ THÔNG BÁO WINDOWS ACTION CENTER
+// ==========================================
+function showOSNotification(title, message) {
+    if ("Notification" in window && Notification.permission === "granted") {
+        const notification = new Notification(title, {
+            body: message,
+            icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+            silent: false 
+        });
+
+        notification.onclick = function() {
+            window.focus();
+            notification.close();
+        };
+    }
 }
