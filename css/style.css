@@ -136,6 +136,26 @@ a {
     background-color: #f1f2f4;
 }
 
+.btn-admin {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #ff6b35;
+    border: 1px solid #ff6b35;
+    color: #ffffff;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-admin:hover {
+    background-color: #e55a25;
+    border-color: #e55a25;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+}
+
 .btn-login {
     display: inline-block; 
     padding: 8px 22px;

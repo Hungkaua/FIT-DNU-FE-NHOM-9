@@ -156,8 +156,10 @@
 
     <script src="js/api.js"></script>
     <script src="js/auth.js"></script>
-    <script>
-        async function registerAdmin() {
+    <script type="module">
+        import { register } from './js/api.js';
+        
+        window.registerAdmin = async function() {
             const successMsg = document.getElementById('success-message');
             const errorMsg = document.getElementById('error-message');
 
@@ -171,7 +173,11 @@
                     password: '123456',
                     email: 'admin@bloghub.com',
                     role: 'admin',
-                    birthday: '2000-01-01'
+                    dob: '2000-01-01',
+                    firstName: 'Admin',
+                    lastName: 'User',
+                    avatar: 'https://via.placeholder.com/32',
+                    adminApproved: true
                 });
                 successMsg.innerHTML = '<i class="bi bi-check-circle"></i> Tài khoản Admin đã được tạo thành công!';
                 successMsg.style.display = 'block';
@@ -179,9 +185,9 @@
                 errorMsg.innerHTML = '<i class="bi bi-exclamation-triangle"></i> ' + (error.message || 'Không thể tạo tài khoản.');
                 errorMsg.style.display = 'block';
             }
-        }
+        };
 
-        async function registerUser() {
+        window.registerUser = async function() {
             const successMsg = document.getElementById('success-message');
             const errorMsg = document.getElementById('error-message');
 
@@ -194,8 +200,12 @@
                     nickname: 'User Name',
                     password: '123456',
                     email: 'user@bloghub.com',
-                    role: 'user',
-                    birthday: '2001-05-14'
+                    role: 'reader',
+                    dob: '2001-05-14',
+                    firstName: 'Test',
+                    lastName: 'User',
+                    avatar: 'https://via.placeholder.com/32',
+                    adminApproved: true
                 });
                 successMsg.innerHTML = '<i class="bi bi-check-circle"></i> Tài khoản User đã được tạo thành công!';
                 successMsg.style.display = 'block';
@@ -203,7 +213,7 @@
                 errorMsg.innerHTML = '<i class="bi bi-exclamation-triangle"></i> ' + (error.message || 'Không thể tạo tài khoản.');
                 errorMsg.style.display = 'block';
             }
-        }
+        };
     </script>
 </body>
 

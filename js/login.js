@@ -39,11 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await login(identifier, password);
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            if (user.role === 'admin' && user.adminApproved === false) {
+                alert('Tài khoản admin của bạn đang chờ duyệt từ các quản trị viên khác.');
+                localStorage.removeItem('currentUser');
+                return;
+            }
             alert('Đăng nhập thành công!');
             window.location.href = redirectUrl;
         } catch (error) {
             console.error('Lỗi đăng nhập:', error);
             alert(error.message || 'Đăng nhập thất bại. Vui lòng thử lại.');
-        }
-    });
+        }    });
 });

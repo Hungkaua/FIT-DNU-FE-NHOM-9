@@ -36,16 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
             nickname,
             role,
             dob,
-            avatar: 'https://via.placeholder.com/32'
+            avatar: 'https://via.placeholder.com/32',
+            adminApproved: role === 'admin' ? false : true,
+            status: role === 'admin' ? 'pending_approval' : 'active'
         };
 
         try {
             await register(newUser);
-            alert('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
+            if (role === 'admin') {
+                alert('Yêu cầu trở thành admin của bạn đã được gửi đến các quản trị viên. Vui lòng chờ duyệt.');
+            } else {
+                alert('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
+            }
             window.location.href = 'login.html';
         } catch (error) {
             console.error('Lỗi đăng ký:', error);
             alert(error.message || 'Đăng ký thất bại. Vui lòng thử lại.');
-        }
-    });
+        }    });
 });

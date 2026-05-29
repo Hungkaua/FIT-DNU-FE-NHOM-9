@@ -23,9 +23,15 @@
             </div>
 
             <div class="header-actions">
+                <div id="notifications" class="notifications">
+                    <button id="notifToggle" class="btn-notif"><i class="fa-regular fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
+                    <div id="notifDropdown" class="notif-dropdown hidden"></div>
+                </div>
+
                 <div id="userInfo" class="user-info hidden">
                     <img id="userAvatar" src="https://via.placeholder.com/32" alt="Avatar" class="user-avatar">
                     <span id="userName" class="user-name"></span>
+                    <a id="adminLink" href="admin.html" class="btn-admin hidden">Admin</a>
                     <button id="logoutButton" class="btn-logout">Đăng xuất</button>
                 </div>
                 

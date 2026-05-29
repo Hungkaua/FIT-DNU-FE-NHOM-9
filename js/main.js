@@ -1,6 +1,6 @@
 // main.js - Tích hợp API để tải và hiển thị bài viết
 
-import { getAllPosts, createPost, isLoggedIn, getCurrentUser, logout, getCommentsByPost, createComment } from './api.js';
+import { getAllPosts, createPost, isLoggedIn, getCurrentUser, logout, getCommentsByPost, createComment, isAdmin, getUserNotifications, getServerNotifications, markAllUserNotificationsRead } from './api.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const postFeed = document.querySelector('.post-feed');
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     renderHeaderUser();
     await loadPosts(postFeed);
+    renderNotifications();
 });
 
 function renderHeaderUser() {
@@ -33,10 +34,19 @@ function renderHeaderUser() {
     const userAvatar = document.getElementById('userAvatar');
     const userName = document.getElementById('userName');
 
+    const adminLink = document.getElementById('adminLink');
+
     if (currentUser && userInfoContainer) {
         userInfoContainer.classList.remove('hidden');
         if (loginLink) loginLink.style.display = 'none';
         if (registerLink) registerLink.style.display = 'none';
+        if (adminLink) {
+            if (isAdmin()) {
+                adminLink.classList.remove('hidden');
+            } else {
+                adminLink.classList.add('hidden');
+            }
+        }
         if (userAvatar) {
             userAvatar.src = currentUser.avatar || 'https://via.placeholder.com/32';
         }
@@ -47,6 +57,66 @@ function renderHeaderUser() {
         if (userInfoContainer) userInfoContainer.classList.add('hidden');
         if (loginLink) loginLink.style.display = 'inline-block';
         if (registerLink) registerLink.style.display = 'inline-block';
+        if (adminLink) adminLink.classList.add('hidden');
+    }
+}
+
+function renderNotifications() {
+    const currentUser = getCurrentUser();
+    const notifToggle = document.getElementById('notifToggle');
+    const notifCount = document.getElementById('notifCount');
+    const notifDropdown = document.getElementById('notifDropdown');
+
+    if (!notifToggle || !notifDropdown || !notifCount) return;
+
+    // Toggle dropdown
+    notifToggle.addEventListener('click', () => {
+        notifDropdown.classList.toggle('hidden');
+        // when opened, render items and mark user notifications read
+        if (!notifDropdown.classList.contains('hidden')) {
+            renderNotifList();
+            if (currentUser) markAllUserNotificationsRead(currentUser.username || currentUser.nickname || '');
+            notifCount.classList.add('hidden');
+        }
+    });
+
+    function renderNotifList() {
+        const items = [];
+        if (currentUser) {
+            const userNotifs = getUserNotifications(currentUser.username || currentUser.nickname || '');
+            for (const n of userNotifs) items.push({ title: n.title, message: n.message, createdAt: n.createdAt });
+        }
+        if (isAdmin()) {
+            const serverNotifs = getServerNotifications();
+            for (const n of serverNotifs) items.push({ title: n.title, message: n.message, createdAt: n.createdAt });
+        }
+
+        if (items.length === 0) {
+            notifDropdown.innerHTML = '<div class="notif-empty">Không có thông báo.</div>';
+            return;
+        }
+
+        notifDropdown.innerHTML = items.slice(0, 20).map(n => `
+            <div class="notif-item">
+                <div class="notif-title">${escapeHtml(n.title || '')}</div>
+                <div class="notif-message">${escapeHtml(n.message || '')}</div>
+                <div class="notif-time">${formatTime(n.createdAt)}</div>
+            </div>
+        `).join('');
+    }
+
+    // update unread count for current user
+    if (currentUser) {
+        const userNotifs = getUserNotifications(currentUser.username || currentUser.nickname || '');
+        const unread = userNotifs.filter(n => !n.read).length;
+        if (unread > 0) {
+            notifCount.textContent = unread;
+            notifCount.classList.remove('hidden');
+        } else {
+            notifCount.classList.add('hidden');
+        }
+    } else {
+        notifCount.classList.add('hidden');
     }
 }
 
@@ -75,11 +145,12 @@ async function loadPosts(postFeed) {
 
     try {
         const posts = await getAllPosts();
+        const visiblePosts = posts.filter(post => post.approved === undefined || post.approved === true || post.approved === 'true');
 
-        if (posts.length > 0) {
+        if (visiblePosts.length > 0) {
             postFeed.innerHTML = '';
-            posts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-            for (const post of posts) {
+            visiblePosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            for (const post of visiblePosts) {
                 const postElement = await createPostElement(post);
                 postFeed.appendChild(postElement);
             }
@@ -101,15 +172,19 @@ async function handleCreatePost(event) {
     const imageInput = document.getElementById('postImage');
     const postFeed = document.querySelector('.post-feed');
 
+    const currentUser = getCurrentUser();
     const newPost = {
         title: titleInput.value.trim(),
         content: contentInput.value.trim(),
         community: communityInput.value.trim() || 'r/Viễn tưởng',
         image: imageInput.value.trim() || '',
-        avatar: 'https://via.placeholder.com/30',
+        avatar: currentUser?.avatar || 'https://via.placeholder.com/30',
+        author: currentUser?.nickname || currentUser?.username || 'Người dùng',
         likes: 0,
         comments: 0,
         createdAt: new Date().toISOString(),
+        approved: isAdmin(),
+        status: isAdmin() ? 'approved' : 'pending',
     };
 
     if (!newPost.title || !newPost.content) {
@@ -118,13 +193,12 @@ async function handleCreatePost(event) {
     }
 
     try {
-        const createdPost = await createPost(newPost);
-        const postElement = await createPostElement(createdPost);
-        if (postFeed) {
-            postFeed.prepend(postElement);
-        }
+        await createPost(newPost);
         event.target.reset();
-        alert('Đã tạo bài viết mới và lưu vào MockAPI.');
+        if (createPostCard) {
+            createPostCard.classList.add('hidden');
+        }
+        alert(isAdmin() ? 'Bài viết đã được đăng ngay.' : 'Bài viết của bạn đã được gửi đến admin để duyệt.');
     } catch (error) {
         console.error('Lỗi tạo bài viết:', error);
         alert('Không thể tạo bài viết. Vui lòng thử lại.');

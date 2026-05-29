@@ -7,6 +7,48 @@ const api_url = {
     LOGIN_API_URL: "https://6a05f22eaa826ca75c0ae2f4.mockapi.io/apis/login",
 };
 
+// ========== NOTIFICATIONS (localStorage-backed) ==========
+function getServerNotifications() {
+    try {
+        return JSON.parse(localStorage.getItem('serverNotifications') || '[]');
+    } catch (e) {
+        return [];
+    }
+}
+
+function createServerNotification(notification) {
+    const list = getServerNotifications();
+    list.unshift(Object.assign({ createdAt: new Date().toISOString() }, notification));
+    localStorage.setItem('serverNotifications', JSON.stringify(list));
+    return list;
+}
+
+function getUserNotifications(username) {
+    if (!username) return [];
+    try {
+        return JSON.parse(localStorage.getItem(`userNotifications_${username}`) || '[]');
+    } catch (e) {
+        return [];
+    }
+}
+
+function createUserNotification(username, notification) {
+    if (!username) return [];
+    const key = `userNotifications_${username}`;
+    const list = getUserNotifications(username);
+    list.unshift(Object.assign({ createdAt: new Date().toISOString(), read: false }, notification));
+    localStorage.setItem(key, JSON.stringify(list));
+    return list;
+}
+
+function markAllUserNotificationsRead(username) {
+    if (!username) return [];
+    const key = `userNotifications_${username}`;
+    const list = getUserNotifications(username).map(n => Object.assign({}, n, { read: true }));
+    localStorage.setItem(key, JSON.stringify(list));
+    return list;
+}
+
 // ========== BASE FUNCTIONS ==========
 async function get(url) {
     const response = await fetch(url);
@@ -30,6 +72,16 @@ async function deleteData(url, id) {
     return await response.json();
 }
 
+async function patchData(url, id, info) {
+    const response = await fetch(`${url}/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info),
+    });
+    if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+    return await response.json();
+}
+
 // ========== POST FUNCTIONS ==========
 async function getAllPosts() {
     try {
@@ -41,8 +93,22 @@ async function getAllPosts() {
     }
 }
 
+async function getPendingPosts() {
+    try {
+        const posts = await get(`${api_url.POST_API_URL}?approved=false`);
+        return Array.isArray(posts) ? posts : [];
+    } catch (error) {
+        console.error("Lỗi lấy bài viết chờ duyệt:", error);
+        return [];
+    }
+}
+
 async function createPost(data) {
     return await postData(api_url.POST_API_URL, data);
+}
+
+async function approvePost(id) {
+    return await patchData(api_url.POST_API_URL, id, { approved: true, status: 'approved' });
 }
 
 async function deletePost(id) {
@@ -72,6 +138,26 @@ async function getCommentsByPost(postId) {
         console.error("Lỗi lấy bình luận theo bài viết:", error);
         return [];
     }
+}
+
+// ========== ADMIN REQUEST FUNCTIONS ==========
+async function getPendingAdminRequests() {
+    try {
+        const users = await get(api_url.LOGIN_API_URL);
+        const pendingAdmins = users.filter(u => u.role === "admin" && u.adminApproved === false);
+        return Array.isArray(pendingAdmins) ? pendingAdmins : [];
+    } catch (error) {
+        console.error("Lỗi lấy yêu cầu admin:", error);
+        return [];
+    }
+}
+
+async function approveAdminRequest(userId) {
+    return await patchData(api_url.LOGIN_API_URL, userId, { adminApproved: true, status: 'approved' });
+}
+
+async function rejectAdminRequest(userId) {
+    return await patchData(api_url.LOGIN_API_URL, userId, { role: 'reader', status: 'rejected' });
 }
 
 // ========== AUTH FUNCTIONS (DÙNG LOGIN API) ==========
@@ -171,4 +257,4 @@ function protectAdminPage() {
 }
 
 // Export các hàm cần thiết
-export { getAllPosts, createPost, deletePost, getAllComments, getCommentsByPost, createComment, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage };
+export { getAllPosts, getPendingPosts, createPost, approvePost, deletePost, getAllComments, getCommentsByPost, createComment, getPendingAdminRequests, approveAdminRequest, rejectAdminRequest, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage, getServerNotifications, createServerNotification, getUserNotifications, createUserNotification, markAllUserNotificationsRead };
