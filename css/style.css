@@ -1,10 +1,14 @@
 /* =========================================
    DIỄN ĐÀN VIỄN TƯỞNG - FICTION/NOVEL THEME
-   Bố cục 3 Cột Hoàn Chỉnh
+   Bản Hoàn Thiện (Final Release) - 3 Cột & Ruy băng Bookmark
    ========================================= */
 
+/* Nhập Font: Lora (Sang trọng) & Inter (Hiện đại) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
+/* =========================================
+   1. BIẾN MÀU & RESET CƠ BẢN
+   ========================================= */
 :root {
     --bg-body: #F4F1EA;       
     --bg-surface: #FFFFFF;    
@@ -76,11 +80,11 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .notif-count { display: none; } 
 
 /* =========================================
-   3. BỐ CỤC 3 CỘT (HOÀN CHỈNH)
+   3. BỐ CỤC 3 CỘT (MAIN LAYOUT)
    ========================================= */
 .app-container { display: flex; justify-content: flex-start; max-width: 1440px; margin: 68px auto 0; padding: 24px; gap: 32px; padding-right: 320px; }
 
-/* CỘT 1: SIDEBAR THƯ VIỆN */
+/* --- CỘT 1: SIDEBAR THƯ VIỆN --- */
 .sidebar { width: 240px; position: sticky; top: 92px; flex-shrink: 0; z-index: 50; }
 .nav-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
 .nav-menu li a { display: flex; align-items: center; gap: 16px; padding: 12px 24px; margin-right: 16px; border-radius: 0 24px 24px 0; color: var(--text-main); font-weight: 500; font-size: 15px; transition: 0.2s; }
@@ -91,7 +95,7 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .nav-divider { height: 1px; background: var(--border); margin: 16px 0; }
 .nav-title { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin: 0 0 12px 24px; letter-spacing: 1px;}
 
-/* CỘT 2: KHU VỰC BÀI VIẾT (TRUNG TÂM) */
+/* --- CỘT 2: KHU VỰC BÀI VIẾT --- */
 .main-content { flex-grow: 1; max-width: 760px !important; margin: 0 auto; }
 
 .fiction-banner {
@@ -120,16 +124,32 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .create-post-form { display: flex; flex-direction: column; gap: 16px; }
 .form-row { display: flex; gap: 16px; }
 .form-row input { flex: 1; }
-.create-post-form input, .create-post-form textarea, .comment-input { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #F9F8F6; font-size: 15px; outline: none; transition: 0.2s; font-family: 'Inter', sans-serif;}
+.create-post-form input, .create-post-form textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #F9F8F6; font-size: 15px; outline: none; transition: 0.2s; font-family: 'Inter', sans-serif;}
 .create-post-form textarea { font-family: 'Lora', serif; font-size: 16px; line-height: 1.6; }
-.create-post-form input:focus, .create-post-form textarea:focus, .comment-input:focus { border-color: var(--primary); background: var(--bg-surface); box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1); }
+.create-post-form input:focus, .create-post-form textarea:focus { border-color: var(--primary); background: var(--bg-surface); box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1); }
 .create-post-form .btn-submit { position: absolute; bottom: 28px; right: 28px; background: var(--primary); color: white; padding: 10px 24px; border: none; border-radius: var(--radius-pill); font-weight: 600; font-size: 14px; cursor: pointer; transition: 0.2s;}
 .create-post-form .btn-submit:hover { background: var(--primary-hover); }
 .note { font-size: 13px; color: var(--text-muted); margin-top: 16px; padding-right: 140px; font-style: italic; }
 
+/* =========================================
+   4. BÀI VIẾT & HIỆU ỨNG RUY BĂNG BOOKMARK
+   ========================================= */
 .post-feed { display: flex; flex-direction: column; gap: 24px; }
-.post-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px; transition: 0.3s; box-shadow: var(--shadow-soft);}
+.post-card { 
+    background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); 
+    padding: 24px; transition: 0.3s; box-shadow: var(--shadow-soft);
+    position: relative; overflow: visible !important; /* Mở khóa overflow cho ruy băng */
+}
 .post-card:hover { border-color: #D1D5DB; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); transform: translateY(-2px); }
+
+/* Ruy băng đánh dấu sách (Bookmark Ribbon) thả từ góc phải xuống */
+.post-card::after {
+    content: ''; position: absolute; top: -4px; right: 32px; width: 24px; height: 40px;
+    background: linear-gradient(to bottom, #8B5A2B, #6B4226); 
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10;
+}
+.post-card:hover::after { height: 60px; filter: brightness(1.15); }
 
 .post-header { display: flex; justify-content: flex-start; align-items: center; gap: 12px; margin-bottom: 16px; }
 .avatar, .user-avatar, .comment-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid #FDF8F5; box-shadow: 0 2px 4px rgba(0,0,0,0.1);}
@@ -137,7 +157,7 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .community-name { font-size: 14px; font-weight: 700; color: var(--primary); background: var(--primary-bg); padding: 4px 10px; border-radius: 4px;}
 .post-time { font-size: 13px; color: var(--text-muted); margin: 0 !important; }
 
-.post-options { margin-left: auto; position: relative; }
+.post-options { margin-left: auto; position: relative; z-index: 15; }
 .btn-options { background: transparent; border: none; color: var(--text-muted); cursor: pointer; padding: 8px; border-radius: 50%; font-size: 18px; }
 .btn-options:hover { background: #F9F8F6; color: var(--text-main); }
 
@@ -155,28 +175,46 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .empty-state i { display: none !important; }
 .btn-admin, .user-info #adminLink { background: #FEF3C7 !important; color: #92400E !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 11px !important; font-weight: 700 !important; text-transform: uppercase !important; border: 1px solid #FDE68A !important; margin-left: 6px !important; display: inline-block !important; }
 
-/* BÌNH LUẬN */
+/* =========================================
+   5. BÌNH LUẬN (TÍCH HỢP FIX LỖI)
+   ========================================= */
 .post-comments { padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--border); }
 .comment-form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+
+/* Khung nội dung bình luận */
 .comment-item { background: #F9F8F6 !important; border: 1px solid var(--border) !important; border-radius: var(--radius-md) !important; padding: 16px !important; margin-bottom: 16px !important; }
 .comment-header { display: flex; gap: 8px; align-items: center; margin-bottom: 8px !important; }
 .comment-header strong { color: var(--text-main) !important; font-weight: 700 !important;}
 .comment-header span { color: var(--text-muted) !important; font-size: 12px !important; }
 .comment-item p { color: #4A5568 !important; margin: 0 !important; font-family: 'Lora', serif; font-size: 15px !important; line-height: 1.6 !important;}
 
+/* Fix lỗi form nhập liệu của JS */
+.comment-username, .comment-email, .comment-input {
+    width: 100% !important; padding: 12px 16px !important; border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important; background: #F9F8F6 !important; font-size: 14px !important;
+    outline: none !important; font-family: 'Inter', sans-serif !important; box-sizing: border-box !important; transition: 0.2s !important;
+}
+.comment-username:focus, .comment-email:focus, .comment-input:focus {
+    border-color: var(--primary) !important; background: var(--bg-surface) !important; box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1) !important;
+}
+.comment-form .btn-submit {
+    align-self: flex-end !important; padding: 10px 24px !important; background: var(--primary) !important; color: white !important;
+    border: none !important; border-radius: var(--radius-pill) !important; font-weight: 600 !important; font-size: 13px !important;
+    cursor: pointer !important; margin-top: 8px !important; transition: 0.2s !important;
+}
+.comment-form .btn-submit:hover { background: var(--primary-hover) !important; }
+
 /* =========================================
-   4. CỘT 3: BẢNG THÔNG BÁO VÀ WIDGET (LẤP TRỐNG)
+   6. CỘT 3: BẢNG THÔNG BÁO VÀ WIDGET
    ========================================= */
 @media (min-width: 1150px) {
-    /* Đẩy Bảng thông báo lên trên cùng */
     .notif-dropdown {
         position: fixed !important; top: 92px !important; 
         right: max(24px, calc(50vw - 720px + 24px)) !important; 
         width: 280px !important; display: flex !important; flex-direction: column;
         background: var(--bg-surface) !important; border: 1px solid var(--border) !important;
         border-radius: var(--radius-md) !important; box-shadow: var(--shadow-soft) !important;
-        max-height: 350px; /* Giới hạn chiều cao để nhường chỗ cho Widget */
-        z-index: 50 !important; opacity: 1 !important;
+        max-height: 350px; z-index: 50 !important; opacity: 1 !important;
         visibility: visible !important; overflow-y: auto !important; overflow-x: hidden !important;
     }
     .notif-dropdown::before {
@@ -187,16 +225,9 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
     .notif-dropdown:empty::after { content: "Chưa có thông báo nào."; display: block; padding: 32px 16px; text-align: center; color: var(--text-muted); font-size: 13px; font-style: italic; }
     .notif-dropdown:not(:empty)::after { display: none; }
 
-    /* Đặt Widget ngay dưới Bảng thông báo */
     .right-widgets {
-        position: fixed;
-        top: 460px; /* Vị trí hoàn hảo ngay dưới bảng thông báo */
-        right: max(24px, calc(50vw - 720px + 24px));
-        width: 280px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        z-index: 40;
+        position: fixed; top: 460px; right: max(24px, calc(50vw - 720px + 24px));
+        width: 280px; display: flex; flex-direction: column; gap: 16px; z-index: 40;
     }
 }
 
@@ -216,9 +247,9 @@ h1, h2, h3, .logo span, .post-title, .elegant-title {
 .widget-rules li { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; padding-left: 8px; border-left: 2px solid var(--border);}
 
 /* =========================================
-   5. MODAL & RESPONSIVE
+   7. MODAL & RESPONSIVE ĐIỆN THOẠI
    ========================================= */
-.dropdown-menu { position: absolute; top: 100%; right: 0; background: var(--bg-surface); border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: var(--radius-md); width: 180px; display: none; flex-direction: column; padding: 8px; z-index: 10; }
+.dropdown-menu { position: absolute; top: 100%; right: 0; background: var(--bg-surface); border: 1px solid var(--border); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border-radius: var(--radius-md); width: 180px; display: none; flex-direction: column; padding: 8px; z-index: 20; }
 .dropdown-menu.show { display: flex; }
 .dropdown-item { text-align: left; background: transparent; border: none; padding: 10px 16px; font-size: 14px; font-weight: 500; border-radius: var(--radius-sm); cursor: pointer; display: flex; align-items: center; gap: 12px; color: var(--text-main); }
 .dropdown-item:hover { background: #F9F8F6; color: var(--primary); }
