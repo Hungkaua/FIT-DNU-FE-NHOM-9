@@ -11,20 +11,19 @@
 
     <header class="header">
         <div class="header-content">
-            
             <a href="index.html" class="logo">
-                <img src="media/img/image.png" alt="Logo Diễn Đàn" class="logo-img" onerror="this.style.display='none'">
+                <i class="fa-solid fa-book-journal-whills logo-icon"></i>
                 <span>DIỄN ĐÀN VIỄN TƯỞNG</span>
             </a>
 
             <div class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Tìm kiếm...">
+                <input type="text" placeholder="Tìm kiếm tác phẩm, tác giả, bài viết...">
             </div>
 
             <div class="header-actions">
                 <div id="notifications" class="notifications">
-                    <button id="notifToggle" class="btn-notif"><i class="fa-regular fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
+                    <button id="notifToggle" class="btn-notif"><i class="fa-solid fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
                     <div id="notifDropdown" class="notif-dropdown hidden"></div>
                 </div>
 
@@ -38,7 +37,6 @@
                 <a href="./login.html" class="btn-login">Đăng nhập</a>
                 <a href="./register.html" class="btn-register">Đăng ký</a>
             </div>
-            
         </div>
     </header>
 
@@ -48,17 +46,17 @@
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="popular.html"><i class="fa-solid fa-fire"></i> Phổ biến</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Truyện Hot</a></li>
                     <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá</a></li>
                 </ul>
 
                 <div class="nav-divider"></div>
-                <h4 class="nav-title">TÀI NGUYÊN</h4>
+                <h4 class="nav-title">THƯ VIỆN</h4>
                 
                 <ul>
-                    <li><a href="#"><i class="fa-solid fa-circle-info"></i> Về chúng tôi</a></li>
-                    <li><a href="#"><i class="fa-solid fa-bullhorn"></i> Quảng cáo</a></li>
-                    <li><a href="#"><i class="fa-solid fa-code"></i> Phát triển</a></li>
+                    <li><a href="#"><i class="fa-solid fa-feather-pointed"></i> Góc sáng tác</a></li>
+                    <li><a href="#"><i class="fa-solid fa-comments"></i> Thảo luận chung</a></li>
+                    <li><a href="#"><i class="fa-solid fa-bookmark"></i> Tủ sách cá nhân</a></li>
                     <li><a href="#"><i class="fa-solid fa-circle-question"></i> Trợ giúp</a></li>
                 </ul>
             </nav>
@@ -66,56 +64,87 @@
 
         <main class="main-content">
             
-            <div class="feed-filters">
-                <button class="filter-btn active"><i class="fa-solid fa-rocket"></i> Tốt nhất</button>
-                <button class="filter-btn"><i class="fa-solid fa-certificate"></i> Mới nhất</button>
-                <button class="filter-btn"><i class="fa-solid fa-fire"></i> Bình luận nhiều</button>
+            <div class="fiction-banner">
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <h1 class="elegant-title">Cánh Cửa Hư Cấu</h1>
+                    <p class="elegant-subtitle">Nơi những trang sách mở ra vạn thế giới kỳ ảo.</p>
+                </div>
             </div>
+
+            <div class="feed-filters">
+                <button class="filter-btn active"><i class="fa-solid fa-star"></i> Nổi bật</button>
+                <button class="filter-btn"><i class="fa-solid fa-clock"></i> Mới cập nhật</button>
+                <button class="filter-btn"><i class="fa-solid fa-pen-nib"></i> Đánh giá cao</button>
+            </div>
+            
             <div class="post-toolbar">
-                <button id="openCreatePost" class="btn-create-post"><i class="fa-solid fa-plus"></i> Tạo Bài</button>
+                <button id="openCreatePost" class="btn-create-post"><i class="fa-solid fa-feather"></i> Viết bài mới</button>
             </div>
 
             <div id="createPostCard" class="create-post-card hidden">
-                <h3>Tạo bài viết mới</h3>
+                <h3>Chắp bút sáng tác</h3>
                 <form id="createPostForm" class="create-post-form">
                     <div class="form-row">
-                        <input id="postCommunity" type="text" placeholder="Chủ đề (ví dụ: r/Anime)" required>
-                        <input id="postTitle" type="text" placeholder="Tiêu đề bài viết" required>
+                        <input id="postCommunity" type="text" placeholder="Chủ đề / Thể loại (ví dụ: Kỳ ảo, Kiếm hiệp)" required>
+                        <input id="postTitle" type="text" placeholder="Tựa đề bài viết" required>
                     </div>
-                    <textarea id="postContent" placeholder="Nội dung bài viết..." rows="4" required></textarea>
+                    <textarea id="postContent" placeholder="Viết nên câu chuyện của bạn..." rows="5" required></textarea>
                     <div class="form-row">
-                        <input id="postImage" type="url" placeholder="URL ảnh (tùy chọn)">
+                        <input id="postImage" type="url" placeholder="URL ảnh bìa (tùy chọn)">
                         <button type="submit" class="btn-submit">Đăng bài</button>
                     </div>
                 </form>
-                <p class="note">Bài viết mới sẽ được lưu vào hệ thống và hiển thị ngay.</p>
+                <p class="note">Tác phẩm của bạn sẽ được lưu giữ và chia sẻ đến cộng đồng độc giả.</p>
             </div>
-
 
             <div class="post-feed" id="post-feed-container">
                 <div class="empty-state">
-                    <i class="fa-regular fa-folder-open"></i>
-                    <p>Chưa có bài viết nào.<br>Hãy là người đầu tiên tạo bài viết!</p>
+                    <i class="fa-solid fa-book-open"></i>
+                    <p>Những trang sách còn đang dang dở.<br>Hãy là người đầu tiên đặt bút!</p>
                 </div>
             </div>
             
         </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card">
+                <h4><i class="fa-solid fa-tags"></i> Từ khóa thịnh hành</h4>
+                <div class="tag-cloud">
+                    <span class="tag">#Tiên_Hiệp</span>
+                    <span class="tag">#Kỳ_Ảo</span>
+                    <span class="tag">#Trinh_Thám</span>
+                    <span class="tag">#Xuyên_Không</span>
+                    <span class="tag">#LightNovel</span>
+                    <span class="tag">#Đồng_Nhân</span>
+                </div>
+            </div>
+
+            <div class="widget-card">
+                <h4><i class="fa-solid fa-scroll"></i> Quy định thư viện</h4>
+                <ul class="widget-rules">
+                    <li>1. Tôn trọng tác quyền của tác giả.</li>
+                    <li>2. Góp ý văn minh, không xúc phạm.</li>
+                    <li>3. Không tiết lộ (spoil) nội dung truyện.</li>
+                </ul>
+            </div>
+        </aside>
+
     </div>
 
     <div id="editPostModal" class="modal hidden">
         <div class="modal-content">
             <span id="closeEditModal" class="close-modal">&times;</span>
-            <h3>Chỉnh sửa bài viết</h3>
+            <h3>Chỉnh sửa bản thảo</h3>
             <form id="editPostForm" class="create-post-form">
                 <input type="hidden" id="editPostId"> 
-                
                 <div class="form-row">
-                    <input id="editPostTitle" type="text" placeholder="Tiêu đề bài viết" required>
+                    <input id="editPostTitle" type="text" placeholder="Tựa đề bài viết" required>
                 </div>
-                <textarea id="editPostContent" placeholder="Nội dung bài viết..." rows="4" required></textarea>
+                <textarea id="editPostContent" placeholder="Nội dung bài viết..." rows="5" required></textarea>
                 <div class="form-row">
-                    <input id="editPostImage" type="url" placeholder="URL ảnh (tùy chọn)">
-                    <button type="submit" class="btn-submit">Lưu thay đổi</button>
+                    <input id="editPostImage" type="url" placeholder="URL ảnh bìa (tùy chọn)">
+                    <button type="submit" class="btn-submit">Lưu bản thảo</button>
                 </div>
             </form>
         </div>
