@@ -3,58 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập - bloghub</title>
-
+    <title>Đăng nhập - Diễn Đàn Viễn Tưởng</title>
     <link rel="stylesheet" href="css/login.css">
-
-    <!-- Nhúng file CSS -->
-
-    <link rel="stylesheet" href="css/login.css">
-    <!-- Nhúng icon FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
 
-    <div class="login-split-container">
-        <!-- Phần 2/3 Bên trái: Ảnh nền -->
-        <div class="login-image-side"></div>
-        <!-- Phần 1/3 Bên phải: Khu vực form phẳng -->
-        <div class="login-form-side">
-            <div class="login-box">
-                <div class="login-header">
-                    <img src="media/img/image.png" alt="Logo" class="login-logo">
+    <div class="vintage-login-wrapper">
+        
+        <div class="vintage-form-section">
+            <div class="vintage-page-border">
+                <div class="login-container">
+                    
+                    <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left-long"></i> Trở về trang chủ</a>
+
+                    <div class="login-header">
+                        <div class="brand-logo">
+                            <i class="fa-solid fa-book-journal-whills"></i> DIỄN ĐÀN VIỄN TƯỞNG
+                        </div>
+                        <h2 class="elegant-title">Cánh Cửa Hư Cấu</h2>
+                        <div class="ornament">✦ ❦ ✦</div>
+                        <p class="brand-slogan">Không gian kết nối những bộ óc sáng tạo từ Văn học, Điện ảnh cho đến Trò chơi giả tưởng.</p>
+                    </div>
+
+                    <form class="login-form">
+                        <div class="input-wrapper">
+                            <label for="email">Tên đăng nhập hoặc Email</label>
+                            <div class="input-field">
+                                <i class="fa-solid fa-user-pen"></i>
+                                <input type="email" id="email" placeholder="Nhập email hoặc bút danh..." required>
+                            </div>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="password">Mật khẩu ấn chú</label>
+                            <div class="input-field">
+                                <i class="fa-solid fa-key"></i>
+                                <input type="password" id="password" placeholder="Nhập mật khẩu của bạn..." required>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="custom-checkbox">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Duy trì đăng nhập
+                            </label>
+                            <a href="forgotpassword.html" class="forgot-link">Lạc mất mật mã?</a>
+                        </div>
+
+                        <button type="submit" class="btn-primary">
+                            <i class="fa-solid fa-compass"></i> Khám phá vũ trụ
+                        </button>
+                    </form>
+
+                    <div class="login-footer">
+                        <p>Nhà sáng tạo mới? <a href="register.html">Ghi danh tài khoản</a></p>
+                    </div>
                 </div>
-                <form class="login-form">
-                    <div class="input-group">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="email" placeholder="Email của bạn" required>
-                    </div>
-
-                    <div class="input-group">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="password" placeholder="Mật khẩu" required>
-                    </div>
-
-                    <div class="form-actions">
-                        <label>
-                            <input type="checkbox"> Nhớ mật khẩu
-                        </label>
-
-                        <a href="forgotpassword.html" class="forgot-password">Quên mật khẩu?</a>
-                    </div>
-
-                    <button type="submit" class="login-btn">Đăng nhập</button>
-                </form>
-
-                <div class="login-footer">
-                    <p>Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
-                    <div class="back-to-home">
-                        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <div class="vintage-visual-section">
+            <div class="visual-content quote-block">
+                <div class="quote-mark">“</div>
+                <h3 class="elegant-title text-white">Nơi vạn vũ trụ giao nhau.</h3>
+                <p class="fiction-description">Từ những trang viết kỳ ảo, những thước phim viễn tưởng cho đến thế giới trò chơi giả tưởng sâu sắc. Mọi câu chuyện hư cấu đều tìm thấy tri kỷ tại Bloghub.</p>
+                <div class="media-icons">
+                    <abbr title="Literature"><i class="fa-solid fa-feather"></i></abbr>
+                    <abbr title="Movies/Cinema"><i class="fa-solid fa-film"></i></abbr>
+                    <abbr title="Gaming Lore"><i class="fa-solid fa-gamepad"></i></abbr>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script type="module" src="js/login.js"></script>
