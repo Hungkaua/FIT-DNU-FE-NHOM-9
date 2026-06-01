@@ -1,114 +1,88 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Đăng ký - Diễn Đàn Viễn Tưởng</title>
-
-    <!-- Kết nối CSS -->
-    <link rel="stylesheet" href="css/register.css">
-    <!-- Nhúng FontAwesome -->
+    <title>Ghi danh - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
 </head>
-
 <body>
 
-    <div class="overlay"></div>
-        <!-- Nửa trái: Ảnh nền (Sử dụng ảnh 1.jpg trong media/img) -->
-        <div class="register-image-side">
-            <img src="media/img/VienTuong.jpg" alt="Background Image">
-        </div>
-        <div class="register-form-side">
-            <div class="register-box">
-
+    <div class="login-wrapper">
+        
+        <div class="form-section">
+            <div class="login-container">
                 
-                <div class="register-header">
-                    <!-- Logo của bạn -->
-                    <img src="media/img/image.png" alt="Logo">
-                    <p>Tạo tài khoản mới</p>
+                <a href="login.html" class="back-link"><i class="fa-solid fa-arrow-left-long"></i> Trở về Đăng nhập</a>
+
+                <div class="login-header">
+                    <div class="brand-logo">
+                        <i class="fa-solid fa-book-journal-whills"></i> DIỄN ĐÀN VIỄN TƯỞNG
+                    </div>
+                    <h2 class="elegant-title">Ghi Danh Tân Binh</h2>
+                    <p class="brand-slogan">Tạo tài khoản để bắt đầu hành trình sáng tạo và thảo luận cùng cộng đồng.</p>
                 </div>
 
-                <form class="register-form">
-                    
-                    <!-- Dòng 1: Họ và Tên (Ngang nhau) -->
-                    <div class="input-row">
-                        <div class="input-group">
-                            <i class="fa-solid fa-user"></i>
-                            <input type="text" id="lastName" placeholder="Họ của bạn" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fa-regular fa-user"></i>
-                            <input type="text" id="firstName" placeholder="Tên" required>
+                <form class="login-form" id="registerForm">
+                    <div class="input-wrapper">
+                        <label for="regEmail">Địa chỉ Email</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="Nhập email của bạn..." required>
                         </div>
                     </div>
 
-                    <!-- Dòng 2: Ngày tháng năm sinh -->
-                    <div class="input-group">
-                        <i class="fa-solid fa-calendar-days"></i>
-                        <input type="text" id="dob" placeholder="Ngày tháng năm sinh" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                    </div>
-
-                    <!-- Dòng 3: Biệt danh -->
-                    <div class="input-group">
-                        <i class="fa-solid fa-at"></i>
-                        <input type="text" id="nickname" placeholder="Biệt danh (Hiển thị trên blog)" required>
-                    </div>
-
-                    <!-- Dòng 4: Email -->
-                    <div class="input-group">
-                        <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="email" placeholder="Email đăng ký" required>
-                    </div>
-
-                    <!-- Dòng 5: Chọn chức vụ -->
-                    <div class="input-group">
-                        <i class="fa-solid fa-user-shield"></i>
-                        <select id="role" required>
-                            <option value="" disabled selected>Chọn chức vụ của bạn</option>
-                            <option value="reader">Người đọc</option>
-                            <option value="admin">Quản trị viên</option>
-                        </select>
-                    </div>
-
-                    <!-- Dòng 6: Mật khẩu (Ngang nhau) -->
-                    <div class="input-row">
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" placeholder="Mật khẩu" required>
-                        </div>
-                        <div class="input-group">
-                            <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu" required>
+                    <div class="input-wrapper">
+                        <label for="regUsername">Bút danh (Tên hiển thị)</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                            <input type="text" id="regUsername" placeholder="Nhập tên bạn muốn hiển thị..." required>
                         </div>
                     </div>
 
-                    <!-- Dòng 7: Tích chọn Điều khoản -->
-                    <div class="terms-group">
-                        <label>
-                            <input type="checkbox" id="agree-terms" required>
-                            <span>Tôi đã đọc và đồng ý với các <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a></span>
+                    <div class="input-wrapper">
+                        <label for="regPassword">Mật khẩu ấn chú</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="regPassword" placeholder="Tạo mật khẩu an toàn..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            Tôi đồng ý với <a href="#" class="forgot-link" style="margin-left: 4px;">Nội quy diễn đàn</a>
                         </label>
                     </div>
 
-                    <!-- Nút Đăng ký -->
-                    <button type="submit" class="register-btn">Đăng ký tài khoản</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-user-plus"></i> Khởi tạo tài khoản
+                    </button>
                 </form>
 
-                <div class="register-footer">
-                    <p>Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a></p>
-                    <div class="back-to-home">
-                        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
-                    </div>
+                <div class="login-footer">
+                    <p>Đã là thành viên? <a href="login.html">Tiến vào cánh cửa</a></p>
                 </div>
+            </div>
+        </div>
 
+        <div class="visual-section">
+            <div class="visual-content quote-block">
+                <div class="quote-mark">“</div>
+                <h3 class="elegant-title text-white">Mọi sử thi đều bắt đầu từ một dấu chấm.</h3>
+                <p class="fiction-description">Đừng chần chừ, hãy để trí tưởng tượng của bạn cất cánh. Hàng ngàn độc giả đang chờ đợi câu chuyện tiếp theo từ ngòi bút của bạn.</p>
+                <div class="media-icons">
+                    <i class="fa-solid fa-meteor"></i>
+                    <i class="fa-solid fa-jedi"></i>
+                    <i class="fa-solid fa-dragon"></i>
+                </div>
             </div>
         </div>
 
     </div>
-    
+
     <script type="module" src="js/register.js"></script>
 </body>
 </html>
