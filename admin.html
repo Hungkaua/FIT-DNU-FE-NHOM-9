@@ -3,43 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Bảng điều khiển</title>
+    <title>Trạm Kiểm Soát - Admin</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
-<body>
-    <div class="admin-page">
-        <div class="admin-header">
-            <div class="admin-title-group">
-                <h1><i class="fa-solid fa-shield-halved"></i> Bảng điều khiển Admin</h1>
-                <p>Quản lý bài viết chờ duyệt và xét duyệt yêu cầu hệ thống</p>
+<body class="admin-body">
+    
+    <div class="admin-wrapper">
+        
+        <aside class="admin-sidebar">
+            <div class="admin-brand">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Trạm Kiểm Soát</span>
             </div>
             
-            <div class="admin-actions">
-                <a href="index.html" class="btn-login"><i class="fa-solid fa-arrow-left"></i> Trở về Trang chủ</a>
+            <nav class="admin-nav">
+                <div class="nav-section-title">CHỨC NĂNG CỐT LÕI</div>
                 
-                <form id="serverNotificationForm">
-                    <input id="serverNotifTitle" placeholder="Tiêu đề thông báo..." required />
-                    <div class="input-divider"></div>
-                    <input id="serverNotifMessage" placeholder="Nhập nội dung..." required />
-                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Phát sóng</button>
-                </form>
+                <button class="admin-tab-btn active" data-tab="posts">
+                    <i class="fa-solid fa-file-signature"></i> Duyệt bài viết
+                </button>
+                <button class="admin-tab-btn" data-tab="admins">
+                    <i class="fa-solid fa-user-shield"></i> Yêu cầu cấp quyền
+                </button>
+
+                <div class="nav-section-title" style="margin-top: 32px;">HỆ THỐNG</div>
+                
+                <a href="index.html" class="admin-nav-link">
+                    <i class="fa-solid fa-door-open"></i> Thoát về Diễn đàn
+                </a>
+            </nav>
+
+            <div class="admin-user-profile">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100" alt="Admin">
+                <div class="profile-info">
+                    <strong>Admin Tối Cao</strong>
+                    <span>System Owner</span>
+                </div>
             </div>
-        </div>
+        </aside>
 
-        <div class="admin-tabs">
-            <button class="admin-tab-btn active" data-tab="posts"><i class="fa-solid fa-file-signature"></i> Duyệt bài viết</button>
-            <button class="admin-tab-btn" data-tab="admins"><i class="fa-solid fa-users-gear"></i> Duyệt yêu cầu Admin</button>
-        </div>
+        <main class="admin-main">
+            
+            <header class="admin-topbar">
+                <div class="topbar-title">
+                    <h1 class="elegant-title">Bảng Điều Khiển</h1>
+                    <p>Theo dõi và quản lý mọi hoạt động của vũ trụ Viễn Tưởng.</p>
+                </div>
+                <div class="topbar-actions">
+                    <button class="btn-logout-top" id="logoutButton"><i class="fa-solid fa-power-off"></i> Đăng xuất hệ thống</button>
+                </div>
+            </header>
 
-        <div id="posts" class="tab-content active">
-            <div class="pending-list" id="pendingList"></div>
-        </div>
+            <div class="admin-workspace">
+                
+                <div class="dashboard-card broadcast-card">
+                    <div class="card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                    <div class="card-content">
+                        <h3>Phát Sóng Toàn Hệ Thống</h3>
+                        <p>Gửi thông báo khẩn cấp đến màn hình của mọi thành viên.</p>
+                        
+                        <form id="serverNotificationForm" class="broadcast-form">
+                            <input type="text" id="serverNotifTitle" placeholder="Tiêu đề thông báo..." required>
+                            <input type="text" id="serverNotifMessage" placeholder="Nội dung truyền đạt..." required>
+                            <button type="submit" class="btn-broadcast">
+                                <i class="fa-solid fa-bolt"></i> Phát Lệnh
+                            </button>
+                        </form>
+                    </div>
+                </div>
 
-        <div id="admins" class="tab-content">
-            <div class="pending-list" id="adminRequestList"></div>
-        </div>
+                <div class="dashboard-panels">
+                    
+                    <div id="posts" class="tab-content active">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-layer-group"></i> Hồ Sơ Bài Viết Chờ Duyệt</h3>
+                            <span class="badge-waiting">Đang chờ xử lý</span>
+                        </div>
+                        <div class="pending-list" id="pendingList"></div>
+                    </div>
+
+                    <div id="admins" class="tab-content">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-id-card-clip"></i> Hồ Sơ Xin Cấp Quyền Admin</h3>
+                            <span class="badge-waiting">Đang chờ xử lý</span>
+                        </div>
+                        <div class="pending-list" id="adminRequestList"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+
     </div>
 
     <script type="module" src="js/admin.js"></script>
