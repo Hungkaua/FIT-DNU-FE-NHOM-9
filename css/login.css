@@ -1,21 +1,23 @@
 /* =========================================
-   TRANG ĐĂNG NHẬP - FICTION/NOVEL THEME
-   Bản Nâng Cấp Toàn Diện Độ Chi Tiết & Tầm Vóc "Fiction"
+   TRANG ĐĂNG NHẬP - DARK MODERN THEME
+   Đồng bộ 100% phong cách của Trang chủ mới
    ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-    --bg-body: #F4F1EA;       
-    --bg-surface: #FFFFFF;    
-    --text-main: #2C363F;     
-    --text-muted: #6B7280;    
-    --primary: #8B5A2B;       
-    --primary-hover: #6B4226;
-    --border: #E5E0D8;        
-    --paper-texture: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-    --radius-sm: 6px;
+    --bg-body: #0D0F12;       /* Đen sâu */
+    --bg-surface: #16191E;    /* Xám đen cho khu vực form */
+    --text-main: #E2E8F0;     /* Trắng sữa */
+    --text-muted: #8B94A5;    /* Xám nhạt */
+    --primary: #DCA54C;       /* Vàng Gold cổ điển */
+    --primary-hover: #C59342;
+    --primary-bg: rgba(220, 165, 76, 0.1);    
+    --border: #22262E;        
+    --radius-sm: 8px;
+    --radius-md: 16px;
     --radius-pill: 999px;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -25,141 +27,123 @@ body {
     background-color: var(--bg-body); color: var(--text-main); 
 }
 
-/* --- BỐ CỤC CHÍNH (45% FORM - 55% KHÔNG GIAN) --- */
-.vintage-login-wrapper { display: flex; height: 100vh; width: 100vw; }
+/* --- BỐ CỤC CHÍNH --- */
+.login-wrapper { display: flex; height: 100vh; width: 100vw; }
 
 /* --- KHU VỰC FORM (BÊN TRÁI) --- */
-.vintage-form-section {
+.form-section {
     flex: 0 0 45%; 
-    min-width: 500px; 
+    min-width: 480px; 
     display: flex; justify-content: center; align-items: center; 
-    background-color: var(--bg-body); 
-    background-image: var(--paper-texture); /* Đồng bộ vân giấy với index */
+    background-color: var(--bg-surface); /* Đổi sang nền xám tối nhám */
     padding: 32px; 
     border-right: 1px solid var(--border);
-    box-shadow: 10px 0 30px rgba(139, 90, 43, 0.05); 
+    box-shadow: var(--shadow-soft); 
     z-index: 10;
-}
-
-/* Khung trang bách khoa viễn tưởng (Double Border) */
-.vintage-page-border {
-    width: 100%; height: 100%;
-    border: 3px double rgba(139, 90, 43, 0.3); 
-    border-radius: 8px;
-    padding: 24px;
-    display: flex; justify-content: center; align-items: center;
-    position: relative;
-    background-color: rgba(255, 255, 255, 0.2); 
 }
 
 .login-container { width: 100%; max-width: 380px; position: relative; }
 
-/* Nút Quay lại tinh tế */
+/* Nút Quay lại */
 .back-link {
     position: absolute; top: -50px; left: 0; text-decoration: none;
     color: var(--text-muted); font-weight: 500; font-size: 14px;
     display: flex; align-items: center; gap: 8px; transition: 0.2s;
-    font-family: 'Lora', serif; font-style: italic;
 }
 .back-link:hover { color: var(--primary); transform: translateX(-4px); }
 
 /* Header Form */
 .login-header { margin-bottom: 32px; text-align: center; }
 .brand-logo { 
-    font-size: 16px; font-weight: 700; color: var(--text-muted); 
-    display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; 
+    font-size: 15px; font-weight: 700; color: var(--text-muted); 
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; 
     letter-spacing: 1px;
 }
 .brand-logo i { color: var(--primary); font-size: 18px; }
 
+/* Font Lora dành cho tiêu đề Viễn tưởng */
 .elegant-title { 
-    font-family: 'Lora', serif; font-size: 34px; font-weight: 700; 
-    color: var(--primary); margin-bottom: 4px; font-style: italic;
+    font-family: 'Lora', serif; font-size: 36px; font-weight: 700; 
+    color: var(--primary); margin-bottom: 12px; font-style: italic;
 }
+.brand-slogan { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
 
-/* Hoa văn trang trí hoa lá cổ điển */
-.ornament { font-size: 18px; color: var(--primary); margin: 6px 0 12px; opacity: 0.5; letter-spacing: 4px; }
-.brand-slogan { color: var(--text-main); font-size: 14px; line-height: 1.5; font-family: 'Lora', serif; padding: 0 16px; opacity: 0.85;}
-
-/* Input Fields nghệ thuật dòng kẻ */
+/* Input Fields Đậm chất Modern */
 .input-wrapper { margin-bottom: 20px; }
-.input-wrapper label { display: block; font-size: 13px; font-weight: 600; color: var(--primary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;}
+.input-wrapper label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
 .input-field { position: relative; }
-.input-field i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(139, 90, 43, 0.5); transition: 0.2s; }
+.input-field i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: 0.2s; }
 .input-field input {
     width: 100%; padding: 14px 16px 14px 44px;
     border: 1px solid var(--border); 
-    border-bottom: 2px solid rgba(139, 90, 43, 0.3); /* Dòng kẻ khắc sâu */
     border-radius: var(--radius-sm);
-    background-color: rgba(255, 255, 255, 0.7); 
-    font-size: 15px; color: var(--text-main); transition: all 0.2s; outline: none;
+    background-color: var(--bg-body); /* Đen sâu */
+    font-size: 14px; color: var(--text-main); transition: all 0.2s; outline: none;
 }
+.input-field input::placeholder { color: #4B5563; }
 .input-field input:focus { 
-    border-color: var(--primary); background-color: #FFFFFF; 
-    box-shadow: 0 4px 12px rgba(139, 90, 43, 0.06); 
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 2px var(--primary-bg); 
 }
 .input-field input:focus + i { color: var(--primary); }
 
 /* Options (Nhớ danh tính, Quên mật mã) */
 .form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 13px; }
-.custom-checkbox { display: flex; align-items: center; gap: 8px; color: var(--text-main); cursor: pointer; font-family: 'Lora', serif;}
-.forgot-link { font-weight: 600; color: var(--primary); text-decoration: none; transition: 0.2s; font-family: 'Lora', serif; font-style: italic;}
+.custom-checkbox { display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer; }
+.forgot-link { font-weight: 500; color: var(--primary); text-decoration: none; transition: 0.2s; }
 .forgot-link:hover { color: var(--primary-hover); text-decoration: underline; }
 
-/* Nút Bấm Premium */
+/* Nút Submit Vàng Gold Sang Trọng */
 .btn-primary {
-    width: 100%; padding: 15px; 
-    background: linear-gradient(135deg, #8B5A2B 0%, #6B4226 100%); 
-    color: #FDF8F5; border: none; border-radius: var(--radius-pill); 
-    font-size: 16px; font-weight: 600; font-family: 'Lora', serif; font-style: italic;
+    width: 100%; padding: 14px; 
+    background-color: var(--primary);
+    color: #0D0F12; border: none; border-radius: var(--radius-pill); 
+    font-size: 15px; font-weight: 700; 
     cursor: pointer; transition: all 0.3s; 
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.15);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
 }
 .btn-primary:hover { 
-    background: linear-gradient(135deg, #7a4e25 0%, #5c3516 100%);
-    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(139, 90, 43, 0.25); 
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(220, 165, 76, 0.2); 
 }
 
 /* Footer */
-.login-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--text-muted); font-family: 'Lora', serif;}
-.login-footer a { color: var(--primary); font-weight: 700; text-decoration: none; margin-left: 4px; }
-.login-footer a:hover { text-decoration: underline; }
+.login-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--text-muted); }
+.login-footer a { color: var(--primary); font-weight: 600; text-decoration: none; margin-left: 4px; transition: 0.2s;}
+.login-footer a:hover { color: var(--primary-hover); text-decoration: underline; }
 
-/* --- KHU VỰC HÌNH ẢNH VŨ TRỤ BAO QUÁT (BÊN PHẢI) --- */
-.vintage-visual-section {
+/* --- KHU VỰC HÌNH ẢNH (BÊN PHẢI) --- */
+.visual-section {
     flex: 1; 
-    /* Thay ảnh giá sách bằng ảnh dãy núi kết hợp tinh vân vũ trụ tuyệt đẹp đại diện cho Fiction */
-    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop');
+    /* Hình nền không gian / dải ngân hà hợp với vibe Viễn Tưởng - Dark Mode */
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
     background-size: cover; background-position: center; position: relative;
     display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px;
 }
-/* Lớp phủ chuyển màu từ xanh đậm sang nâu ấm áp để đồng bộ màu sắc với index */
-.vintage-visual-section::before {
+/* Overlay đen nhám Gradient */
+.visual-section::before {
     content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(26, 32, 44, 0.85) 0%, rgba(139, 90, 43, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.4) 100%);
 }
 
 .quote-block { position: relative; z-index: 10; color: white; max-width: 520px; text-align: center; }
 .quote-mark {
-    font-family: 'Lora', serif; font-size: 140px; font-weight: 700;
-    color: rgba(255, 255, 255, 0.12); line-height: 0; margin-bottom: 20px;
+    font-family: 'Lora', serif; font-size: 120px; font-weight: 700;
+    color: var(--primary); opacity: 0.2; line-height: 0; margin-bottom: 20px;
 }
 .quote-block .text-white { 
-    color: #FDF8F5; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); margin-bottom: 16px; line-height: 1.3; font-size: 32px;
+    color: #FFFFFF; margin-bottom: 16px; line-height: 1.3; font-size: 36px; text-shadow: 0 4px 12px rgba(0,0,0,0.8);
 }
-.fiction-description { font-size: 15px; line-height: 1.7; color: #E5E0D8; font-family: 'Lora', serif; margin-bottom: 24px; opacity: 0.9;}
+.fiction-description { font-size: 16px; line-height: 1.7; color: var(--text-muted); font-family: 'Lora', serif; font-style: italic; margin-bottom: 32px;}
 
-/* Biểu tượng đa phương tiện: Lông vũ (Văn học), Thước phim (Điện ảnh), Tay cầm (Game) */
-.media-icons { display: flex; justify-content: center; gap: 24px; color: #FDF8F5; opacity: 0.4; font-size: 20px; }
-.media-icons i { transition: 0.3s; }
-.media-icons i:hover { opacity: 1; color: var(--bg-body); transform: scale(1.2); }
+.media-icons { display: flex; justify-content: center; gap: 24px; color: var(--text-muted); font-size: 20px; }
+.media-icons i { transition: 0.3s; cursor: pointer;}
+.media-icons i:hover { color: var(--primary); transform: scale(1.1); }
 
-/* Responsive */
+/* Responsive cho màn hình nhỏ */
 @media (max-width: 900px) {
-    .vintage-login-wrapper { flex-direction: column-reverse; }
-    .vintage-form-section { flex: 1; min-width: 100%; padding: 16px;}
-    .vintage-page-border { padding: 24px 16px;}
-    .vintage-visual-section { display: none; }
-    .back-link { top: -16px; left: 0; }
+    .login-wrapper { flex-direction: column-reverse; }
+    .form-section { flex: 1; min-width: 100%; padding: 24px;}
+    .visual-section { display: none; }
+    .back-link { top: -20px; left: 0; }
 }

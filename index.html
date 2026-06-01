@@ -12,30 +12,35 @@
     <header class="header">
         <div class="header-content">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-book-journal-whills logo-icon"></i>
-                <span>DIỄN ĐÀN VIỄN TƯỞNG</span>
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
             </a>
 
-            <div class="search-bar">
+            <form id="searchForm" class="search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Tìm kiếm tác phẩm, tác giả, bài viết...">
-            </div>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
 
             <div class="header-actions">
-                <div id="notifications" class="notifications">
-                    <button id="notifToggle" class="btn-notif"><i class="fa-solid fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
-                    <div id="notifDropdown" class="notif-dropdown hidden"></div>
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notifCount" class="notif-count hidden">0</span>
+                    </button>
                 </div>
 
                 <div id="userInfo" class="user-info hidden">
-                    <img id="userAvatar" src="https://via.placeholder.com/32" alt="Avatar" class="user-avatar">
-                    <span id="userName" class="user-name"></span>
+                    <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name">Administrator</span>
+                        <span class="user-karma">1.2k karma</span>
+                    </div>
                     <a id="adminLink" href="admin.html" class="btn-admin hidden">Admin</a>
-                    <button id="logoutButton" class="btn-logout">Đăng xuất</button>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
                 
-                <a href="./login.html" class="btn-login">Đăng nhập</a>
-                <a href="./register.html" class="btn-register">Đăng ký</a>
+                <a href="./login.html" id="loginBtn" class="btn-login">Đăng nhập</a>
+                <a href="./register.html" id="registerBtn" class="btn-register">Đăng ký</a>
             </div>
         </div>
     </header>
@@ -44,72 +49,110 @@
         
         <aside class="sidebar">
             <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Truyện Hot</a></li>
-                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá</a></li>
+                <ul class="menu-group">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Bảng tin (Home)</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến (Popular)</a></li>
+                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá (All)</a></li>
                 </ul>
 
                 <div class="nav-divider"></div>
-                <h4 class="nav-title">THƯ VIỆN</h4>
+                <h4 class="nav-title">CỘNG ĐỒNG (SUBREDDITS)</h4>
                 
-                <ul>
-                    <li><a href="#"><i class="fa-solid fa-feather-pointed"></i> Góc sáng tác</a></li>
-                    <li><a href="#"><i class="fa-solid fa-comments"></i> Thảo luận chung</a></li>
-                    <li><a href="#"><i class="fa-solid fa-bookmark"></i> Tủ sách cá nhân</a></li>
-                    <li><a href="#"><i class="fa-solid fa-circle-question"></i> Trợ giúp</a></li>
+                <ul class="menu-group">
+                    <li><a href="#"><i class="fa-solid fa-feather-pointed sub-icon"></i> r/ Góc Sáng Tác</a></li>
+                    <li><a href="#"><i class="fa-solid fa-comments sub-icon"></i> r/ Thảo Luận</a></li>
+                    <li><a href="#"><i class="fa-solid fa-film sub-icon"></i> r/ Sci-Fi Phim</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gamepad sub-icon"></i> r/ Game Lore</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main class="main-content">
             
-            <div class="fiction-banner">
-                <div class="banner-overlay"></div>
-                <div class="banner-content">
-                    <h1 class="elegant-title">Cánh Cửa Hư Cấu</h1>
-                    <p class="elegant-subtitle">Nơi những trang sách mở ra vạn thế giới kỳ ảo.</p>
+            <div class="subreddit-header">
+                <div class="sub-banner"></div>
+                <div class="sub-info-bar">
+                    <div class="sub-icon-large"><i class="fa-solid fa-hat-wizard"></i></div>
+                    <div class="sub-titles">
+                        <h1 class="sub-name">Diễn Đàn Viễn Tưởng</h1>
+                        <p class="sub-slug">r/VienTuong</p>
+                    </div>
+                    <button class="btn-join">Tham gia</button>
                 </div>
             </div>
 
-            <div class="feed-filters">
-                <button class="filter-btn active"><i class="fa-solid fa-star"></i> Nổi bật</button>
-                <button class="filter-btn"><i class="fa-solid fa-clock"></i> Mới cập nhật</button>
-                <button class="filter-btn"><i class="fa-solid fa-pen-nib"></i> Đánh giá cao</button>
-            </div>
-            
-            <div class="post-toolbar">
-                <button id="openCreatePost" class="btn-create-post"><i class="fa-solid fa-feather"></i> Viết bài mới</button>
+            <div class="post-toolbar reddit-create-bar">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" class="toolbar-avatar" alt="">
+                <button id="openCreatePost" class="btn-create-input">Tạo bài viết...</button>
+                <button class="icon-btn"><i class="fa-regular fa-image"></i></button>
+                <button class="icon-btn"><i class="fa-solid fa-link"></i></button>
             </div>
 
             <div id="createPostCard" class="create-post-card hidden">
-                <h3>Chắp bút sáng tác</h3>
+                <div class="create-header">
+                    <h3>Tạo bài viết</h3>
+                    <button class="btn-draft">Bản nháp</button>
+                </div>
                 <form id="createPostForm" class="create-post-form">
-                    <div class="form-row">
-                        <input id="postCommunity" type="text" placeholder="Chủ đề / Thể loại (ví dụ: Kỳ ảo, Kiếm hiệp)" required>
-                        <input id="postTitle" type="text" placeholder="Tựa đề bài viết" required>
+                    <input id="postCommunity" type="text" class="input-title" placeholder="Chọn cộng đồng (vd: r/VienTuong)" required>
+                    <input id="postTitle" type="text" class="input-title" placeholder="Tiêu đề" required>
+                    
+                    <div class="format-toolbar">
+                        <i class="fa-solid fa-bold"></i><i class="fa-solid fa-italic"></i><i class="fa-solid fa-link"></i>
                     </div>
-                    <textarea id="postContent" placeholder="Viết nên câu chuyện của bạn..." rows="5" required></textarea>
-                    <div class="form-row">
-                        <input id="postImage" type="url" placeholder="URL ảnh bìa (tùy chọn)">
+                    <textarea id="postContent" placeholder="Nội dung (tùy chọn)..." rows="6" required></textarea>
+                    
+                    <input id="postImage" type="url" class="input-title" placeholder="URL ảnh (tùy chọn)">
+                    
+                    <div class="form-footer">
                         <button type="submit" class="btn-submit">Đăng bài</button>
                     </div>
                 </form>
-                <p class="note">Tác phẩm của bạn sẽ được lưu giữ và chia sẻ đến cộng đồng độc giả.</p>
             </div>
 
-            <div class="post-feed" id="post-feed-container">
-                <div class="empty-state">
-                    <i class="fa-solid fa-book-open"></i>
-                    <p>Những trang sách còn đang dang dở.<br>Hãy là người đầu tiên đặt bút!</p>
-                </div>
-            </div>
-            
+            <form id="filterForm" class="feed-filters reddit-filters">
+                <button type="button" class="filter-btn active" data-filter="trending"><i class="fa-solid fa-fire"></i> Hot</button>
+                <button type="button" class="filter-btn" data-filter="newest"><i class="fa-solid fa-sun"></i> New</button>
+                <button type="button" class="filter-btn" data-filter="top"><i class="fa-solid fa-ranking-star"></i> Top</button>
+                <button class="layout-btn"><i class="fa-solid fa-bars"></i></button>
+            </form>
+
+            <div class="post-feed" id="post-feed-container"></div>
         </main>
 
         <aside class="right-widgets">
+            
             <div class="widget-card">
-                <h4><i class="fa-solid fa-tags"></i> Từ khóa thịnh hành</h4>
+                <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Bảng Thông Báo</h4>
+                <div class="notif-board-content hidden" id="notifDropdown">
+                    <p class="notif-empty">Bấm chuông để tải thông báo.</p>
+                </div>
+            </div>
+
+            <div class="widget-card about-community">
+                <div class="about-header">
+                    <h4 class="widget-title">Giới thiệu cộng đồng</h4>
+                </div>
+                <p class="about-desc">Không gian kết nối những bộ óc sáng tạo từ Văn học, Điện ảnh cho đến Trò chơi giả tưởng. Mọi câu chuyện hư cấu đều tìm thấy tri kỷ tại đây.</p>
+                <div class="about-stats">
+                    <div class="stat"><span class="num">15.2k</span><span class="label">Thành viên</span></div>
+                    <div class="stat"><span class="num">124</span><span class="label">Đang online</span></div>
+                </div>
+                <div class="about-date"><i class="fa-solid fa-cake-candles"></i> Tạo ngày 1 Tháng 6, 2026</div>
+            </div>
+
+            <div class="widget-card rules-card">
+                <h4 class="widget-title">Nội quy r/VienTuong</h4>
+                <ol class="reddit-rules">
+                    <li>1. Tôn trọng tác quyền của tác giả.</li>
+                    <li>2. Góp ý văn minh, không xúc phạm.</li>
+                    <li>3. Bắt buộc gắn thẻ Spoil khi tiết lộ nội dung.</li>
+                    <li>4. Tranh luận không công kích cá nhân.</li>
+                </ol>
+            </div>
+
+            <div class="widget-card">
+                <h4 class="widget-title"><i class="fa-solid fa-tags"></i> Từ khóa thịnh hành</h4>
                 <div class="tag-cloud">
                     <span class="tag">#Tiên_Hiệp</span>
                     <span class="tag">#Kỳ_Ảo</span>
@@ -120,35 +163,52 @@
                 </div>
             </div>
 
-            <div class="widget-card">
-                <h4><i class="fa-solid fa-scroll"></i> Quy định thư viện</h4>
-                <ul class="widget-rules">
-                    <li>1. Tôn trọng tác quyền của tác giả.</li>
-                    <li>2. Góp ý văn minh, không xúc phạm.</li>
-                    <li>3. Không tiết lộ (spoil) nội dung truyện.</li>
-                </ul>
-            </div>
         </aside>
 
     </div>
 
-    <div id="editPostModal" class="modal hidden">
-        <div class="modal-content">
-            <span id="closeEditModal" class="close-modal">&times;</span>
-            <h3>Chỉnh sửa bản thảo</h3>
-            <form id="editPostForm" class="create-post-form">
-                <input type="hidden" id="editPostId"> 
-                <div class="form-row">
-                    <input id="editPostTitle" type="text" placeholder="Tựa đề bài viết" required>
+    <template id="postTemplate">
+        <div class="post-card js-post-card reddit-post-card" data-post-id="" data-tags="">
+            
+            <div class="vote-column">
+                <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                <span class="vote-count js-like-count">0</span>
+                <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+            </div>
+
+            <div class="post-content-area">
+                <div class="post-header">
+                    <img src="" class="user-avatar-small js-avatar" alt="User">
+                    <div class="post-meta">
+                        <span class="post-community">r/VienTuong</span>
+                        <span class="separator">•</span>
+                        <span class="post-author">Đăng bởi u/<span class="js-author">Author</span></span>
+                        <span class="post-time js-time">Time</span>
+                    </div>
+                    <button class="btn-join-small js-btn-options"><i class="fa-solid fa-ellipsis"></i></button>
                 </div>
-                <textarea id="editPostContent" placeholder="Nội dung bài viết..." rows="5" required></textarea>
-                <div class="form-row">
-                    <input id="editPostImage" type="url" placeholder="URL ảnh bìa (tùy chọn)">
-                    <button type="submit" class="btn-submit">Lưu bản thảo</button>
+
+                <h2 class="post-title js-title">Tiêu đề bài viết</h2>
+                <div class="post-tags js-tags-container"></div>
+                <p class="post-snippet js-content">Nội dung bài viết...</p>
+                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết">
+                
+                <div class="post-actions">
+                    <button class="action-btn js-btn-like" style="display:none;"></button> 
+                    <button class="action-btn js-btn-comment">
+                        <i class="fa-regular fa-message"></i> 
+                        <span class="js-comment-count">0</span> Bình luận
+                    </button>
+                    <button class="action-btn js-btn-share">
+                        <i class="fa-solid fa-share"></i> Chia sẻ
+                    </button>
+                    <button class="action-btn">
+                        <i class="fa-regular fa-bookmark"></i> Lưu
+                    </button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </template>
 
     <script type="module" src="js/main.js"></script>
 </body>
