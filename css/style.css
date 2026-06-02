@@ -258,3 +258,237 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 1024px) { .right-widgets { display: none; } }
 @media (max-width: 768px) { .sidebar { display: none; } }
+/* --- CÂY BÌNH LUẬN REDDIT STYLE --- */
+.reddit-comment {
+    position: relative;
+    padding-left: 24px; /* Chừa không gian cho đường kẻ */
+    margin-bottom: 16px;
+}
+.comment-thread-line {
+    position: absolute;
+    left: 8px;
+    top: 36px; /* Bắt đầu từ dưới avatar */
+    bottom: -16px;
+    width: 2px;
+    background-color: var(--border);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.comment-thread-line:hover { background-color: var(--primary); }
+
+.comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.comment-author { font-weight: 600; font-size: 13px; color: var(--text-main); }
+.comment-time { font-size: 12px; color: var(--text-muted); }
+
+.comment-body p { font-size: 14px; color: var(--text-main); line-height: 1.5; margin-bottom: 8px;}
+.comment-actions { display: flex; align-items: center; gap: 4px; margin-bottom: 12px;}
+
+/* Reply thò thụt vào trong */
+.nested-reply {
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+/* =========================================
+   STYLE DÀNH RIÊNG CHO TRANG TẠO BÀI VIẾT (CREATE POST)
+   ========================================= */
+
+.create-post-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px;
+}
+.create-post-header .page-title {
+    font-size: 18px; font-weight: 600; color: var(--text-main); font-family: 'Inter', sans-serif;
+}
+.btn-draft-top {
+    background: transparent; border: none; color: var(--primary);
+    font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+}
+.draft-count { background: var(--border); color: var(--text-main); padding: 2px 6px; border-radius: 4px;}
+
+/* Chọn cộng đồng */
+.community-selector { margin-bottom: 16px; width: 300px; }
+.selector-box {
+    background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; color: var(--text-main); transition: 0.2s;
+}
+.selector-box:hover { border-color: var(--text-muted); }
+.selector-left { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
+.selector-left i { color: var(--text-muted); font-size: 18px;}
+
+/* Hộp nội dung chính */
+.create-box-main {
+    background: var(--bg-surface); border: 1px solid var(--border);
+    border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-soft);
+}
+
+/* Tabs */
+.create-tabs { display: flex; border-bottom: 1px solid var(--border); }
+.tab-btn {
+    flex: 1; background: transparent; border: none; padding: 14px;
+    color: var(--text-muted); font-weight: 600; font-size: 14px; cursor: pointer;
+    display: flex; justify-content: center; align-items: center; gap: 8px;
+    border-bottom: 2px solid transparent; transition: 0.2s;
+}
+.tab-btn:hover { background: var(--bg-hover); color: var(--text-main); }
+.tab-btn.active { color: var(--text-main); border-bottom-color: var(--text-main); background: rgba(255,255,255,0.02); }
+
+/* Vùng nhập liệu */
+.create-form-area { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+.input-title-wrapper { position: relative; }
+.input-post-title {
+    width: 100%; background: var(--bg-body); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 10px 60px 10px 16px;
+    color: var(--text-main); font-size: 14px; outline: none; transition: 0.2s;
+}
+.input-post-title:focus { border-color: var(--text-main); }
+.input-title-wrapper .char-count {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-size: 12px; color: var(--text-muted); font-weight: 600;
+}
+
+/* Khung soạn thảo Rich Text */
+.rich-editor-wrapper {
+    border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;
+    display: flex; flex-direction: column; transition: 0.2s;
+}
+.rich-editor-wrapper:focus-within { border-color: var(--text-main); }
+
+.editor-toolbar {
+    background: var(--bg-hover); padding: 8px 12px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+}
+.tool-btn {
+    background: transparent; border: none; color: var(--text-muted); width: 28px; height: 28px;
+    border-radius: 4px; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.2s;
+}
+.tool-btn:hover { background: var(--border); color: var(--text-main); }
+.tool-divider { width: 1px; height: 16px; background: var(--border); margin: 0 8px; }
+
+.input-post-content {
+    width: 100%; background: var(--bg-body); border: none; padding: 16px;
+    color: var(--text-main); font-size: 14px; line-height: 1.6; min-height: 200px;
+    resize: vertical; outline: none; font-family: 'Inter', sans-serif;
+}
+
+/* Gắn Tag (Flair) */
+.post-options-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.option-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    padding: 6px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s;
+}
+.option-btn:hover { border-color: var(--text-main); color: var(--text-main); }
+.flair-btn { background: var(--bg-hover); border-color: transparent; }
+.flair-btn:hover { background: var(--border); border-color: transparent;}
+
+/* Khu vực nút bấm cuối */
+.create-actions {
+    display: flex; justify-content: space-between; align-items: center; margin-top: 16px;
+    border-top: 1px solid var(--border); padding-top: 16px;
+}
+.btn-cancel { background: transparent; border: none; color: var(--danger); font-weight: 700; cursor: pointer; padding: 8px; }
+.btn-cancel:hover { text-decoration: underline; }
+.action-right { display: flex; gap: 12px; }
+.btn-save-draft {
+    background: transparent; border: 1px solid var(--text-main); color: var(--text-main);
+    padding: 8px 16px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
+}
+.btn-save-draft:hover { background: var(--bg-hover); }
+.btn-submit-post {
+    background: var(--text-main); color: var(--bg-body); border: none;
+    padding: 8px 24px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
+}
+.btn-submit-post:hover { opacity: 0.9; transform: translateY(-1px);}
+/* =========================================
+   GIAO DIỆN CHI TIẾT BÀI VIẾT (POST DETAIL THEATER MODE)
+   ========================================= */
+
+/* Ẩn Sidebar trái để lấy không gian cho nội dung */
+.post-detail-view .sidebar { display: none; }
+
+/* Mở rộng cột giữa lên 860px */
+.post-detail-view .main-content { 
+    max-width: 860px !important; 
+    margin: 0; /* Xóa margin auto để widget phải được xích lại gần */
+}
+
+/* Ép thẻ bài viết mất viền hover */
+.detailed-post { cursor: default; }
+.detailed-post:hover { border-color: var(--border); box-shadow: var(--shadow-soft); }
+
+.post-full-content { font-size: 15px; color: var(--text-main); line-height: 1.7; margin: 16px 0; }
+
+/* =========================================
+   KHU VỰC BÌNH LUẬN (REDDIT STYLE THREADS)
+   ========================================= */
+.comment-section { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 24px; }
+
+/* Box viết bình luận */
+.comment-reply-box { margin-bottom: 32px; background: rgba(0,0,0,0.2); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border);}
+.comment-reply-box textarea { 
+    width: 100%; background: var(--bg-body); border: 1px solid var(--border); 
+    border-radius: var(--radius-sm); padding: 12px; color: var(--text-main); 
+    font-size: 14px; min-height: 100px; resize: vertical; outline: none; 
+    margin-bottom: 12px; font-family: 'Inter', sans-serif; transition: 0.2s;
+}
+.comment-reply-box textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-bg);}
+.btn-submit-comment {
+    background: var(--text-main); color: var(--bg-body); padding: 8px 24px; 
+    border-radius: var(--radius-pill); font-weight: 700; font-size: 13px;
+    border: none; cursor: pointer; transition: 0.2s;
+}
+.btn-submit-comment:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* Cây bình luận mẹ con */
+.reddit-comment { position: relative; padding-left: 28px; margin-bottom: 24px; }
+
+/* Đường kẻ phân cấp */
+.comment-thread-line { 
+    position: absolute; left: 14px; top: 36px; bottom: -16px; 
+    width: 2px; background-color: var(--border); 
+    cursor: pointer; transition: 0.2s; 
+}
+.comment-thread-line:hover { background-color: var(--primary); }
+
+/* Header bình luận */
+.comment-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.comment-author { font-weight: 600; font-size: 13px; color: var(--text-main); }
+.comment-author.op { color: var(--primary); } /* Nhấn mạnh tác giả bài viết (Original Poster) */
+.comment-header .op { font-size: 11px; font-weight: 700; color: var(--primary); margin-left: -4px;}
+.comment-time { font-size: 12px; color: var(--text-muted); }
+
+/* Nội dung & Nút thao tác */
+.comment-body { font-size: 14px; color: var(--text-main); line-height: 1.5; margin-bottom: 8px; padding-right: 16px;}
+.comment-actions { display: flex; align-items: center; gap: 4px; margin-bottom: 12px;}
+.comment-actions .vote-btn { padding: 4px; font-size: 18px; }
+
+/* Căn lề thụt vào cho bình luận con (Reply) */
+.nested-reply { margin-top: 16px; margin-bottom: 0; }
+/* =========================================
+   BỔ SUNG CSS CHO NÚT QUAY LẠI (BACK BUTTON)
+   ========================================= */
+.detail-top-bar { 
+    margin-bottom: 20px; 
+    padding: 0 4px;
+}
+.btn-back-detail {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    color: var(--text-muted); 
+    font-size: 14px; 
+    font-weight: 600;
+    transition: 0.2s;
+    background: var(--bg-surface);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+}
+.btn-back-detail:hover { 
+    color: var(--primary); 
+    border-color: var(--primary);
+    transform: translateX(-4px); 
+    box-shadow: 0 2px 8px var(--primary-bg);
+}

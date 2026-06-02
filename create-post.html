@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết bài viết - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="bg-body">
+    
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notifCount" class="notif-count hidden">0</span>
+                    </button>
+                </div>
+                <div id="userInfo" class="user-info">
+                    <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name">Administrator</span>
+                        <span class="user-karma">1.2k karma</span>
+                    </div>
+                    <a id="adminLink" href="admin.html" class="btn-admin">Admin</a>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container post-detail-view">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group"><li><a href="index.html"><i class="fa-solid fa-house"></i> Về trang chủ</a></li></ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="reddit-post-card detailed-post">
+                <div class="vote-column">
+                    <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                    <span class="vote-count">1.2k</span>
+                    <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+                </div>
+
+                <div class="post-content-area">
+                    <div class="post-header">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar-small" alt="User">
+                        <div class="post-meta">
+                            <span class="post-community">r/VienTuong</span><span class="separator">•</span>
+                            <span class="post-author">Đăng bởi u/Paul_Atreides</span><span class="post-time">2 giờ trước</span>
+                        </div>
+                    </div>
+
+                    <h1 class="post-title" style="font-size: 24px; margin-bottom: 12px;">Đánh giá Dune (Xứ Cát): Tuyệt tác điện ảnh Viễn tưởng</h1>
+                    <div class="post-tags"><span class="post-tag">Phân tích</span></div>
+                    
+                    <div class="post-full-content">
+                        <p>Dune không chỉ là một bộ phim, nó là một trải nghiệm thị giác và thính giác đồ sộ. Hệ sinh thái trên hành tinh Arrakis được thiết kế vô cùng chân thực, khiến người xem cảm nhận được sự khắc nghiệt của sa mạc.</p>
+                        
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop" style="width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid var(--border);" alt="Dune">
+                        
+                        <p>Từ thiết kế của những chiếc Ornithopter bắt chước nhịp đập cánh của chuồn chuồn, cho đến trang phục Stillsuit tái chế nước mắt mồ hôi, mọi thứ đều toát lên một vẻ "khoa học viễn tưởng" nhưng lại rất thực tế và hợp lý. Hans Zimmer đã tạo ra một bản nhạc phim khiến bạn phải rùng mình mỗi khi giun cát khổng lồ xuất hiện.</p>
+                    </div>
+
+                    <div class="post-actions" style="margin-bottom: 24px;">
+                        <button class="action-btn"><i class="fa-regular fa-message"></i> 342 Bình luận</button>
+                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn"><i class="fa-regular fa-bookmark"></i> Lưu bài</button>
+                    </div>
+
+                    <div class="comment-section">
+                        
+                        <div class="comment-reply-box">
+                            <p style="font-size: 13px; margin-bottom: 8px; color: var(--text-muted);">Bình luận với tư cách <strong style="color: var(--primary);">u/Administrator</strong></p>
+                            <textarea placeholder="Bạn nghĩ gì về bài viết này?"></textarea>
+                            <div style="display: flex; justify-content: flex-end;">
+                                <button class="btn-submit-comment">Đăng bình luận</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-tree">
+                            
+                            <div class="reddit-comment">
+                                <div class="comment-thread-line"></div>
+                                <div class="comment-header">
+                                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" class="user-avatar-small" alt="">
+                                    <span class="comment-author">u/Tolkien_Fan</span>
+                                    <span class="comment-time">1 giờ trước</span>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Đồng ý 100%! Cảnh giun đất xuất hiện làm mình nổi da gà thực sự. Hans Zimmer làm nhạc quá đỉnh, nghe trong rạp IMAX đúng là rung cả ghế.</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="vote-btn"><i class="fa-solid fa-caret-up"></i></button>
+                                    <span style="font-size: 13px; font-weight: bold; color: var(--text-main);">125</span>
+                                    <button class="vote-btn"><i class="fa-solid fa-caret-down"></i></button>
+                                    <button class="action-btn" style="padding: 4px 8px; margin-left: 8px;"><i class="fa-regular fa-message"></i> Phản hồi</button>
+                                </div>
+
+                                <div class="reddit-comment nested-reply">
+                                    <div class="comment-thread-line"></div>
+                                    <div class="comment-header">
+                                        <img src="https://via.placeholder.com/40" class="user-avatar-small" alt="">
+                                        <span class="comment-author op">u/Paul_Atreides</span>
+                                        <span style="color: var(--primary); font-size: 11px; font-weight: 700;">OP</span>
+                                        <span class="comment-time">45 phút trước</span>
+                                    </div>
+                                    <div class="comment-body">
+                                        <p>Đúng rồi bạn, mình khuyên mọi người ai chưa xem thì nên ra rạp xem ngay, trải nghiệm âm thanh ở nhà không thể bằng được đâu.</p>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <button class="vote-btn"><i class="fa-solid fa-caret-up"></i></button>
+                                        <span style="font-size: 13px; font-weight: bold; color: var(--text-main);">42</span>
+                                        <button class="vote-btn"><i class="fa-solid fa-caret-down"></i></button>
+                                        <button class="action-btn" style="padding: 4px 8px; margin-left: 8px;"><i class="fa-regular fa-message"></i> Phản hồi</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="reddit-comment">
+                                <div class="comment-thread-line" style="display: none;"></div>
+                                <div class="comment-header">
+                                    <img src="https://via.placeholder.com/40" class="user-avatar-small" alt="">
+                                    <span class="comment-author">u/SciFi_Nerd</span>
+                                    <span class="comment-time">30 phút trước</span>
+                                </div>
+                                <div class="comment-body">
+                                    <p>Mình lại thấy pacing (nhịp phim) của phần 1 hơi chậm, nó giống như một đoạn trailer dài 2 tiếng giới thiệu vũ trụ vậy. Hy vọng phần 2 sẽ đẩy nhanh diễn biến hơn.</p>
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="vote-btn"><i class="fa-solid fa-caret-up"></i></button>
+                                    <span style="font-size: 13px; font-weight: bold; color: var(--text-main);">18</span>
+                                    <button class="vote-btn"><i class="fa-solid fa-caret-down"></i></button>
+                                    <button class="action-btn" style="padding: 4px 8px; margin-left: 8px;"><i class="fa-regular fa-message"></i> Phản hồi</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card about-community">
+                <div class="about-header">
+                    <h4 class="widget-title">r/VienTuong</h4>
+                </div>
+                <p class="about-desc">Không gian kết nối những bộ óc sáng tạo từ Văn học, Điện ảnh cho đến Trò chơi giả tưởng.</p>
+                <div class="about-stats">
+                    <div class="stat"><span class="num">15.2k</span><span class="label">Thành viên</span></div>
+                    <div class="stat"><span class="num">124</span><span class="label">Đang online</span></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
