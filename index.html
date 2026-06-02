@@ -83,31 +83,11 @@
 
             <div class="post-toolbar reddit-create-bar">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" class="toolbar-avatar" alt="">
-                <button id="openCreatePost" class="btn-create-input">Tạo bài viết...</button>
-                <button class="icon-btn"><i class="fa-regular fa-image"></i></button>
-                <button class="icon-btn"><i class="fa-solid fa-link"></i></button>
-            </div>
-
-            <div id="createPostCard" class="create-post-card hidden">
-                <div class="create-header">
-                    <h3>Tạo bài viết</h3>
-                    <button class="btn-draft">Bản nháp</button>
-                </div>
-                <form id="createPostForm" class="create-post-form">
-                    <input id="postCommunity" type="text" class="input-title" placeholder="Chọn cộng đồng (vd: r/VienTuong)" required>
-                    <input id="postTitle" type="text" class="input-title" placeholder="Tiêu đề" required>
-                    
-                    <div class="format-toolbar">
-                        <i class="fa-solid fa-bold"></i><i class="fa-solid fa-italic"></i><i class="fa-solid fa-link"></i>
-                    </div>
-                    <textarea id="postContent" placeholder="Nội dung (tùy chọn)..." rows="6" required></textarea>
-                    
-                    <input id="postImage" type="url" class="input-title" placeholder="URL ảnh (tùy chọn)">
-                    
-                    <div class="form-footer">
-                        <button type="submit" class="btn-submit">Đăng bài</button>
-                    </div>
-                </form>
+                
+                <a href="create-post.html" class="btn-create-input" style="display: block; text-decoration: none; line-height: 24px;">Tạo bài viết...</a>
+                
+                <a href="create-post.html" class="icon-btn"><i class="fa-regular fa-image"></i></a>
+                <a href="create-post.html" class="icon-btn"><i class="fa-solid fa-link"></i></a>
             </div>
 
             <form id="filterForm" class="feed-filters reddit-filters">
@@ -188,17 +168,26 @@
                     <button class="btn-join-small js-btn-options"><i class="fa-solid fa-ellipsis"></i></button>
                 </div>
 
-                <h2 class="post-title js-title">Tiêu đề bài viết</h2>
+                <a href="post-detail.html" class="post-title-link js-detail-link" style="text-decoration: none;">
+                    <h2 class="post-title js-title">Tiêu đề bài viết</h2>
+                </a>
+                
                 <div class="post-tags js-tags-container"></div>
-                <p class="post-snippet js-content">Nội dung bài viết...</p>
-                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết">
+                
+                <a href="post-detail.html" class="post-snippet-link js-detail-link" style="text-decoration: none;">
+                    <p class="post-snippet js-content">Nội dung bài viết...</p>
+                </a>
+                
+                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết" style="cursor: pointer;">
                 
                 <div class="post-actions">
                     <button class="action-btn js-btn-like" style="display:none;"></button> 
-                    <button class="action-btn js-btn-comment">
+                    
+                    <a href="post-detail.html" class="action-btn js-btn-comment js-detail-link" style="text-decoration: none;">
                         <i class="fa-regular fa-message"></i> 
                         <span class="js-comment-count">0</span> Bình luận
-                    </button>
+                    </a>
+                    
                     <button class="action-btn js-btn-share">
                         <i class="fa-solid fa-share"></i> Chia sẻ
                     </button>
