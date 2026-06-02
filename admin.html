@@ -11,7 +11,6 @@
 <body class="admin-body">
     
     <div class="admin-wrapper">
-        
         <aside class="admin-sidebar">
             <div class="admin-brand">
                 <i class="fa-solid fa-shield-halved"></i>
@@ -27,16 +26,21 @@
                 <button class="admin-tab-btn" data-tab="admins">
                     <i class="fa-solid fa-user-shield"></i> Yêu cầu cấp quyền
                 </button>
+                <button class="admin-tab-btn" data-tab="users">
+                    <i class="fa-solid fa-users-gear"></i> Quản lý Thành viên
+                </button>
+                <button class="admin-tab-btn" data-tab="setup">
+                    <i class="fa-solid fa-database"></i> Khởi tạo Hệ thống
+                </button>
 
                 <div class="nav-section-title" style="margin-top: 32px;">HỆ THỐNG</div>
-                
                 <a href="index.html" class="admin-nav-link">
                     <i class="fa-solid fa-door-open"></i> Thoát về Diễn đàn
                 </a>
             </nav>
 
             <div class="admin-user-profile">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100" alt="Admin">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Admin">
                 <div class="profile-info">
                     <strong>Admin Tối Cao</strong>
                     <span>System Owner</span>
@@ -45,7 +49,6 @@
         </aside>
 
         <main class="admin-main">
-            
             <header class="admin-topbar">
                 <div class="topbar-title">
                     <h1 class="elegant-title">Bảng Điều Khiển</h1>
@@ -63,13 +66,10 @@
                     <div class="card-content">
                         <h3>Phát Sóng Toàn Hệ Thống</h3>
                         <p>Gửi thông báo khẩn cấp đến màn hình của mọi thành viên.</p>
-                        
                         <form id="serverNotificationForm" class="broadcast-form">
                             <input type="text" id="serverNotifTitle" placeholder="Tiêu đề thông báo..." required>
                             <input type="text" id="serverNotifMessage" placeholder="Nội dung truyền đạt..." required>
-                            <button type="submit" class="btn-broadcast">
-                                <i class="fa-solid fa-bolt"></i> Phát Lệnh
-                            </button>
+                            <button type="submit" class="btn-broadcast"><i class="fa-solid fa-bolt"></i> Phát Lệnh</button>
                         </form>
                     </div>
                 </div>
@@ -92,13 +92,54 @@
                         <div class="pending-list" id="adminRequestList"></div>
                     </div>
 
-                </div>
+                    <div id="users" class="tab-content">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-users-viewfinder"></i> Hệ Thống Thành Viên</h3>
+                            <span class="badge-waiting" id="totalUsersBadge">Đang tải...</span>
+                        </div>
+                        <div class="table-container">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Người dùng</th>
+                                        <th>Thông tin</th>
+                                        <th>Vai trò</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userManagementList"></tbody>
+                            </table>
+                        </div>
+                    </div>
 
+                    <div id="setup" class="tab-content">
+                        <div class="panel-header">
+                            <h3><i class="fa-solid fa-server"></i> Khởi tạo Dữ liệu Mẫu (Setup)</h3>
+                        </div>
+                        <div class="setup-container">
+                            <div id="setupSuccess" class="alert-box success hidden"></div>
+                            <div id="setupError" class="alert-box error hidden"></div>
+                            <div class="setup-grid">
+                                <div class="setup-card">
+                                    <h4><i class="fa-solid fa-shield-halved"></i> Tài Khoản Admin</h4>
+                                    <ul><li><strong>Username:</strong> admin</li><li><strong>Password:</strong> 123456</li></ul>
+                                    <button id="btnCreateAdmin" class="btn-setup btn-primary-setup"><i class="fa-solid fa-plus-circle"></i> Tạo Admin Mẫu</button>
+                                </div>
+                                <div class="setup-card">
+                                    <h4><i class="fa-solid fa-user-astronaut"></i> Tài Khoản User</h4>
+                                    <ul><li><strong>Username:</strong> user</li><li><strong>Password:</strong> 123456</li></ul>
+                                    <button id="btnCreateUser" class="btn-setup btn-secondary-setup"><i class="fa-solid fa-plus-circle"></i> Tạo User Mẫu</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </main>
-
     </div>
 
     <script type="module" src="js/admin.js"></script>
+    <script type="module" src="js/setup.js"></script>
 </body>
 </html>
