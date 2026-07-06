@@ -598,7 +598,7 @@ a { text-decoration: none; color: inherit; }
     flex: 1; background: transparent; border: none; padding: 14px;
     color: var(--text-muted); font-weight: 600; font-size: 14px; cursor: pointer;
     display: flex; justify-content: center; align-items: center; gap: 8px;
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
+
     border-bottom: 2px solid transparent; transition: 0.2s;
 }
 .tab-btn:hover { background: var(--bg-hover); color: var(--text-main); }
@@ -679,12 +679,10 @@ a { text-decoration: none; color: inherit; }
 }
 
  .btn-submit-post:hover { background: var(--primary-hover); opacity: 0.95; transform: translateY(-1px);}
-=======
 .btn-submit-post:hover { opacity: 0.9; transform: translateY(-1px);}
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 .post-detail-view .sidebar { display: none; }
 
-.post-detail-view .main-content { 
+.post-detail-view .main-content {       
     max-width: 860px !important; 
     margin: 0; /* Xóa margin auto để widget phải được xích lại gần */
 }
