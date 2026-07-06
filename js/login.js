@@ -1,5 +1,8 @@
 import { login, isLoggedIn } from './api.js';
+<<<<<<< HEAD
 import { showToast } from './ui.js';
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('.login-form');
@@ -46,10 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.removeItem('currentUser');
                 return;
             }
+<<<<<<< HEAD
             showToast('Đăng nhập thành công!', 'success');
             window.location.href = redirectUrl;
         } catch (error) {
             console.error('Lỗi đăng nhập:', error);
             showToast(error.message || 'Đăng nhập thất bại. Vui lòng thử lại.', 'error');
+=======
+            alert('Đăng nhập thành công!');
+            window.location.href = redirectUrl;
+        } catch (error) {
+            console.error('Lỗi đăng nhập:', error);
+            alert(error.message || 'Đăng nhập thất bại. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         }    });
 });

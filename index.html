@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Storybook Haven | Diễn Đàn Fiction</title>
+=======
+    <title>Diễn Đàn Viễn Tưởng</title>
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 <body>
+<<<<<<< HEAD
     <div class="page-shell">
         <header class="header">
             <div class="header-content">
@@ -170,10 +175,153 @@
                 </div>
             </aside>
         </div>
+=======
+
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notifCount" class="notif-count hidden">0</span>
+                    </button>
+                </div>
+
+                <div id="userInfo" class="user-info hidden">
+                    <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name">Administrator</span>
+                        <span class="user-karma">1.2k karma</span>
+                    </div>
+                    <a id="adminLink" href="admin.html" class="btn-admin hidden">Admin</a>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+                
+                <a href="./login.html" id="loginBtn" class="btn-login">Đăng nhập</a>
+                <a href="./register.html" id="registerBtn" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Bảng tin (Home)</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến (Popular)</a></li>
+                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá (All)</a></li>
+                </ul>
+
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">CỘNG ĐỒNG (SUBREDDITS)</h4>
+                
+                <ul class="menu-group">
+                    <li><a href="#"><i class="fa-solid fa-feather-pointed sub-icon"></i> r/ Góc Sáng Tác</a></li>
+                    <li><a href="#"><i class="fa-solid fa-comments sub-icon"></i> r/ Thảo Luận</a></li>
+                    <li><a href="#"><i class="fa-solid fa-film sub-icon"></i> r/ Sci-Fi Phim</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gamepad sub-icon"></i> r/ Game Lore</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="subreddit-header">
+                <div class="sub-banner"></div>
+                <div class="sub-info-bar">
+                    <div class="sub-icon-large"><i class="fa-solid fa-hat-wizard"></i></div>
+                    <div class="sub-titles">
+                        <h1 class="sub-name">Diễn Đàn Viễn Tưởng</h1>
+                        <p class="sub-slug">r/VienTuong</p>
+                    </div>
+                    <button class="btn-join">Tham gia</button>
+                </div>
+            </div>
+
+            <div class="post-toolbar reddit-create-bar">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" class="toolbar-avatar" alt="">
+                
+                <a href="create-post.html" class="btn-create-input" style="display: block; text-decoration: none; line-height: 24px;">Tạo bài viết...</a>
+                
+                <a href="create-post.html" class="icon-btn"><i class="fa-regular fa-image"></i></a>
+                <a href="create-post.html" class="icon-btn"><i class="fa-solid fa-link"></i></a>
+            </div>
+
+            <form id="filterForm" class="feed-filters reddit-filters">
+                <button type="button" class="filter-btn active" data-filter="trending"><i class="fa-solid fa-fire"></i> Hot</button>
+                <button type="button" class="filter-btn" data-filter="newest"><i class="fa-solid fa-sun"></i> New</button>
+                <button type="button" class="filter-btn" data-filter="top"><i class="fa-solid fa-ranking-star"></i> Top</button>
+                <button class="layout-btn"><i class="fa-solid fa-bars"></i></button>
+            </form>
+
+            <div class="post-feed" id="post-feed-container"></div>
+        </main>
+
+        <aside class="right-widgets">
+            
+            <div class="widget-card">
+                <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Bảng Thông Báo</h4>
+                <div class="notif-board-content hidden" id="notifDropdown">
+                    <p class="notif-empty">Bấm chuông để tải thông báo.</p>
+                </div>
+            </div>
+
+            <div class="widget-card about-community">
+                <div class="about-header">
+                    <h4 class="widget-title">Giới thiệu cộng đồng</h4>
+                </div>
+                <p class="about-desc">Không gian kết nối những bộ óc sáng tạo từ Văn học, Điện ảnh cho đến Trò chơi giả tưởng. Mọi câu chuyện hư cấu đều tìm thấy tri kỷ tại đây.</p>
+                <div class="about-stats">
+                    <div class="stat"><span class="num">15.2k</span><span class="label">Thành viên</span></div>
+                    <div class="stat"><span class="num">124</span><span class="label">Đang online</span></div>
+                </div>
+                <div class="about-date"><i class="fa-solid fa-cake-candles"></i> Tạo ngày 1 Tháng 6, 2026</div>
+            </div>
+
+            <div class="widget-card rules-card">
+                <h4 class="widget-title">Nội quy r/VienTuong</h4>
+                <ol class="reddit-rules">
+                    <li>1. Tôn trọng tác quyền của tác giả.</li>
+                    <li>2. Góp ý văn minh, không xúc phạm.</li>
+                    <li>3. Bắt buộc gắn thẻ Spoil khi tiết lộ nội dung.</li>
+                    <li>4. Tranh luận không công kích cá nhân.</li>
+                </ol>
+            </div>
+
+            <div class="widget-card">
+                <h4 class="widget-title"><i class="fa-solid fa-tags"></i> Từ khóa thịnh hành</h4>
+                <div class="tag-cloud">
+                    <span class="tag">#Tiên_Hiệp</span>
+                    <span class="tag">#Kỳ_Ảo</span>
+                    <span class="tag">#Trinh_Thám</span>
+                    <span class="tag">#Xuyên_Không</span>
+                    <span class="tag">#LightNovel</span>
+                    <span class="tag">#Đồng_Nhân</span>
+                </div>
+            </div>
+
+        </aside>
+
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     </div>
 
     <template id="postTemplate">
         <div class="post-card js-post-card reddit-post-card" data-post-id="" data-tags="">
+<<<<<<< HEAD
+=======
+            
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
             <div class="vote-column">
                 <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
                 <span class="vote-count js-like-count">0</span>
@@ -195,6 +343,7 @@
                 <a href="post-detail.html" class="post-title-link js-detail-link" style="text-decoration: none;">
                     <h2 class="post-title js-title">Tiêu đề bài viết</h2>
                 </a>
+<<<<<<< HEAD
 
                 <div class="post-tags js-tags-container"></div>
 
@@ -212,6 +361,25 @@
                         <span class="js-comment-count">0</span> Bình luận
                     </a>
 
+=======
+                
+                <div class="post-tags js-tags-container"></div>
+                
+                <a href="post-detail.html" class="post-snippet-link js-detail-link" style="text-decoration: none;">
+                    <p class="post-snippet js-content">Nội dung bài viết...</p>
+                </a>
+                
+                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết" style="cursor: pointer;">
+                
+                <div class="post-actions">
+                    <button class="action-btn js-btn-like" style="display:none;"></button> 
+                    
+                    <a href="post-detail.html" class="action-btn js-btn-comment js-detail-link" style="text-decoration: none;">
+                        <i class="fa-regular fa-message"></i> 
+                        <span class="js-comment-count">0</span> Bình luận
+                    </a>
+                    
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                     <button class="action-btn js-btn-share">
                         <i class="fa-solid fa-share"></i> Chia sẻ
                     </button>

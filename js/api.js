@@ -18,11 +18,17 @@ function getServerNotifications() {
 
 function createServerNotification(notification) {
     const list = getServerNotifications();
+<<<<<<< HEAD
     const normalized = Object.assign({ createdAt: new Date().toISOString() }, notification);
     list.unshift(normalized);
     const trimmed = list.slice(0, 25);
     localStorage.setItem('serverNotifications', JSON.stringify(trimmed));
     return trimmed;
+=======
+    list.unshift(Object.assign({ createdAt: new Date().toISOString() }, notification));
+    localStorage.setItem('serverNotifications', JSON.stringify(list));
+    return list;
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function getUserNotifications(username) {
@@ -38,18 +44,28 @@ function createUserNotification(username, notification) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username);
+<<<<<<< HEAD
     const normalized = Object.assign({ createdAt: new Date().toISOString(), read: false }, notification);
     list.unshift(normalized);
     const trimmed = list.slice(0, 25);
     localStorage.setItem(key, JSON.stringify(trimmed));
     return trimmed;
+=======
+    list.unshift(Object.assign({ createdAt: new Date().toISOString(), read: false }, notification));
+    localStorage.setItem(key, JSON.stringify(list));
+    return list;
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function markAllUserNotificationsRead(username) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username).map(n => Object.assign({}, n, { read: true }));
+<<<<<<< HEAD
     localStorage.setItem(key, JSON.stringify(list.slice(0, 25)));
+=======
+    localStorage.setItem(key, JSON.stringify(list));
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     return list;
 }
 
@@ -120,6 +136,7 @@ async function deletePost(id) {
 }
 
 // ========== COMMENT FUNCTIONS ==========
+<<<<<<< HEAD
 const LOCAL_COMMENTS_KEY = 'localComments';
 
 function getStoredComments() {
@@ -129,10 +146,19 @@ function getStoredComments() {
         return Array.isArray(stored) ? stored : [];
     } catch (error) {
         console.error('Lỗi đọc bình luận cục bộ:', error);
+=======
+async function getAllComments() {
+    try {
+        const comments = await get(api_url.COMMENT_API_URL);
+        return Array.isArray(comments) ? comments : [];
+    } catch (error) {
+        console.error("Lỗi lấy bình luận:", error);
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         return [];
     }
 }
 
+<<<<<<< HEAD
 function saveStoredComments(comments) {
     if (typeof localStorage === 'undefined') return;
     try {
@@ -236,6 +262,19 @@ async function getCommentsByPost(postId) {
     } catch (error) {
         console.error("Lỗi lấy bình luận theo bài viết:", error);
         return localComments;
+=======
+async function createComment(data) {
+    return await postData(api_url.COMMENT_API_URL, data);
+}
+
+async function getCommentsByPost(postId) {
+    try {
+        const comments = await get(`${api_url.COMMENT_API_URL}?postId=${encodeURIComponent(postId)}`);
+        return Array.isArray(comments) ? comments : [];
+    } catch (error) {
+        console.error("Lỗi lấy bình luận theo bài viết:", error);
+        return [];
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     }
 }
 

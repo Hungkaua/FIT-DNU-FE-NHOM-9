@@ -1,5 +1,6 @@
 // main.js - Tích hợp API để tải và hiển thị bài viết
 
+<<<<<<< HEAD
 import { getAllPosts, createPost, isLoggedIn, getCurrentUser, logout, getCommentsByPost, createComment, isAdmin, getUserNotifications, getServerNotifications, markAllUserNotificationsRead, createUserNotification } from './api.js';
 import { showToast } from './ui.js';
 
@@ -9,6 +10,9 @@ const POSTS_PER_PAGE = 6;
 const JOINED_COMMUNITIES_KEY = 'joinedCommunities';
 const DRAFTS_STORAGE_KEY = 'forumDrafts';
 const POST_REACTIONS_KEY = 'postReactions';
+=======
+import { getAllPosts, createPost, isLoggedIn, getCurrentUser, logout, getCommentsByPost, createComment, isAdmin, getUserNotifications, getServerNotifications, markAllUserNotificationsRead } from './api.js';
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
 document.addEventListener('DOMContentLoaded', async () => {
     const postFeed = document.querySelector('.post-feed');
@@ -16,9 +20,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const openCreatePostButton = document.getElementById('openCreatePost');
     const createPostCard = document.getElementById('createPostCard');
     const logoutButton = document.getElementById('logoutButton');
+<<<<<<< HEAD
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
     if (openCreatePostButton) {
         openCreatePostButton.addEventListener('click', () => handleOpenCreatePost(createPostCard));
@@ -32,6 +39,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         logoutButton.addEventListener('click', handleLogout);
     }
 
+<<<<<<< HEAD
     if (filterButtons.length) {
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -116,6 +124,13 @@ function getDisplayVoteCount(post, reaction) {
     return baseValue;
 }
 
+=======
+    renderHeaderUser();
+    await loadPosts(postFeed);
+    renderNotifications();
+});
+
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 function renderHeaderUser() {
     const currentUser = getCurrentUser();
     const loginLink = document.querySelector('.btn-login');
@@ -241,6 +256,7 @@ function renderNotifications() {
     }
 }
 
+<<<<<<< HEAD
 function initializeInteractiveElements() {
     syncCommunityButtons();
 
@@ -629,6 +645,8 @@ async function initPostDetailPage() {
     await renderCommentsForPost(post.id, commentList, document.getElementById('detailCommentCount'));
 }
 
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 function handleLogout() {
     logout();
     window.location.href = 'index.html';
@@ -654,15 +672,31 @@ async function loadPosts(postFeed) {
 
     try {
         const posts = await getAllPosts();
+<<<<<<< HEAD
         allLoadedPosts = posts.filter(post => post.approved === undefined || post.approved === true || post.approved === 'true');
         await applyPostFilters(postFeed);
         renderSavedPosts();
+=======
+        const visiblePosts = posts.filter(post => post.approved === undefined || post.approved === true || post.approved === 'true');
+
+        if (visiblePosts.length > 0) {
+            postFeed.innerHTML = '';
+            visiblePosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            for (const post of visiblePosts) {
+                const postElement = await createPostElement(post);
+                postFeed.appendChild(postElement);
+            }
+        } else {
+            postFeed.innerHTML = '<div class="empty-state">Chưa có bài viết nào. Hãy tạo bài viết đầu tiên!</div>';
+        }
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     } catch (error) {
         console.error('Lỗi tải bài viết:', error);
         postFeed.innerHTML = '<div class="empty-state">Không thể tải bài viết. Vui lòng thử lại sau.</div>';
     }
 }
 
+<<<<<<< HEAD
 async function applyPostFilters(postFeed) {
     if (!postFeed) return;
 
@@ -806,6 +840,8 @@ function renderSavedPosts() {
     `;
 }
 
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 async function handleCreatePost(event) {
     event.preventDefault();
 
@@ -814,6 +850,7 @@ async function handleCreatePost(event) {
     const communityInput = document.getElementById('postCommunity');
     const imageInput = document.getElementById('postImage');
     const postFeed = document.querySelector('.post-feed');
+<<<<<<< HEAD
     const createPostCardElement = document.getElementById('createPostCard');
 
     if (!isLoggedIn()) {
@@ -821,6 +858,8 @@ async function handleCreatePost(event) {
         window.location.href = 'login.html?redirect=create-post.html';
         return;
     }
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
     const currentUser = getCurrentUser();
     const newPost = {
@@ -838,13 +877,18 @@ async function handleCreatePost(event) {
     };
 
     if (!newPost.title || !newPost.content) {
+<<<<<<< HEAD
         showToast('Vui lòng nhập tiêu đề và nội dung bài viết.', 'error');
+=======
+        alert('Vui lòng nhập tiêu đề và nội dung bài viết.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         return;
     }
 
     try {
         await createPost(newPost);
         event.target.reset();
+<<<<<<< HEAD
         if (createPostCardElement) {
             createPostCardElement.classList.add('hidden');
         }
@@ -869,10 +913,32 @@ async function handleCreatePost(event) {
     } catch (error) {
         console.error('Lỗi tạo bài viết:', error);
         showToast('Không thể tạo bài viết. Vui lòng thử lại.', 'error');
+=======
+        if (createPostCard) {
+            createPostCard.classList.add('hidden');
+        }
+        
+        if (isAdmin()) {
+            alert('Bài viết đã được đăng ngay.');
+            showOSNotification("BlogHub", "Bài viết của bạn đã được xuất bản thành công!");
+        } else {
+            alert('Bài viết của bạn đã được gửi đến admin để duyệt.');
+            showOSNotification("BlogHub", "Bài viết đã được gửi đến Admin để chờ duyệt!");
+        }
+        
+        if (isAdmin()) {
+            await loadPosts(postFeed);
+        }
+        
+    } catch (error) {
+        console.error('Lỗi tạo bài viết:', error);
+        alert('Không thể tạo bài viết. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     }
 }
 
 async function createPostElement(post) {
+<<<<<<< HEAD
     const reaction = getPostReaction(post.id);
     const article = document.createElement('article');
     article.className = 'post-card reddit-post-card';
@@ -934,6 +1000,37 @@ async function createPostElement(post) {
                     <button type="submit" class="btn-submit">Gửi bình luận</button>
                 </form>
             </div>
+=======
+    const article = document.createElement('article');
+    article.className = 'post-card';
+
+    article.innerHTML = `
+        <div class="post-header">
+            <img src="${post.avatar || 'https://via.placeholder.com/40'}" alt="Avatar" class="avatar">
+            <div class="post-info">
+                <span class="community-name">${escapeHtml(post.community || 'r/Unknown')}</span>
+                <span class="post-time">• ${formatTime(post.createdAt)}</span>
+            </div>
+        </div>
+        <h2 class="post-title">${escapeHtml(post.title)}</h2>
+        <p class="post-snippet">${escapeHtml(post.content)}</p>
+        ${post.image ? `<img src="${post.image}" alt="Post image" class="post-image">` : ''}
+        <div class="post-actions">
+            <button class="action-btn">👍 ${post.likes || 0}</button>
+            <button class="action-btn comment-toggle-btn" type="button">
+                <i class="fa-regular fa-comment"></i>
+                <span class="comment-count">${post.comments || 0}</span>
+            </button>
+            <button class="action-btn">↗️ Chia sẻ</button>
+        </div>
+        <div class="post-comments hidden">
+            <div class="comment-list"></div>
+            <form class="comment-form">
+                <input class="comment-username" type="text" placeholder="Tên của bạn">
+                <textarea class="comment-input" placeholder="Viết bình luận..." rows="3" required></textarea>
+                <button type="submit" class="btn-submit">Gửi bình luận</button>
+            </form>
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         </div>
     `;
 
@@ -944,6 +1041,7 @@ async function createPostElement(post) {
     const usernameInput = article.querySelector('.comment-username');
     const commentCountSpan = article.querySelector('.comment-count');
     const toggleButton = article.querySelector('.comment-toggle-btn');
+<<<<<<< HEAD
     const likeButton = article.querySelector('.like-btn');
     const shareButton = article.querySelector('.share-btn');
     const saveButton = article.querySelector('.save-btn');
@@ -952,6 +1050,8 @@ async function createPostElement(post) {
     const upvoteButton = article.querySelector('.vote-btn.upvote');
     const downvoteButton = article.querySelector('.vote-btn.downvote');
     const voteCount = article.querySelector('.vote-count');
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
     if (currentUser && usernameInput) {
         usernameInput.value = currentUser.nickname || currentUser.username || '';
@@ -962,7 +1062,10 @@ async function createPostElement(post) {
         toggleButton.addEventListener('click', async () => {
             if (commentsPanel) {
                 commentsPanel.classList.toggle('hidden');
+<<<<<<< HEAD
                 toggleButton.classList.toggle('active', !commentsPanel.classList.contains('hidden'));
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                 if (!commentsPanel.classList.contains('hidden')) {
                     await renderCommentsForPost(post.id, commentList, commentCountSpan);
                 }
@@ -970,6 +1073,7 @@ async function createPostElement(post) {
         });
     }
 
+<<<<<<< HEAD
     if (upvoteButton && downvoteButton && voteCount) {
         let voteState = reaction.vote || 'none';
         const updateVoteUi = () => {
@@ -1053,12 +1157,18 @@ async function createPostElement(post) {
         });
     }
 
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     if (commentForm) {
         commentForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
             if (!isLoggedIn()) {
+<<<<<<< HEAD
                 showToast('Bạn cần đăng nhập để bình luận.', 'info');
+=======
+                alert('Bạn cần đăng nhập để bình luận.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                 handleOpenCreatePost(document.getElementById('createPostCard'));
                 return;
             }
@@ -1068,7 +1178,11 @@ async function createPostElement(post) {
             const message = (messageInput.value || '').trim();
 
             if (!message) {
+<<<<<<< HEAD
                 showToast('Vui lòng viết một bình luận trước khi gửi.', 'error');
+=======
+                alert('Vui lòng viết một bình luận trước khi gửi.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                 return;
             }
 
@@ -1079,10 +1193,14 @@ async function createPostElement(post) {
                     message,
                     createdAt: new Date().toISOString(),
                 });
+<<<<<<< HEAD
                 createActivityNotification('Đã bình luận', `Bạn vừa bình luận trên bài viết "${post.title || 'một bài viết'}".`);
 
                 post.comments = (post.comments || 0) + 1;
                 if (commentCountSpan) commentCountSpan.textContent = post.comments;
+=======
+
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                 if (messageInput) messageInput.value = '';
                 await renderCommentsForPost(post.id, commentList, commentCountSpan);
                 if (commentsPanel && commentsPanel.classList.contains('hidden')) {
@@ -1090,7 +1208,11 @@ async function createPostElement(post) {
                 }
             } catch (error) {
                 console.error('Lỗi gửi bình luận:', error);
+<<<<<<< HEAD
                 showToast('Không thể gửi bình luận. Vui lòng thử lại.', 'error');
+=======
+                alert('Không thể gửi bình luận. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
             }
         });
     }
