@@ -272,10 +272,6 @@ a { text-decoration: none; color: inherit; }
     .post-actions { gap: 6px; }
     .action-btn { padding: 7px 10px; }
 }
-=======
-   DIỄN ĐÀN VIỄN TƯỞNG - REDDIT LAYOUT + DARK GOLD THEME
-   Bản Phối Trộn Hoàn Hảo (UI Mạng xã hội + Vibe Viễn Tưởng)
-   ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
@@ -617,11 +613,10 @@ a { text-decoration: none; color: inherit; }
     border-radius: var(--radius-sm); padding: 10px 60px 10px 16px;
     color: var(--text-main); font-size: 14px; outline: none; transition: 0.2s;
 }
-<<<<<<< HEAD
 .input-post-title:focus { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-bg); }
-=======
-.input-post-title:focus { border-color: var(--text-main); }
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
+
+.input-post-title:focus { border-color: var(--text-main); 
+}
 .input-title-wrapper .char-count {
     position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
     font-size: 12px; color: var(--text-muted); font-weight: 600;
@@ -653,12 +648,9 @@ a { text-decoration: none; color: inherit; }
 
 /* Gắn Tag (Flair) */
 .post-options-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
-<<<<<<< HEAD
 .post-card { position: relative; overflow: hidden; }
 .post-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(220,165,76,0.06), transparent); transform: translateX(-100%); transition: transform 0.35s ease; pointer-events: none; }
 .post-card:hover::before { transform: translateX(100%); }
-=======
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 .option-btn {
     background: transparent; border: 1px solid var(--border); color: var(--text-muted);
     padding: 6px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600;
@@ -685,19 +677,13 @@ a { text-decoration: none; color: inherit; }
     background: var(--text-main); color: var(--bg-body); border: none;
     padding: 8px 24px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; transition: 0.2s;
 }
-<<<<<<< HEAD
+
  .btn-submit-post:hover { background: var(--primary-hover); opacity: 0.95; transform: translateY(-1px);}
 =======
 .btn-submit-post:hover { opacity: 0.9; transform: translateY(-1px);}
 >>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
-/* =========================================
-   GIAO DIỆN CHI TIẾT BÀI VIẾT (POST DETAIL THEATER MODE)
-   ========================================= */
-
-/* Ẩn Sidebar trái để lấy không gian cho nội dung */
 .post-detail-view .sidebar { display: none; }
 
-/* Mở rộng cột giữa lên 860px */
 .post-detail-view .main-content { 
     max-width: 860px !important; 
     margin: 0; /* Xóa margin auto để widget phải được xích lại gần */
