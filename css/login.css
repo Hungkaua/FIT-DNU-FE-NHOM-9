@@ -1,0 +1,149 @@
+/* =========================================
+   TRANG ĐĂNG NHẬP - DARK MODERN THEME
+   Đồng bộ 100% phong cách của Trang chủ mới
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+    --bg-body: #0D0F12;       /* Đen sâu */
+    --bg-surface: #16191E;    /* Xám đen cho khu vực form */
+    --text-main: #E2E8F0;     /* Trắng sữa */
+    --text-muted: #8B94A5;    /* Xám nhạt */
+    --primary: #DCA54C;       /* Vàng Gold cổ điển */
+    --primary-hover: #C59342;
+    --primary-bg: rgba(220, 165, 76, 0.1);    
+    --border: #22262E;        
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-pill: 999px;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+body { 
+    min-height: 100vh; overflow: auto; 
+    background-color: var(--bg-body); color: var(--text-main); 
+}
+
+/* --- BỐ CỤC CHÍNH --- */
+.login-wrapper { display: flex; height: 100vh; width: 100vw; }
+
+/* --- KHU VỰC FORM (BÊN TRÁI) --- */
+.form-section {
+    flex: 0 0 45%; 
+    min-width: 480px; 
+    display: flex; justify-content: center; align-items: center; 
+    background-color: var(--bg-surface); /* Đổi sang nền xám tối nhám */
+    padding: 32px; 
+    border-right: 1px solid var(--border);
+    box-shadow: var(--shadow-soft); 
+    z-index: 10;
+}
+
+.login-container { width: 100%; max-width: 380px; position: relative; }
+
+/* Nút Quay lại */
+.back-link {
+    position: absolute; top: -50px; left: 0; text-decoration: none;
+    color: var(--text-muted); font-weight: 500; font-size: 14px;
+    display: flex; align-items: center; gap: 8px; transition: 0.2s;
+}
+.back-link:hover { color: var(--primary); transform: translateX(-4px); }
+
+/* Header Form */
+.login-header { margin-bottom: 32px; text-align: center; }
+.brand-logo { 
+    font-size: 15px; font-weight: 700; color: var(--text-muted); 
+    display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 16px; 
+    letter-spacing: 1px;
+}
+.brand-logo i { color: var(--primary); font-size: 18px; }
+
+/* Font Lora dành cho tiêu đề Viễn tưởng */
+.elegant-title { 
+    font-family: 'Lora', serif; font-size: 36px; font-weight: 700; 
+    color: var(--primary); margin-bottom: 12px; font-style: italic;
+}
+.brand-slogan { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
+
+/* Input Fields Đậm chất Modern */
+.input-wrapper { margin-bottom: 20px; }
+.input-wrapper label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
+.input-field { position: relative; }
+.input-field i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: 0.2s; }
+.input-field input {
+    width: 100%; padding: 14px 16px 14px 44px;
+    border: 1px solid var(--border); 
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-body); /* Đen sâu */
+    font-size: 14px; color: var(--text-main); transition: all 0.2s; outline: none;
+}
+.input-field input::placeholder { color: #4B5563; }
+.input-field input:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 0 2px var(--primary-bg); 
+}
+.input-field input:focus + i { color: var(--primary); }
+
+/* Options (Nhớ danh tính, Quên mật mã) */
+.form-options { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 13px; }
+.custom-checkbox { display: flex; align-items: center; gap: 8px; color: var(--text-muted); cursor: pointer; }
+.forgot-link { font-weight: 500; color: var(--primary); text-decoration: none; transition: 0.2s; }
+.forgot-link:hover { color: var(--primary-hover); text-decoration: underline; }
+
+/* Nút Submit Vàng Gold Sang Trọng */
+.btn-primary {
+    width: 100%; padding: 14px; 
+    background-color: var(--primary);
+    color: #0D0F12; border: none; border-radius: var(--radius-pill); 
+    font-size: 15px; font-weight: 700; 
+    cursor: pointer; transition: all 0.3s; 
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-primary:hover { 
+    background-color: var(--primary-hover);
+    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(220, 165, 76, 0.2); 
+}
+
+/* Footer */
+.login-footer { margin-top: 28px; text-align: center; font-size: 14px; color: var(--text-muted); }
+.login-footer a { color: var(--primary); font-weight: 600; text-decoration: none; margin-left: 4px; transition: 0.2s;}
+.login-footer a:hover { color: var(--primary-hover); text-decoration: underline; }
+
+/* --- KHU VỰC HÌNH ẢNH (BÊN PHẢI) --- */
+.visual-section {
+    flex: 1; 
+    /* Hình nền không gian / dải ngân hà hợp với vibe Viễn Tưởng - Dark Mode */
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
+    background-size: cover; background-position: center; position: relative;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px;
+}
+/* Overlay đen nhám Gradient */
+.visual-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13, 15, 18, 0.95) 0%, rgba(13, 15, 18, 0.4) 100%);
+}
+
+.quote-block { position: relative; z-index: 10; color: white; max-width: 520px; text-align: center; }
+.quote-mark {
+    font-family: 'Lora', serif; font-size: 120px; font-weight: 700;
+    color: var(--primary); opacity: 0.2; line-height: 0; margin-bottom: 20px;
+}
+.quote-block .text-white { 
+    color: #FFFFFF; margin-bottom: 16px; line-height: 1.3; font-size: 36px; text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+.fiction-description { font-size: 16px; line-height: 1.7; color: var(--text-muted); font-family: 'Lora', serif; font-style: italic; margin-bottom: 32px;}
+
+.media-icons { display: flex; justify-content: center; gap: 24px; color: var(--text-muted); font-size: 20px; }
+.media-icons i { transition: 0.3s; cursor: pointer;}
+.media-icons i:hover { color: var(--primary); transform: scale(1.1); }
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 900px) {
+    .login-wrapper { flex-direction: column-reverse; }
+    .form-section { flex: 1; min-width: 100%; padding: 24px;}
+    .visual-section { display: none; }
+    .back-link { top: -20px; left: 0; }
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đang Thịnh Hành - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif"><i class="fa-solid fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
+                </div>
+                <div id="userInfo" class="user-info hidden">
+                    <img id="userAvatar" src="" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name"></span>
+                        <span class="user-karma"></span>
+                    </div>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+                <a href="./login.html" id="loginBtn" class="btn-login">Đăng nhập</a>
+                <a href="./register.html" id="registerBtn" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Bảng tin (Home)</a></li>
+                    <li><a href="popular.html" class="active"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến (Popular)</a></li>
+                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá (All)</a></li>
+                </ul>
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">CỘNG ĐỒNG (SUBREDDITS)</h4>
+                <ul class="menu-group">
+                    <li><a href="#"><i class="fa-solid fa-feather-pointed sub-icon"></i> r/ Góc Sáng Tác</a></li>
+                    <li><a href="#"><i class="fa-solid fa-comments sub-icon"></i> r/ Thảo Luận</a></li>
+                    <li><a href="#"><i class="fa-solid fa-film sub-icon"></i> r/ Sci-Fi Phim</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gamepad sub-icon"></i> r/ Game Lore</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="subreddit-header">
+                <div class="sub-banner" style="background: linear-gradient(90deg, #450a0a 0%, #171717 100%);"></div>
+                <div class="sub-info-bar">
+                    <div class="sub-icon-large" style="color: #ef4444;"><i class="fa-solid fa-fire"></i></div>
+                    <div class="sub-titles">
+                        <h1 class="sub-name">Đang Thịnh Hành</h1>
+                        <p class="sub-slug">Những chủ đề và bài viết nóng nhất diễn đàn 24h qua.</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="filterForm" class="feed-filters reddit-filters">
+                <button type="button" class="filter-btn active" data-filter="trending"><i class="fa-solid fa-fire"></i> Hot Nhất</button>
+                <button type="button" class="filter-btn" data-filter="top"><i class="fa-solid fa-ranking-star"></i> Top All Time</button>
+            </form>
+
+            <div class="post-feed" id="post-feed-container">
+                </div>
+        </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card">
+                <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Bảng Thông Báo</h4>
+                <div class="notif-board-content hidden" id="notifDropdown">
+                    <p class="notif-empty">Bấm chuông để tải thông báo.</p>
+                </div>
+            </div>
+            <div class="widget-card">
+                <h4 class="widget-title"><i class="fa-solid fa-tags"></i> Chủ đề Nóng</h4>
+                <div class="tag-cloud">
+                    <span class="tag">#Tiên_Hiệp</span>
+                    <span class="tag">#Kỳ_Ảo</span>
+                    <span class="tag">#Sci_Fi</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <template id="postTemplate">
+        <div class="post-card js-post-card reddit-post-card" data-post-id="" data-tags="">
+            <div class="vote-column">
+                <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                <span class="vote-count js-like-count">0</span>
+                <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+            </div>
+            <div class="post-content-area">
+                <div class="post-header">
+                    <img src="" class="user-avatar-small js-avatar" alt="User">
+                    <div class="post-meta">
+                        <span class="post-community">r/VienTuong</span><span class="separator">•</span>
+                        <span class="post-author">Đăng bởi u/<span class="js-author">Author</span></span>
+                        <span class="post-time js-time">Time</span>
+                    </div>
+                    <button class="btn-join-small js-btn-options"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <h2 class="post-title js-title">Tiêu đề</h2>
+                <div class="post-tags js-tags-container"></div>
+                <p class="post-snippet js-content">Nội dung</p>
+                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết">
+                <div class="post-actions">
+                    <button class="action-btn js-btn-like" style="display:none;"></button> 
+                    <button class="action-btn js-btn-comment"><i class="fa-regular fa-message"></i><span class="js-comment-count">0</span> Bình luận</button>
+                    <button class="action-btn js-btn-share"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

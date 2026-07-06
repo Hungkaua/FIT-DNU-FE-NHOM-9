@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storybook Haven | Diễn Đàn Fiction</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="header">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                    <span>Storybook Haven</span>
+                </a>
+
+                <form id="searchForm" class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm câu chuyện, chủ đề, tác giả...">
+                </form>
+
+                <div class="header-actions">
+                    <div class="notifications">
+                        <button id="notifToggle" class="btn-notif">
+                            <i class="fa-solid fa-bell"></i>
+                            <span id="notifCount" class="notif-count hidden">0</span>
+                        </button>
+                    </div>
+
+                    <div id="userInfo" class="user-info hidden">
+                        <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                        <div class="user-text">
+                            <span id="userName" class="user-name">Administrator</span>
+                            <span class="user-karma">2.4k karma</span>
+                        </div>
+                        <a id="adminLink" href="admin.html" class="btn-admin hidden">Admin</a>
+                        <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                    </div>
+
+                    <a href="./login.html" id="loginBtn" class="btn-login">Đăng nhập</a>
+                    <a href="./register.html" id="registerBtn" class="btn-register">Đăng ký</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-container">
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card-title">BẢN ĐỒ CÂU CHUYỆN</div>
+                    <nav class="nav-menu">
+                        <ul class="menu-group">
+                            <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Bảng tin</a></li>
+                            <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến</a></li>
+                            <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá</a></li>
+                        </ul>
+
+                        <div class="nav-divider"></div>
+                        <h4 class="nav-title">Cộng đồng</h4>
+
+                        <ul class="menu-group">
+                            <li><a href="#"><i class="fa-solid fa-feather-pointed sub-icon"></i> r/ Câu Chuyện</a></li>
+                            <li><a href="#"><i class="fa-solid fa-comments sub-icon"></i> r/ Thảo Luận</a></li>
+                            <li><a href="#"><i class="fa-solid fa-film sub-icon"></i> r/ Romance</a></li>
+                            <li><a href="#"><i class="fa-solid fa-gamepad sub-icon"></i> r/ Mystery</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="sidebar-card status-card">
+                    <div class="sidebar-card-title">Trạng thái mạng</div>
+                    <div class="status-row"><span class="status-dot live"></span> Hệ thống đang nóng</div>
+                    <div class="status-row"><span class="status-dot"></span> 3.8k bài mới tuần này</div>
+                    <div class="status-row"><span class="status-dot"></span> Chế độ cộng tác mở</div>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="subreddit-header">
+                    <div class="sub-banner">
+                        <div class="banner-overlay">
+                            <span class="banner-badge">FICTION HAVEN</span>
+                            <h2>Đêm nay, mỗi trang viết lại một thế giới riêng.</h2>
+                        </div>
+                    </div>
+                    <div class="sub-info-bar">
+                        <div class="sub-icon-large"><i class="fa-solid fa-hat-wizard"></i></div>
+                        <div class="sub-titles">
+                            <h1 class="sub-name">Diễn Đàn Fiction</h1>
+                            <p class="sub-slug">r/Fiction • nơi những câu chuyện sống động được kể bằng trái tim</p>
+                        </div>
+                        <button class="btn-join">Tham gia</button>
+                    </div>
+                </div>
+
+                <section class="hero-panel">
+                    <div class="hero-copy">
+                        <span class="eyebrow">CỘNG ĐỒNG FICTION</span>
+                        <h2>Mở ra những thế giới mới bằng ngòi bút và lòng mong muốn.</h2>
+                        <p>Đọc, viết, tranh luận và biến những ý tưởng ấm áp thành những câu chuyện có sức hút lâu dài.</p>
+                        <div class="hero-actions">
+                            <a href="discover.html" class="btn-hero primary">Khám phá ngay</a>
+                            <a href="create-post.html" class="btn-hero">Tạo bài viết</a>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat-card"><strong>15.2k</strong><span>thành viên</span></div>
+                        <div class="hero-stat-card"><strong>124</strong><span>đang online</span></div>
+                        <div class="hero-stat-card"><strong>3.8k</strong><span>bài viết tháng này</span></div>
+                    </div>
+                </section>
+
+                <div class="post-toolbar reddit-create-bar">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" class="toolbar-avatar" alt="avatar">
+                    <a href="create-post.html" class="btn-create-input">Tạo bài viết mới...</a>
+                    <a href="create-post.html" class="icon-btn"><i class="fa-regular fa-image"></i></a>
+                    <a href="create-post.html" class="icon-btn"><i class="fa-solid fa-link"></i></a>
+                </div>
+
+                <form id="filterForm" class="feed-filters reddit-filters">
+                    <button type="button" class="filter-btn active" data-filter="trending"><i class="fa-solid fa-fire"></i> Hot</button>
+                    <button type="button" class="filter-btn" data-filter="newest"><i class="fa-solid fa-sun"></i> New</button>
+                    <button type="button" class="filter-btn" data-filter="top"><i class="fa-solid fa-ranking-star"></i> Top</button>
+                    <button class="layout-btn"><i class="fa-solid fa-bars"></i></button>
+                </form>
+
+                <div class="post-feed" id="post-feed-container"></div>
+                <div id="paginationControls" class="pagination-controls"></div>
+                <div id="savedPostsPanel" class="saved-posts-panel"></div>
+            </main>
+
+            <aside class="right-widgets">
+                <div class="widget-card pulse-card">
+                    <h4 class="widget-title"><i class="fa-solid fa-book-open"></i> Chuyện hay tuần này</h4>
+                    <ul class="pulse-list">
+                        <li><span>#XuyênKhông</span><strong>218 bài</strong></li>
+                        <li><span>#KỳẢo</span><strong>176 bài</strong></li>
+                        <li><span>#LightNovel</span><strong>142 bài</strong></li>
+                    </ul>
+                </div>
+
+                <div class="widget-card">
+                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Bảng Thông Báo</h4>
+                    <div class="notif-board-content hidden" id="notifDropdown">
+                        <p class="notif-empty">Bấm chuông để tải thông báo.</p>
+                    </div>
+                </div>
+
+                <div class="widget-card about-community">
+                    <div class="about-header">
+                        <h4 class="widget-title">Giới thiệu cộng đồng</h4>
+                    </div>
+                    <p class="about-desc">Một không gian dành cho những người yêu thích văn chương, nhân vật sống động và thế giới hư cấu. Mọi câu chuyện đều có chỗ để được kể và được thương yêu.</p>
+                    <div class="about-stats">
+                        <div class="stat"><span class="num">15.2k</span><span class="label">Thành viên</span></div>
+                        <div class="stat"><span class="num">124</span><span class="label">Đang online</span></div>
+                    </div>
+                    <div class="about-date"><i class="fa-solid fa-cake-candles"></i> Tạo ngày 1 Tháng 6, 2026</div>
+                </div>
+
+                <div class="widget-card rules-card">
+                    <h4 class="widget-title">Nội quy</h4>
+                    <ol class="reddit-rules">
+                        <li>Tôn trọng tác quyền của tác giả.</li>
+                        <li>Góp ý văn minh, không xúc phạm.</li>
+                        <li>Bắt buộc gắn thẻ Spoil khi tiết lộ nội dung.</li>
+                        <li>Tranh luận không công kích cá nhân.</li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <template id="postTemplate">
+        <div class="post-card js-post-card reddit-post-card" data-post-id="" data-tags="">
+            <div class="vote-column">
+                <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                <span class="vote-count js-like-count">0</span>
+                <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+            </div>
+
+            <div class="post-content-area">
+                <div class="post-header">
+                    <img src="" class="user-avatar-small js-avatar" alt="User">
+                    <div class="post-meta">
+                        <span class="post-community">r/VienTuong</span>
+                        <span class="separator">•</span>
+                        <span class="post-author">Đăng bởi u/<span class="js-author">Author</span></span>
+                        <span class="post-time js-time">Time</span>
+                    </div>
+                    <button class="btn-join-small js-btn-options"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+
+                <a href="post-detail.html" class="post-title-link js-detail-link" style="text-decoration: none;">
+                    <h2 class="post-title js-title">Tiêu đề bài viết</h2>
+                </a>
+
+                <div class="post-tags js-tags-container"></div>
+
+                <a href="post-detail.html" class="post-snippet-link js-detail-link" style="text-decoration: none;">
+                    <p class="post-snippet js-content">Nội dung bài viết...</p>
+                </a>
+
+                <img class="post-image js-image hidden" src="" alt="Ảnh bài viết" style="cursor: pointer;">
+
+                <div class="post-actions">
+                    <button class="action-btn js-btn-like" style="display:none;"></button>
+
+                    <a href="post-detail.html" class="action-btn js-btn-comment js-detail-link" style="text-decoration: none;">
+                        <i class="fa-regular fa-message"></i>
+                        <span class="js-comment-count">0</span> Bình luận
+                    </a>
+
+                    <button class="action-btn js-btn-share">
+                        <i class="fa-solid fa-share"></i> Chia sẻ
+                    </button>
+                    <button class="action-btn">
+                        <i class="fa-regular fa-bookmark"></i> Lưu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

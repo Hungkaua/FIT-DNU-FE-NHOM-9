@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghi danh - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <div class="login-wrapper">
+        
+        <div class="form-section">
+            <div class="login-container">
+                
+                <a href="login.html" class="back-link"><i class="fa-solid fa-arrow-left-long"></i> Trở về Đăng nhập</a>
+
+                <div class="login-header">
+                    <div class="brand-logo">
+                        <i class="fa-solid fa-book-journal-whills"></i> DIỄN ĐÀN VIỄN TƯỞNG
+                    </div>
+                    <h2 class="elegant-title">Ghi Danh Tân Binh</h2>
+                    <p class="brand-slogan">Tạo tài khoản để bắt đầu hành trình sáng tạo và thảo luận cùng cộng đồng.</p>
+                </div>
+
+                <form class="login-form" id="registerForm">
+                    <div class="input-wrapper">
+                        <label for="regEmail">Địa chỉ Email</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="Nhập email của bạn..." required>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="regUsername">Bút danh (Tên hiển thị)</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                            <input type="text" id="regUsername" placeholder="Nhập tên bạn muốn hiển thị..." required>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label for="regPassword">Mật khẩu ấn chú</label>
+                        <div class="input-field">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="regPassword" placeholder="Tạo mật khẩu an toàn..." required>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            Tôi đồng ý với <a href="#" class="forgot-link" style="margin-left: 4px;">Nội quy diễn đàn</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-user-plus"></i> Khởi tạo tài khoản
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Đã là thành viên? <a href="login.html">Tiến vào cánh cửa</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-section">
+            <div class="visual-content quote-block">
+                <div class="quote-mark">“</div>
+                <h3 class="elegant-title text-white">Mọi sử thi đều bắt đầu từ một dấu chấm.</h3>
+                <p class="fiction-description">Đừng chần chừ, hãy để trí tưởng tượng của bạn cất cánh. Hàng ngàn độc giả đang chờ đợi câu chuyện tiếp theo từ ngòi bút của bạn.</p>
+                <div class="media-icons">
+                    <i class="fa-solid fa-meteor"></i>
+                    <i class="fa-solid fa-jedi"></i>
+                    <i class="fa-solid fa-dragon"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="js/register.js"></script>
+</body>
+</html>

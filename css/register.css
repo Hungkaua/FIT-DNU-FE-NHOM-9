@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    min-height: 100vh; 
+    background-color: #faf9f9;
+}
+
+.register-split-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* --- NỬA TRÁI: Ảnh nền --- */
+.register-image-side {
+    flex: 1; 
+    background-image: url('../media/img/brglog.webp'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.register-image-side::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0, 104, 181, 0.2), rgba(0, 0, 0, 0.5));
+}
+
+/* --- NỬA PHẢI: Khung Form --- */
+.register-form-side {
+    flex: 1;
+    min-width: 100px;
+    background-image: url('../media/img/brglog.jpg'); /* Ảnh nền phía sau form */
+    /* ảnh nền phía trên cùng */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    z-index: 10;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Header & Logo --- */
+.register-header {
+    text-align: center;
+    margin-bottom: 35px;
+    }
+.register-logo {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    mix-blend-mode: multiply;
+    /* hòa logo với nền */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    /* thêm bóng để nổi bật */
+    background: transparent;
+
+}
+
+.register-header p {
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* --- Bố cục chia 2 ô ngang --- */
+.input-row {
+    display: flex;
+    gap: 15px; 
+}
+
+.input-row .input-group {
+    flex: 1; 
+}
+
+/* --- Form Inputs Chung --- */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Icon trong ô input */
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    z-index: 1;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    background-color: transparent;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #0068B5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 104, 181, 0.1);
+}
+
+/* Căn chỉnh cho thẻ Select chức vụ */
+.input-group select {
+    color: #555;
+    cursor: pointer;
+}
+
+input[type="date"] {
+    padding-right: 15px;
+}
+
+/* --- Khối Điều khoản --- */
+.terms-group {
+    margin-bottom: 20px;
+    margin-top: -5px; 
+}
+
+.terms-group label {
+    display: flex;
+    align-items: flex-start; 
+    gap: 10px;
+    cursor: pointer;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.terms-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #0068B5; 
+}
+
+.terms-group a {
+    color: #0068B5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* --- Nút Đăng ký --- */
+.register-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #0068B5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.register-btn:hover {
+    background-color: #005596;
+}
+
+/* --- Footer --- */
+.register-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.register-footer a {
+    color: #0068B5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+.back-to-home {
+    margin-top: 20px;
+}
+
+.back-to-home a {
+    color: #888;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.back-to-home a:hover {
+    color: #0068B5;
+}
+
+/* --- Responsive (Điện thoại) --- */
+@media (max-width: 900px) {
+    .register-split-container {
+        flex-direction: column;
+    }
+    
+    .register-image-side {
+        display: none; 
+    }
+    
+    .register-form-side {
+        width: 100%;
+        min-width: unset;
+        padding: 30px 20px;
+    }
+    
+    /* Trên điện thoại, đổi 2 ô ngang thành xếp dọc */
+    .input-row {
+        flex-direction: column;
+        gap: 0; 
+    }
+}

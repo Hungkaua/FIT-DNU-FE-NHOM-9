@@ -1,0 +1,33 @@
+/* --- Giao diện khung báo trống (Empty State) --- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    background-color: #ffffff;
+    border: 2px dashed #d7d9dc; /* Viền đứt nét màu xám nhạt */
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.empty-state i {
+    font-size: 60px;
+    color: #c1c3c5;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin-bottom: 12px;
+}
+
+.empty-state p {
+    font-size: 15px;
+    color: #787c7e;
+    max-width: 450px;
+    line-height: 1.6;
+}
