@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết bài viết - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="bg-body">
+    
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notifCount" class="notif-count hidden">0</span>
+                    </button>
+                </div>
+                <div id="userInfo" class="user-info">
+                    <img id="userAvatar" src="https://via.placeholder.com/100" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name">Đang tải...</span>
+                        <span class="user-karma">Thành viên</span>
+                    </div>
+                    <a id="adminLink" href="admin.html" class="btn-admin hidden">Admin</a>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container post-detail-view">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group"><li><a href="index.html"><i class="fa-solid fa-house"></i> Về trang chủ</a></li></ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="detail-top-bar">
+                <a href="index.html" class="btn-back-detail"><i class="fa-solid fa-arrow-left-long"></i> Trở về Bảng tin</a>
+            </div>
+
+            <div class="reddit-post-card detailed-post" id="postDetailWrapper">
+                <div class="vote-column">
+                    <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                    <span class="vote-count" id="detailUpvotes">0</span>
+                    <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+                </div>
+
+                <div class="post-content-area" style="padding: 16px 20px;">
+                    <div class="post-header">
+                        <img src="https://via.placeholder.com/40" id="detailAvatar" class="user-avatar-small" alt="User">
+                        <div class="post-meta">
+                            <span class="post-community" id="detailCommunity">r/VienTuong</span><span class="separator">•</span>
+                            <span class="post-author">Đăng bởi u/<span id="detailAuthor">Đang tải...</span></span>
+                            <span class="post-time" id="detailTime">...</span>
+                        </div>
+                    </div>
+
+                    <h1 class="post-title" id="detailTitle" style="font-size: 24px; margin-bottom: 16px;">Đang tải nội dung bài viết...</h1>
+                    
+                    <div id="detailContent" class="post-full-content" style="margin-bottom: 24px; line-height: 1.8; color: var(--text-main); font-size: 16px;">
+                        </div>
+
+                    <img id="detailImage" src="" class="hidden" style="width: 100%; border-radius: 8px; margin-bottom: 24px; border: 1px solid var(--border);" alt="Ảnh đính kèm">
+
+                    <div class="post-actions" style="margin-bottom: 24px;">
+<<<<<<< HEAD
+                        <button class="action-btn detail-comment-btn"><i class="fa-regular fa-message"></i> <span id="detailCommentCount">0</span> Bình luận</button>
+                        <button class="action-btn detail-share-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn detail-save-btn"><i class="fa-regular fa-bookmark"></i> Lưu bài</button>
+=======
+                        <button class="action-btn"><i class="fa-regular fa-message"></i> <span id="detailCommentCount">0</span> Bình luận</button>
+                        <button class="action-btn"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                        <button class="action-btn"><i class="fa-regular fa-bookmark"></i> Lưu bài</button>
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
+                    </div>
+
+                    <div class="comment-section" style="border-top: 1px solid var(--border); padding-top: 24px;">
+                        
+                        <div class="comment-reply-box" style="margin-bottom: 32px;">
+                            <p style="font-size: 13px; margin-bottom: 8px; color: var(--text-muted);">Bình luận dưới tên <strong style="color: var(--primary);" id="commentingAs">Tài khoản</strong></p>
+                            <textarea id="commentInput" placeholder="Bạn nghĩ gì về bài viết này?" style="width: 100%; background: var(--bg-body); border: 1px solid var(--border); border-radius: 8px; padding: 12px; color: var(--text-main); font-size: 14px; min-height: 100px; resize: vertical; outline: none; margin-bottom: 8px; font-family: 'Inter', sans-serif;"></textarea>
+                            <div style="display: flex; justify-content: flex-end;">
+                                <button id="submitCommentBtn" class="btn-submit" style="background: var(--text-main); color: var(--bg-body); padding: 8px 24px; border-radius: 999px; font-weight: bold; border: none; cursor: pointer;">Đăng bình luận</button>
+                            </div>
+                        </div>
+
+                        <div class="comment-tree" id="commentListContainer">
+                            <p style="color: var(--text-muted); font-size: 14px; text-align: center;">Chưa có bình luận nào. Hãy là người đầu tiên!</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card about-community">
+                <div class="about-header">
+                    <h4 class="widget-title">Cộng đồng r/VienTuong</h4>
+                </div>
+                <p class="about-desc">Không gian kết nối những bộ óc sáng tạo từ Văn học, Điện ảnh cho đến Trò chơi giả tưởng.</p>
+            </div>
+        </aside>
+    </div>
+
+    <template id="commentTemplate">
+        <div class="reddit-comment js-comment-item">
+            <div class="comment-thread-line"></div>
+            <div class="comment-header">
+                <img src="" class="user-avatar-small js-comment-avatar" alt="">
+                <span class="comment-author js-comment-author">Tên người dùng</span>
+                <span class="op js-comment-op-badge hidden" style="font-size: 11px; font-weight: 700; color: var(--primary); margin-left: -4px;">OP</span>
+                <span class="comment-time js-comment-time">Thời gian</span>
+            </div>
+            <div class="comment-body js-comment-body">
+                <p>Nội dung bình luận...</p>
+            </div>
+            <div class="comment-actions">
+                <button class="vote-btn" style="font-size: 16px;"><i class="fa-solid fa-caret-up"></i></button>
+                <span class="js-comment-upvotes" style="font-size: 13px; font-weight: bold; color: var(--text-main);">0</span>
+                <button class="vote-btn" style="font-size: 16px;"><i class="fa-solid fa-caret-down"></i></button>
+                <button class="action-btn js-reply-btn" style="padding: 4px 8px; margin-left: 8px;"><i class="fa-regular fa-message"></i> Phản hồi</button>
+            </div>
+            <div class="nested-replies js-nested-container"></div>
+        </div>
+    </template>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

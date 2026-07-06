@@ -18,9 +18,17 @@ function getServerNotifications() {
 
 function createServerNotification(notification) {
     const list = getServerNotifications();
+<<<<<<< HEAD
+    const normalized = Object.assign({ createdAt: new Date().toISOString() }, notification);
+    list.unshift(normalized);
+    const trimmed = list.slice(0, 25);
+    localStorage.setItem('serverNotifications', JSON.stringify(trimmed));
+    return trimmed;
+=======
     list.unshift(Object.assign({ createdAt: new Date().toISOString() }, notification));
     localStorage.setItem('serverNotifications', JSON.stringify(list));
     return list;
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function getUserNotifications(username) {
@@ -36,16 +44,28 @@ function createUserNotification(username, notification) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username);
+<<<<<<< HEAD
+    const normalized = Object.assign({ createdAt: new Date().toISOString(), read: false }, notification);
+    list.unshift(normalized);
+    const trimmed = list.slice(0, 25);
+    localStorage.setItem(key, JSON.stringify(trimmed));
+    return trimmed;
+=======
     list.unshift(Object.assign({ createdAt: new Date().toISOString(), read: false }, notification));
     localStorage.setItem(key, JSON.stringify(list));
     return list;
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function markAllUserNotificationsRead(username) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username).map(n => Object.assign({}, n, { read: true }));
+<<<<<<< HEAD
+    localStorage.setItem(key, JSON.stringify(list.slice(0, 25)));
+=======
     localStorage.setItem(key, JSON.stringify(list));
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     return list;
 }
 
@@ -116,16 +136,133 @@ async function deletePost(id) {
 }
 
 // ========== COMMENT FUNCTIONS ==========
+<<<<<<< HEAD
+const LOCAL_COMMENTS_KEY = 'localComments';
+
+function getStoredComments() {
+    if (typeof localStorage === 'undefined') return [];
+    try {
+        const stored = JSON.parse(localStorage.getItem(LOCAL_COMMENTS_KEY) || '[]');
+        return Array.isArray(stored) ? stored : [];
+    } catch (error) {
+        console.error('Lỗi đọc bình luận cục bộ:', error);
+=======
 async function getAllComments() {
     try {
         const comments = await get(api_url.COMMENT_API_URL);
         return Array.isArray(comments) ? comments : [];
     } catch (error) {
         console.error("Lỗi lấy bình luận:", error);
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         return [];
     }
 }
 
+<<<<<<< HEAD
+function saveStoredComments(comments) {
+    if (typeof localStorage === 'undefined') return;
+    try {
+        localStorage.setItem(LOCAL_COMMENTS_KEY, JSON.stringify(comments));
+    } catch (error) {
+        console.error('Lỗi lưu bình luận cục bộ:', error);
+    }
+}
+
+function normalizeComment(comment) {
+    if (!comment || typeof comment !== 'object') return null;
+    return {
+        ...comment,
+        id: comment.id || `${comment.postId || 'post'}-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        postId: comment.postId ?? '',
+        username: comment.username || 'Khách vãng lai',
+        message: comment.message || '',
+        createdAt: comment.createdAt || new Date().toISOString(),
+    };
+}
+
+function mergeComments(apiComments, localComments) {
+    const merged = [...localComments, ...apiComments]
+        .map(normalizeComment)
+        .filter(Boolean);
+
+    const uniqueComments = [];
+    const seen = new Set();
+
+    merged.forEach(comment => {
+        const key = `${comment.postId || ''}:${comment.id || ''}:${comment.message || ''}:${comment.createdAt || ''}`;
+        if (!seen.has(key)) {
+            seen.add(key);
+            uniqueComments.push(comment);
+        }
+    });
+
+    return uniqueComments.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+}
+
+async function getAllComments() {
+    try {
+        const comments = await get(api_url.COMMENT_API_URL);
+        const apiComments = Array.isArray(comments) ? comments : [];
+        const mergedComments = mergeComments(apiComments, getStoredComments());
+        saveStoredComments(mergedComments);
+        return mergedComments;
+    } catch (error) {
+        console.error("Lỗi lấy bình luận:", error);
+        return getStoredComments();
+    }
+}
+
+async function createComment(data) {
+    const localComment = normalizeComment({
+        ...data,
+        createdAt: data?.createdAt || new Date().toISOString(),
+    });
+
+    if (localComment) {
+        const currentComments = getStoredComments();
+        currentComments.push(localComment);
+        saveStoredComments(currentComments);
+    }
+
+    try {
+        const createdComment = await postData(api_url.COMMENT_API_URL, localComment || data);
+        const normalized = normalizeComment(createdComment);
+
+        if (normalized) {
+            const storedComments = getStoredComments().filter(comment => {
+                const isSameComment = comment.id === normalized.id || (
+                    comment.postId === normalized.postId &&
+                    comment.message === normalized.message &&
+                    comment.createdAt === normalized.createdAt
+                );
+                return !isSameComment;
+            });
+            storedComments.push(normalized);
+            saveStoredComments(storedComments);
+            return normalized;
+        }
+
+        return localComment;
+    } catch (error) {
+        console.error("Lỗi tạo bình luận:", error);
+        return localComment;
+    }
+}
+
+async function getCommentsByPost(postId) {
+    const localComments = getStoredComments().filter(comment => String(comment.postId) === String(postId));
+
+    try {
+        const comments = await get(`${api_url.COMMENT_API_URL}?postId=${encodeURIComponent(postId)}`);
+        const apiComments = Array.isArray(comments) ? comments : [];
+        const mergedComments = mergeComments(apiComments, localComments);
+        const filteredComments = mergedComments.filter(comment => String(comment.postId) === String(postId));
+        saveStoredComments(mergedComments);
+        return filteredComments;
+    } catch (error) {
+        console.error("Lỗi lấy bình luận theo bài viết:", error);
+        return localComments;
+=======
 async function createComment(data) {
     return await postData(api_url.COMMENT_API_URL, data);
 }
@@ -137,6 +274,7 @@ async function getCommentsByPost(postId) {
     } catch (error) {
         console.error("Lỗi lấy bình luận theo bài viết:", error);
         return [];
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     }
 }
 

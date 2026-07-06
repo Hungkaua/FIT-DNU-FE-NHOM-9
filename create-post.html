@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo bài viết - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="bg-body">
+    
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notifCount" class="notif-count hidden">0</span>
+                    </button>
+                </div>
+                <div id="userInfo" class="user-info">
+                    <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                    <div class="user-text">
+                        <span id="userName" class="user-name">Administrator</span>
+                        <span class="user-karma">1.2k karma</span>
+                    </div>
+                    <a id="adminLink" href="admin.html" class="btn-admin">Admin</a>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Bảng tin (Home)</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến (Popular)</a></li>
+                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá (All)</a></li>
+                </ul>
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">CỘNG ĐỒNG (SUBREDDITS)</h4>
+                <ul class="menu-group">
+                    <li><a href="#"><i class="fa-solid fa-feather-pointed sub-icon"></i> r/ Góc Sáng Tác</a></li>
+                    <li><a href="#"><i class="fa-solid fa-comments sub-icon"></i> r/ Thảo Luận</a></li>
+                    <li><a href="#"><i class="fa-solid fa-film sub-icon"></i> r/ Sci-Fi Phim</a></li>
+                    <li><a href="#"><i class="fa-solid fa-gamepad sub-icon"></i> r/ Game Lore</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="create-post-header">
+                <h1 class="page-title">Tạo bài viết mới</h1>
+                <button class="btn-draft-top">BẢN NHÁP <span class="draft-count">0</span></button>
+            </div>
+
+            <div class="community-selector">
+                <div class="selector-box">
+                    <div class="selector-left">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Chọn một cộng đồng</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="create-box-main">
+                <div class="create-tabs">
+                    <button class="tab-btn active"><i class="fa-solid fa-file-lines"></i> Bài viết</button>
+                    <button class="tab-btn"><i class="fa-regular fa-image"></i> Hình ảnh & Video</button>
+                    <button class="tab-btn"><i class="fa-solid fa-link"></i> Link liên kết</button>
+                </div>
+
+<<<<<<< HEAD
+                <form id="createPostForm" class="create-form-area">
+                    <div class="input-title-wrapper">
+                        <input type="text" id="postTitle" class="input-post-title" placeholder="Tiêu đề" maxlength="300" required>
+                        <span class="char-count">0/300</span>
+                    </div>
+
+                    <div class="input-title-wrapper" style="margin-top: 12px;">
+                        <input type="text" id="postCommunity" class="input-post-title" placeholder="Cộng đồng (ví dụ: r/Viễn tưởng)" value="r/Viễn tưởng">
+                    </div>
+
+                    <div class="rich-editor-wrapper">
+                        <div class="editor-toolbar">
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-bold"></i></button>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-italic"></i></button>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-link"></i></button>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-strikethrough"></i></button>
+                            <div class="tool-divider"></div>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-heading"></i></button>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-list-ul"></i></button>
+                            <button type="button" class="tool-btn"><i class="fa-solid fa-list-ol"></i></button>
+                        </div>
+                        <textarea id="postContent" class="input-post-content" placeholder="Nội dung bài viết (Tùy chọn)" required></textarea>
+                    </div>
+
+                    <div class="input-title-wrapper" style="margin-top: 12px;">
+                        <input type="url" id="postImage" class="input-post-title" placeholder="Đường dẫn ảnh (tùy chọn)">
+                    </div>
+
+                    <div class="post-options-bar">
+                        <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> OC</button>
+                        <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> Spoiler</button>
+                        <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> NSFW</button>
+                        <button type="button" class="option-btn flair-btn"><i class="fa-solid fa-tag"></i> Thêm Flair</button>
+                    </div>
+
+                    <div class="create-actions">
+                        <button type="button" class="btn-cancel">Hủy</button>
+                        <div class="action-right">
+                            <button type="button" class="btn-save-draft">Lưu bản nháp</button>
+                            <button type="submit" class="btn-submit-post">Đăng bài</button>
+                        </div>
+                    </div>
+                </form>
+=======
+                <div class="create-form-area">
+                    <div class="input-title-wrapper">
+                        <input type="text" class="input-post-title" placeholder="Tiêu đề" maxlength="300">
+                        <span class="char-count">0/300</span>
+                    </div>
+                    
+                    <div class="rich-editor-wrapper">
+                        <div class="editor-toolbar">
+                            <button class="tool-btn"><i class="fa-solid fa-bold"></i></button>
+                            <button class="tool-btn"><i class="fa-solid fa-italic"></i></button>
+                            <button class="tool-btn"><i class="fa-solid fa-link"></i></button>
+                            <button class="tool-btn"><i class="fa-solid fa-strikethrough"></i></button>
+                            <div class="tool-divider"></div>
+                            <button class="tool-btn"><i class="fa-solid fa-heading"></i></button>
+                            <button class="tool-btn"><i class="fa-solid fa-list-ul"></i></button>
+                            <button class="tool-btn"><i class="fa-solid fa-list-ol"></i></button>
+                        </div>
+                        <textarea class="input-post-content" placeholder="Nội dung bài viết (Tùy chọn)"></textarea>
+                    </div>
+
+                    <div class="post-options-bar">
+                        <button class="option-btn"><i class="fa-solid fa-plus"></i> OC</button>
+                        <button class="option-btn"><i class="fa-solid fa-plus"></i> Spoiler</button>
+                        <button class="option-btn"><i class="fa-solid fa-plus"></i> NSFW</button>
+                        <button class="option-btn flair-btn"><i class="fa-solid fa-tag"></i> Thêm Flair</button>
+                    </div>
+
+                    <div class="create-actions">
+                        <button class="btn-cancel">Hủy</button>
+                        <div class="action-right">
+                            <button class="btn-save-draft">Lưu bản nháp</button>
+                            <button class="btn-submit-post">Đăng bài</button>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
+            </div>
+        </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card rules-card">
+                <div class="about-header">
+                    <h4 class="widget-title"><i class="fa-solid fa-scale-balanced"></i> Quy tắc đăng bài</h4>
+                </div>
+                <ol class="reddit-rules" style="margin-top: 8px;">
+                    <li>1. Hãy cư xử như một con người thực sự.</li>
+                    <li>2. Hành xử theo đúng chủ đề của cộng đồng.</li>
+                    <li>3. Kiểm tra nguồn tin trước khi đăng bài.</li>
+                    <li>4. Tuyệt đối không vi phạm bản quyền.</li>
+                </ol>
+            </div>
+            <div class="widget-card">
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Vui lòng lưu ý rằng các bài viết của bạn sẽ được đội ngũ Admin kiểm duyệt trước khi hiển thị lên Bảng tin cộng đồng.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

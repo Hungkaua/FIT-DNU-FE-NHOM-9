@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="subPageTitle">Tên Chủ Đề - Diễn Đàn Viễn Tưởng</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-bg"><i class="fa-solid fa-book-journal-whills"></i></div>
+                <span>Diễn Đàn Viễn Tưởng</span>
+            </a>
+            <form id="searchForm" class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trên diễn đàn...">
+            </form>
+            <div class="header-actions">
+                <div class="notifications">
+                    <button id="notifToggle" class="btn-notif"><i class="fa-solid fa-bell"></i><span id="notifCount" class="notif-count hidden">0</span></button>
+                </div>
+                <div id="userInfo" class="user-info hidden">
+                    <a href="profile.html" class="user-info-link" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                        <img id="userAvatar" src="https://via.placeholder.com/100" class="user-avatar" alt="User">
+                        <div class="user-text"><span id="userName" class="user-name">Đang tải...</span><span class="user-karma">Thành viên</span></div>
+                    </a>
+                    <a id="adminLink" href="admin.html" class="btn-admin hidden"><i class="fa-solid fa-shield-halved"></i> Admin</a>
+                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+                <a href="./login.html" id="loginBtn" class="btn-login">Đăng nhập</a>
+                <a href="./register.html" id="registerBtn" class="btn-register">Đăng ký</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <ul class="menu-group">
+                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Bảng tin (Home)</a></li>
+                    <li><a href="popular.html"><i class="fa-solid fa-fire-flame-curved"></i> Phổ biến (Popular)</a></li>
+                    <li><a href="discover.html"><i class="fa-solid fa-compass"></i> Khám phá (All)</a></li>
+                </ul>
+                <div class="nav-divider"></div>
+                <h4 class="nav-title">CỘNG ĐỒNG (SUBREDDITS)</h4>
+                <ul class="menu-group" id="sidebarCommunityList">
+                    <li class="loading-placeholder" style="padding: 0 16px; font-size: 13px; color: var(--text-muted); font-style: italic;">Đang tải danh mục...</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="subreddit-header">
+                <div class="sub-banner" id="subBannerCover" style="background: url('https://via.placeholder.com/800x200') center/cover;"></div>
+                <div class="sub-info-bar">
+                    <div class="sub-icon-large" id="subIcon"><i class="fa-solid fa-hat-wizard"></i></div>
+                    <div class="sub-titles">
+                        <h1 class="sub-name" id="subDisplayName">Đang tải Chủ đề...</h1>
+                        <p class="sub-slug" id="subSlugName">r/Loading</p>
+                    </div>
+                    <button class="btn-join" id="btnJoinSub">Tham gia</button>
+                </div>
+            </div>
+
+            <div class="post-toolbar reddit-create-bar">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100" class="toolbar-avatar" id="createPostAvatar" alt="">
+                <a href="create-post.html" class="btn-create-input" style="display: block; text-decoration: none; line-height: 24px;">Đăng bài vào cộng đồng này...</a>
+                <a href="create-post.html" class="icon-btn"><i class="fa-regular fa-image"></i></a>
+            </div>
+
+            <form id="filterForm" class="feed-filters reddit-filters">
+                <button type="button" class="filter-btn active" data-filter="trending"><i class="fa-solid fa-fire"></i> Hot</button>
+                <button type="button" class="filter-btn" data-filter="newest"><i class="fa-solid fa-sun"></i> Mới nhất</button>
+            </form>
+
+            <div class="post-feed" id="sub-post-feed-container"></div>
+        </main>
+
+        <aside class="right-widgets">
+            <div class="widget-card about-community">
+                <div class="about-header">
+                    <h4 class="widget-title" id="widgetSubName">Giới thiệu</h4>
+                </div>
+                <p class="about-desc" id="widgetSubDesc">Đang tải thông tin cộng đồng...</p>
+                <div class="about-stats">
+                    <div class="stat"><span class="num" id="widgetSubMembers">0</span><span class="label">Thành viên</span></div>
+                    <div class="stat"><span class="num" id="widgetSubOnline">0</span><span class="label">Đang online</span></div>
+                </div>
+            </div>
+
+            <div class="widget-card rules-card">
+                <h4 class="widget-title">Nội quy cộng đồng</h4>
+                <ol class="reddit-rules" id="widgetSubRules">
+                    <li>Đang tải nội quy...</li>
+                </ol>
+            </div>
+        </aside>
+
+    </div>
+
+    <template id="postTemplate">
+        <div class="post-card js-post-card reddit-post-card" data-post-id="" data-tags="">
+            <div class="vote-column">
+                <button class="vote-btn upvote"><i class="fa-solid fa-caret-up"></i></button>
+                <span class="vote-count js-like-count">0</span>
+                <button class="vote-btn downvote"><i class="fa-solid fa-caret-down"></i></button>
+            </div>
+            <div class="post-content-area">
+                <div class="post-header">
+                    <img src="" class="user-avatar-small js-avatar" alt="User">
+                    <div class="post-meta">
+                        <span class="post-community js-community-tag">r/Topic</span><span class="separator">•</span>
+                        <span class="post-author">Đăng bởi u/<span class="js-author">Author</span></span>
+                        <span class="post-time js-time">Time</span>
+                    </div>
+                    <button class="btn-join-small js-btn-options"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+                <a href="#" class="post-title-link js-detail-link" style="text-decoration: none;"><h2 class="post-title js-title">Title</h2></a>
+                <div class="post-tags js-tags-container"></div>
+                <a href="#" class="post-snippet-link js-detail-link" style="text-decoration: none;"><p class="post-snippet js-content">Content...</p></a>
+                <img class="post-image js-image hidden" src="" alt="Image">
+                <div class="post-actions">
+                    <a href="#" class="action-btn js-btn-comment js-detail-link" style="text-decoration: none;"><i class="fa-regular fa-message"></i><span class="js-comment-count">0</span> Bình luận</a>
+                    <button class="action-btn js-btn-share"><i class="fa-solid fa-share"></i> Chia sẻ</button>
+                    <button class="action-btn"><i class="fa-regular fa-bookmark"></i> Lưu</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

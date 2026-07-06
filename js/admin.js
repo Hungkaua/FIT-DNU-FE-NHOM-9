@@ -1,4 +1,8 @@
 import { getPendingPosts, approvePost, deletePost, getPendingAdminRequests, approveAdminRequest, rejectAdminRequest, protectAdminPage, createUserNotification, createServerNotification } from './api.js';
+<<<<<<< HEAD
+import { showToast } from './ui.js';
+=======
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (!protectAdminPage()) return;
@@ -45,6 +49,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             const message = (document.getElementById('serverNotifMessage') || {}).value || '';
             
             if (!title.trim() || !message.trim()) {
+<<<<<<< HEAD
+                showToast('Vui lòng nhập tiêu đề và nội dung thông báo.', 'error');
+                return;
+            }
+
+            createServerNotification({ title: title.trim(), message: message.trim() });
+            showToast('Đã gửi thông báo toàn server.', 'success');
+=======
                 alert('Vui lòng nhập tiêu đề và nội dung thông báo.');
                 return;
             }
@@ -52,6 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // 1. Lưu thông báo vào hệ thống (code gốc của bạn)
             createServerNotification({ title: title.trim(), message: message.trim() });
             alert('Đã gửi thông báo toàn server.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
             // 2. TÍCH HỢP ĐẨY THÔNG BÁO RA WINDOWS ACTION CENTER
             if ("Notification" in window) {
@@ -122,7 +135,11 @@ async function loadPendingPosts(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi phê duyệt bài viết:', error);
+<<<<<<< HEAD
+                        showToast('Không thể phê duyệt bài viết. Vui lòng thử lại.', 'error');
+=======
                         alert('Không thể phê duyệt bài viết. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         approveBtn.disabled = false;
                     }
                 });
@@ -150,7 +167,11 @@ async function loadPendingPosts(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi từ chối/xóa bài viết:', error);
+<<<<<<< HEAD
+                        showToast('Không thể xử lý yêu cầu. Vui lòng thử lại.', 'error');
+=======
                         alert('Không thể xử lý yêu cầu. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         rejectBtn.disabled = false;
                     }
                 });
@@ -214,7 +235,11 @@ async function loadAdminRequests(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi duyệt admin:', error);
+<<<<<<< HEAD
+                        showToast('Không thể duyệt yêu cầu. Vui lòng thử lại.', 'error');
+=======
                         alert('Không thể duyệt yêu cầu. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         approveBtn.disabled = false;
                     }
                 });
@@ -242,7 +267,11 @@ async function loadAdminRequests(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi từ chối admin:', error);
+<<<<<<< HEAD
+                        showToast('Không thể từ chối yêu cầu. Vui lòng thử lại.', 'error');
+=======
                         alert('Không thể từ chối yêu cầu. Vui lòng thử lại.');
+>>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         rejectBtn.disabled = false;
                     }
                 });
