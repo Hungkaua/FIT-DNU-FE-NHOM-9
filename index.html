@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diễn Đàn Viễn Tưởng</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive-fix.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 
@@ -119,7 +120,7 @@
                         </p>
                         <div class="hero-actions">
                             <a href="discover.html" class="btn-hero primary">Khám phá ngay</a>
-                            <a href="create-post.html" id="openCreatePost" class="btn-hero js-open-create-post">Tạo bài
+                            <a href="create-post.html" id="openCreatePost" class="btn-hero">Tạo bài
                                 viết</a>
                         </div>
                     </div>
@@ -136,27 +137,10 @@
                 <div class="post-toolbar reddit-create-bar">
                     <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop"
                         class="toolbar-avatar" alt="avatar">
-                    <a href="#" id="openCreatePostToolbar" class="btn-create-input js-open-create-post">Tạo bài viết
+                    <a href="create-post.html" id="openCreatePostToolbar" class="btn-create-input">Tạo bài viết
                         mới...</a>
                     <a href="create-post.html" class="icon-btn"><i class="fa-regular fa-image"></i></a>
                     <a href="create-post.html" class="icon-btn"><i class="fa-solid fa-link"></i></a>
-                </div>
-
-                <!-- THÊM: Create Post Card -->
-                <div id="createPostCard" class="create-post-card hidden">
-                    <form id="createPostForm">
-                        <h3><i class="fa-solid fa-pen-to-square"></i> Tạo bài viết mới</h3>
-                        <input type="text" id="postTitle" placeholder="Tiêu đề bài viết" required>
-                        <input type="text" id="postCommunity" placeholder="Cộng đồng (VD: r/VienTuong)"
-                            value="r/Viễn tưởng">
-                        <textarea id="postContent" placeholder="Nội dung bài viết..." rows="5" required></textarea>
-                        <input type="text" id="postImage" placeholder="URL hình ảnh (tùy chọn)">
-                        <div class="form-actions">
-                            <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Đăng
-                                bài</button>
-                            <button type="button" class="btn-cancel"><i class="fa-solid fa-xmark"></i> Hủy</button>
-                        </div>
-                    </form>
                 </div>
 
                 <form id="filterForm" class="feed-filters reddit-filters">
