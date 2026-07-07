@@ -1315,6 +1315,46 @@ document.addEventListener('DOMContentLoaded', async () => {
     const searchForm = document.getElementById('searchForm');
     const searchInput = document.getElementById('searchInput');
 
+    // ===== RESPONSIVE: menu trượt (mobile) & tìm kiếm thu gọn =====
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const sidebarEl = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+    const searchBarEl = document.querySelector('.search-bar');
+
+    const closeMobileSidebar = () => {
+        if (sidebarEl) sidebarEl.classList.remove('mobile-open');
+        if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    };
+
+    if (mobileMenuToggle && sidebarEl && sidebarOverlay) {
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebarEl.classList.toggle('mobile-open');
+            sidebarOverlay.classList.toggle('active');
+        });
+        sidebarOverlay.addEventListener('click', closeMobileSidebar);
+        sidebarEl.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', closeMobileSidebar);
+        });
+    }
+
+    if (mobileSearchToggle && searchBarEl) {
+        mobileSearchToggle.addEventListener('click', () => {
+            searchBarEl.classList.toggle('mobile-search-active');
+            if (searchBarEl.classList.contains('mobile-search-active')) {
+                const mobileInput = searchBarEl.querySelector('input');
+                if (mobileInput) mobileInput.focus();
+            }
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMobileSidebar();
+            if (searchBarEl) searchBarEl.classList.remove('mobile-search-active');
+        }
+    });
+
     openCreatePostButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
