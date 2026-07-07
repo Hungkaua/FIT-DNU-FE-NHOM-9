@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+
 <body class="bg-body">
-    
+
     <header class="header">
         <div class="header-content">
             <a href="index.html" class="logo">
@@ -27,20 +29,23 @@
                     </button>
                 </div>
                 <div id="userInfo" class="user-info">
-                    <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" class="user-avatar" alt="User">
+                    <img id="userAvatar"
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
+                        class="user-avatar" alt="User">
                     <div class="user-text">
                         <span id="userName" class="user-name">Administrator</span>
                         <span class="user-karma">1.2k karma</span>
                     </div>
                     <a id="adminLink" href="admin.html" class="btn-admin">Admin</a>
-                    <button id="logoutButton" class="btn-logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                    <button id="logoutButton" class="btn-logout"><i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="app-container">
-        
+
         <aside class="sidebar">
             <nav class="nav-menu">
                 <ul class="menu-group">
@@ -60,7 +65,7 @@
         </aside>
 
         <main class="main-content">
-            
+
             <div class="create-post-header">
                 <h1 class="page-title">Tạo bài viết mới</h1>
                 <button class="btn-draft-top">BẢN NHÁP <span class="draft-count">0</span></button>
@@ -83,15 +88,16 @@
                     <button class="tab-btn"><i class="fa-solid fa-link"></i> Link liên kết</button>
                 </div>
 
-<<<<<<< HEAD
                 <form id="createPostForm" class="create-form-area">
                     <div class="input-title-wrapper">
-                        <input type="text" id="postTitle" class="input-post-title" placeholder="Tiêu đề" maxlength="300" required>
+                        <input type="text" id="postTitle" class="input-post-title" placeholder="Tiêu đề" maxlength="300"
+                            required>
                         <span class="char-count">0/300</span>
                     </div>
 
                     <div class="input-title-wrapper" style="margin-top: 12px;">
-                        <input type="text" id="postCommunity" class="input-post-title" placeholder="Cộng đồng (ví dụ: r/Viễn tưởng)" value="r/Viễn tưởng">
+                        <input type="text" id="postCommunity" class="input-post-title"
+                            placeholder="Cộng đồng (ví dụ: r/Viễn tưởng)" value="r/Viễn tưởng">
                     </div>
 
                     <div class="rich-editor-wrapper">
@@ -105,18 +111,21 @@
                             <button type="button" class="tool-btn"><i class="fa-solid fa-list-ul"></i></button>
                             <button type="button" class="tool-btn"><i class="fa-solid fa-list-ol"></i></button>
                         </div>
-                        <textarea id="postContent" class="input-post-content" placeholder="Nội dung bài viết (Tùy chọn)" required></textarea>
+                        <textarea id="postContent" class="input-post-content" placeholder="Nội dung bài viết (Tùy chọn)"
+                            required></textarea>
                     </div>
 
                     <div class="input-title-wrapper" style="margin-top: 12px;">
-                        <input type="url" id="postImage" class="input-post-title" placeholder="Đường dẫn ảnh (tùy chọn)">
+                        <input type="url" id="postImage" class="input-post-title"
+                            placeholder="Đường dẫn ảnh (tùy chọn)">
                     </div>
 
                     <div class="post-options-bar">
                         <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> OC</button>
                         <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> Spoiler</button>
                         <button type="button" class="option-btn"><i class="fa-solid fa-plus"></i> NSFW</button>
-                        <button type="button" class="option-btn flair-btn"><i class="fa-solid fa-tag"></i> Thêm Flair</button>
+                        <button type="button" class="option-btn flair-btn"><i class="fa-solid fa-tag"></i> Thêm
+                            Flair</button>
                     </div>
 
                     <div class="create-actions">
@@ -127,43 +136,6 @@
                         </div>
                     </div>
                 </form>
-=======
-                <div class="create-form-area">
-                    <div class="input-title-wrapper">
-                        <input type="text" class="input-post-title" placeholder="Tiêu đề" maxlength="300">
-                        <span class="char-count">0/300</span>
-                    </div>
-                    
-                    <div class="rich-editor-wrapper">
-                        <div class="editor-toolbar">
-                            <button class="tool-btn"><i class="fa-solid fa-bold"></i></button>
-                            <button class="tool-btn"><i class="fa-solid fa-italic"></i></button>
-                            <button class="tool-btn"><i class="fa-solid fa-link"></i></button>
-                            <button class="tool-btn"><i class="fa-solid fa-strikethrough"></i></button>
-                            <div class="tool-divider"></div>
-                            <button class="tool-btn"><i class="fa-solid fa-heading"></i></button>
-                            <button class="tool-btn"><i class="fa-solid fa-list-ul"></i></button>
-                            <button class="tool-btn"><i class="fa-solid fa-list-ol"></i></button>
-                        </div>
-                        <textarea class="input-post-content" placeholder="Nội dung bài viết (Tùy chọn)"></textarea>
-                    </div>
-
-                    <div class="post-options-bar">
-                        <button class="option-btn"><i class="fa-solid fa-plus"></i> OC</button>
-                        <button class="option-btn"><i class="fa-solid fa-plus"></i> Spoiler</button>
-                        <button class="option-btn"><i class="fa-solid fa-plus"></i> NSFW</button>
-                        <button class="option-btn flair-btn"><i class="fa-solid fa-tag"></i> Thêm Flair</button>
-                    </div>
-
-                    <div class="create-actions">
-                        <button class="btn-cancel">Hủy</button>
-                        <div class="action-right">
-                            <button class="btn-save-draft">Lưu bản nháp</button>
-                            <button class="btn-submit-post">Đăng bài</button>
-                        </div>
-                    </div>
-                </div>
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
             </div>
         </main>
 
@@ -180,7 +152,8 @@
                 </ol>
             </div>
             <div class="widget-card">
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Vui lòng lưu ý rằng các bài viết của bạn sẽ được đội ngũ Admin kiểm duyệt trước khi hiển thị lên Bảng tin cộng đồng.</p>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Vui lòng lưu ý rằng các bài viết
+                    của bạn sẽ được đội ngũ Admin kiểm duyệt trước khi hiển thị lên Bảng tin cộng đồng.</p>
             </div>
         </aside>
 
@@ -188,4 +161,5 @@
 
     <script type="module" src="js/main.js"></script>
 </body>
+
 </html>

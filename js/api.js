@@ -1,11 +1,102 @@
-// URL API cố định - ĐÚNG VỚI CẤU TRÚC CỦA BẠN
-// POST_API_URL: cho bài viết
-// LOGIN_API_URL: cho chức năng đăng nhập/đăng ký người dùng
+// api.js - Phiên bản cải tiến với retry và timeout
 const api_url = {
     POST_API_URL: "https://69fd353c30ad0a6fd1c09463.mockapi.io/apis/Post",
     COMMENT_API_URL: "https://69fd353c30ad0a6fd1c09463.mockapi.io/apis/Comment",
     LOGIN_API_URL: "https://6a05f22eaa826ca75c0ae2f4.mockapi.io/apis/login",
 };
+
+// ========== UTILITY: FETCH VỚI TIMEOUT VÀ RETRY ==========
+const DEFAULT_TIMEOUT = 10000; // 10 giây
+const MAX_RETRIES = 3;
+
+async function fetchWithTimeout(url, options = {}, timeout = DEFAULT_TIMEOUT) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+    
+    try {
+        const response = await fetch(url, {
+            ...options,
+            signal: controller.signal,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+        clearTimeout(timeoutId);
+        return response;
+    } catch (error) {
+        clearTimeout(timeoutId);
+        if (error.name === 'AbortError') {
+            throw new Error(`Request timeout sau ${timeout}ms - MockAPI không phản hồi`);
+        }
+        throw error;
+    }
+}
+
+async function fetchWithRetry(url, options = {}, retries = MAX_RETRIES) {
+    let lastError;
+    for (let i = 0; i < retries; i++) {
+        try {
+            const response = await fetchWithTimeout(url, options);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response;
+        } catch (error) {
+            lastError = error;
+            console.warn(`Lần thử ${i + 1}/${retries} thất bại:`, error.message);
+            if (i < retries - 1) {
+                // Chờ với backoff exponential
+                const delay = Math.pow(2, i) * 1000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+    }
+    throw lastError;
+}
+
+// ========== FALLBACK DATA ==========
+const FALLBACK_POSTS = [
+    {
+        id: 1,
+        title: "Chào mừng đến với Diễn Đàn Viễn Tưởng!",
+        content: "Đây là bài viết đầu tiên. Hãy chia sẻ những câu chuyện của bạn!",
+        author: "Admin",
+        community: "r/Viễn tưởng",
+        likes: 5,
+        comments: 2,
+        createdAt: new Date().toISOString(),
+        approved: true,
+        avatar: "https://via.placeholder.com/40",
+        image: ""
+    },
+    {
+        id: 2,
+        title: "Top 5 bộ phim sci-fi hay nhất",
+        content: "Hãy cùng thảo luận về những bộ phim khoa học viễn tưởng kinh điển...",
+        author: "Người dùng 1",
+        community: "r/Sci-Fi Phim",
+        likes: 3,
+        comments: 1,
+        createdAt: new Date(Date.now() - 86400000).toISOString(),
+        approved: true,
+        avatar: "https://via.placeholder.com/40",
+        image: ""
+    },
+    {
+        id: 3,
+        title: "Cách xây dựng thế giới trong truyện fantasy",
+        content: "Một số bí quyết để tạo ra thế giới giả tưởng sống động...",
+        author: "Người dùng 2",
+        community: "r/Góc Sáng Tác",
+        likes: 7,
+        comments: 4,
+        createdAt: new Date(Date.now() - 172800000).toISOString(),
+        approved: true,
+        avatar: "https://via.placeholder.com/40",
+        image: ""
+    }
+];
 
 // ========== NOTIFICATIONS (localStorage-backed) ==========
 function getServerNotifications() {
@@ -18,17 +109,11 @@ function getServerNotifications() {
 
 function createServerNotification(notification) {
     const list = getServerNotifications();
-<<<<<<< HEAD
     const normalized = Object.assign({ createdAt: new Date().toISOString() }, notification);
     list.unshift(normalized);
     const trimmed = list.slice(0, 25);
     localStorage.setItem('serverNotifications', JSON.stringify(trimmed));
     return trimmed;
-=======
-    list.unshift(Object.assign({ createdAt: new Date().toISOString() }, notification));
-    localStorage.setItem('serverNotifications', JSON.stringify(list));
-    return list;
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function getUserNotifications(username) {
@@ -44,61 +129,47 @@ function createUserNotification(username, notification) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username);
-<<<<<<< HEAD
     const normalized = Object.assign({ createdAt: new Date().toISOString(), read: false }, notification);
     list.unshift(normalized);
     const trimmed = list.slice(0, 25);
     localStorage.setItem(key, JSON.stringify(trimmed));
     return trimmed;
-=======
-    list.unshift(Object.assign({ createdAt: new Date().toISOString(), read: false }, notification));
-    localStorage.setItem(key, JSON.stringify(list));
-    return list;
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 }
 
 function markAllUserNotificationsRead(username) {
     if (!username) return [];
     const key = `userNotifications_${username}`;
     const list = getUserNotifications(username).map(n => Object.assign({}, n, { read: true }));
-<<<<<<< HEAD
     localStorage.setItem(key, JSON.stringify(list.slice(0, 25)));
-=======
-    localStorage.setItem(key, JSON.stringify(list));
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     return list;
 }
 
-// ========== BASE FUNCTIONS ==========
+// ========== BASE FUNCTIONS (có retry) ==========
 async function get(url) {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+    const response = await fetchWithRetry(url);
     return await response.json();
 }
 
 async function postData(url, info) {
-    const response = await fetch(url, {
+    const response = await fetchWithRetry(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info),
     });
-    if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
     return await response.json();
 }
 
 async function deleteData(url, id) {
-    const response = await fetch(`${url}/${id}`, { method: "DELETE" });
-    if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
+    const response = await fetchWithRetry(`${url}/${id}`, {
+        method: "DELETE",
+    });
     return await response.json();
 }
 
 async function patchData(url, id, info) {
-    const response = await fetch(`${url}/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
+    const response = await fetchWithRetry(`${url}/${id}`, {
+        method: "PATCH",
         body: JSON.stringify(info),
     });
-    if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
     return await response.json();
 }
 
@@ -106,10 +177,10 @@ async function patchData(url, id, info) {
 async function getAllPosts() {
     try {
         const posts = await get(api_url.POST_API_URL);
-        return Array.isArray(posts) ? posts : [];
+        return Array.isArray(posts) && posts.length > 0 ? posts : FALLBACK_POSTS;
     } catch (error) {
-        console.error("Lỗi lấy bài viết:", error);
-        return [];
+        console.error("Lỗi lấy bài viết từ API, sử dụng fallback data:", error);
+        return FALLBACK_POSTS;
     }
 }
 
@@ -124,7 +195,17 @@ async function getPendingPosts() {
 }
 
 async function createPost(data) {
-    return await postData(api_url.POST_API_URL, data);
+    try {
+        return await postData(api_url.POST_API_URL, data);
+    } catch (error) {
+        console.error("Lỗi tạo bài viết, lưu vào local:", error);
+        // Fallback: lưu vào localStorage
+        const localPosts = JSON.parse(localStorage.getItem('localPosts') || '[]');
+        const newPost = { ...data, id: Date.now(), createdAt: new Date().toISOString() };
+        localPosts.push(newPost);
+        localStorage.setItem('localPosts', JSON.stringify(localPosts));
+        return newPost;
+    }
 }
 
 async function approvePost(id) {
@@ -136,7 +217,6 @@ async function deletePost(id) {
 }
 
 // ========== COMMENT FUNCTIONS ==========
-<<<<<<< HEAD
 const LOCAL_COMMENTS_KEY = 'localComments';
 
 function getStoredComments() {
@@ -146,19 +226,10 @@ function getStoredComments() {
         return Array.isArray(stored) ? stored : [];
     } catch (error) {
         console.error('Lỗi đọc bình luận cục bộ:', error);
-=======
-async function getAllComments() {
-    try {
-        const comments = await get(api_url.COMMENT_API_URL);
-        return Array.isArray(comments) ? comments : [];
-    } catch (error) {
-        console.error("Lỗi lấy bình luận:", error);
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
         return [];
     }
 }
 
-<<<<<<< HEAD
 function saveStoredComments(comments) {
     if (typeof localStorage === 'undefined') return;
     try {
@@ -262,19 +333,6 @@ async function getCommentsByPost(postId) {
     } catch (error) {
         console.error("Lỗi lấy bình luận theo bài viết:", error);
         return localComments;
-=======
-async function createComment(data) {
-    return await postData(api_url.COMMENT_API_URL, data);
-}
-
-async function getCommentsByPost(postId) {
-    try {
-        const comments = await get(`${api_url.COMMENT_API_URL}?postId=${encodeURIComponent(postId)}`);
-        return Array.isArray(comments) ? comments : [];
-    } catch (error) {
-        console.error("Lỗi lấy bình luận theo bài viết:", error);
-        return [];
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
     }
 }
 
@@ -298,33 +356,37 @@ async function rejectAdminRequest(userId) {
     return await patchData(api_url.LOGIN_API_URL, userId, { role: 'reader', status: 'rejected' });
 }
 
-// ========== AUTH FUNCTIONS (DÙNG LOGIN API) ==========
+// ========== USER MANAGEMENT ==========
+async function getAllUsers() {
+    try {
+        const users = await get(api_url.LOGIN_API_URL);
+        return Array.isArray(users) ? users : [];
+    } catch (error) {
+        console.error("Lỗi lấy danh sách thành viên:", error);
+        return [];
+    }
+}
 
-// ĐĂNG NHẬP
+async function deleteUser(id) {
+    return await deleteData(api_url.LOGIN_API_URL, id);
+}
+
+// ========== AUTH FUNCTIONS ==========
 async function login(identifier, password) {
     try {
-        // GET toàn bộ users từ login endpoint
         const users = await get(api_url.LOGIN_API_URL);
-
         if (!Array.isArray(users) || users.length === 0) {
             throw new Error("Không có dữ liệu người dùng");
         }
-
-        // Tìm user theo username hoặc email
         const user = users.find(u => u.username === identifier || u.email === identifier);
-
         if (!user) {
             throw new Error("Tên đăng nhập hoặc email không tồn tại");
         }
-
         if (user.password !== password) {
             throw new Error("Mật khẩu không chính xác");
         }
-
-        // Lưu thông tin user (loại bỏ password trước khi lưu)
         const { password: _, ...safeUser } = user;
         localStorage.setItem("currentUser", JSON.stringify(safeUser));
-
         return safeUser;
     } catch (error) {
         console.error("Lỗi đăng nhập:", error);
@@ -332,23 +394,16 @@ async function login(identifier, password) {
     }
 }
 
-// ĐĂNG KÝ
 async function register(userData) {
     try {
-        // Kiểm tra username đã tồn tại chưa
         const existingUsers = await get(api_url.LOGIN_API_URL);
-
         if (existingUsers.some(u => u.username === userData.username)) {
             throw new Error("Tên đăng nhập đã được sử dụng!");
         }
-
         if (existingUsers.some(u => u.email === userData.email)) {
             throw new Error("Email đã được sử dụng!");
         }
-
-        // Tạo user mới (MockAPI tự tạo id)
         const newUser = await postData(api_url.LOGIN_API_URL, userData);
-
         return newUser;
     } catch (error) {
         console.error("Lỗi đăng ký:", error);
@@ -356,29 +411,24 @@ async function register(userData) {
     }
 }
 
-// ĐĂNG XUẤT
 function logout() {
     localStorage.removeItem("currentUser");
 }
 
-// LẤY USER HIỆN TẠI
 function getCurrentUser() {
     const user = localStorage.getItem("currentUser");
     return user ? JSON.parse(user) : null;
 }
 
-// KIỂM TRA ĐĂNG NHẬP
 function isLoggedIn() {
     return getCurrentUser() !== null;
 }
 
-// KIỂM TRA ADMIN
 function isAdmin() {
     const user = getCurrentUser();
     return user && user.role === "admin";
 }
 
-// BẢO VỆ TRANG ADMIN
 function protectAdminPage() {
     const user = getCurrentUser();
     if (!user) {
@@ -395,4 +445,30 @@ function protectAdminPage() {
 }
 
 // Export các hàm cần thiết
-export { getAllPosts, getPendingPosts, createPost, approvePost, deletePost, getAllComments, getCommentsByPost, createComment, getPendingAdminRequests, approveAdminRequest, rejectAdminRequest, login, register, logout, getCurrentUser, isLoggedIn, isAdmin, protectAdminPage, getServerNotifications, createServerNotification, getUserNotifications, createUserNotification, markAllUserNotificationsRead };
+export { 
+    getAllPosts, 
+    getPendingPosts, 
+    createPost, 
+    approvePost, 
+    deletePost, 
+    getAllComments, 
+    getCommentsByPost, 
+    createComment, 
+    getPendingAdminRequests, 
+    approveAdminRequest, 
+    rejectAdminRequest, 
+    login, 
+    register, 
+    logout, 
+    getCurrentUser, 
+    isLoggedIn, 
+    isAdmin, 
+    protectAdminPage, 
+    getServerNotifications, 
+    createServerNotification, 
+    getUserNotifications, 
+    createUserNotification, 
+    markAllUserNotificationsRead, 
+    getAllUsers, 
+    deleteUser 
+};

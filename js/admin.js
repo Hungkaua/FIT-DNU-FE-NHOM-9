@@ -1,8 +1,5 @@
-import { getPendingPosts, approvePost, deletePost, getPendingAdminRequests, approveAdminRequest, rejectAdminRequest, protectAdminPage, createUserNotification, createServerNotification } from './api.js';
-<<<<<<< HEAD
+import { getPendingPosts, approvePost, deletePost, getPendingAdminRequests, approveAdminRequest, rejectAdminRequest, protectAdminPage, createUserNotification, createServerNotification, getAllUsers, deleteUser } from './api.js';
 import { showToast } from './ui.js';
-=======
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (!protectAdminPage()) return;
@@ -28,11 +25,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Show selected tab
             document.getElementById(tabName).classList.add('active');
 
-            // Load content
+            // Load content dựa theo Tab được chọn
             if (tabName === 'posts') {
                 loadPendingPosts(pendingList);
             } else if (tabName === 'admins') {
                 loadAdminRequests(adminRequestList);
+            } else if (tabName === 'users') {
+                loadUsers();
             }
         });
     });
@@ -49,24 +48,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             const message = (document.getElementById('serverNotifMessage') || {}).value || '';
             
             if (!title.trim() || !message.trim()) {
-<<<<<<< HEAD
                 showToast('Vui lòng nhập tiêu đề và nội dung thông báo.', 'error');
                 return;
             }
 
             createServerNotification({ title: title.trim(), message: message.trim() });
             showToast('Đã gửi thông báo toàn server.', 'success');
-=======
-                alert('Vui lòng nhập tiêu đề và nội dung thông báo.');
-                return;
-            }
 
-            // 1. Lưu thông báo vào hệ thống (code gốc của bạn)
-            createServerNotification({ title: title.trim(), message: message.trim() });
-            alert('Đã gửi thông báo toàn server.');
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
-
-            // 2. TÍCH HỢP ĐẨY THÔNG BÁO RA WINDOWS ACTION CENTER
+            // TÍCH HỢP ĐẨY THÔNG BÁO RA WINDOWS ACTION CENTER
             if ("Notification" in window) {
                 if (Notification.permission === "granted") {
                     pushToWindows(title.trim(), message.trim());
@@ -135,11 +124,7 @@ async function loadPendingPosts(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi phê duyệt bài viết:', error);
-<<<<<<< HEAD
                         showToast('Không thể phê duyệt bài viết. Vui lòng thử lại.', 'error');
-=======
-                        alert('Không thể phê duyệt bài viết. Vui lòng thử lại.');
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         approveBtn.disabled = false;
                     }
                 });
@@ -155,7 +140,6 @@ async function loadPendingPosts(container) {
                     }
                     const reason = prompt('Lý do từ chối bài viết (sẽ gửi thông báo cho người gửi):', 'Nội dung không phù hợp');
                     try {
-                        // Notify author (by author name)
                         const recipient = post.author || post.username || null;
                         if (recipient) {
                             createUserNotification(recipient, { title: 'Bài viết không được duyệt', message: reason || 'Bài viết của bạn không được duyệt.' });
@@ -167,11 +151,7 @@ async function loadPendingPosts(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi từ chối/xóa bài viết:', error);
-<<<<<<< HEAD
                         showToast('Không thể xử lý yêu cầu. Vui lòng thử lại.', 'error');
-=======
-                        alert('Không thể xử lý yêu cầu. Vui lòng thử lại.');
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         rejectBtn.disabled = false;
                     }
                 });
@@ -235,11 +215,7 @@ async function loadAdminRequests(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi duyệt admin:', error);
-<<<<<<< HEAD
                         showToast('Không thể duyệt yêu cầu. Vui lòng thử lại.', 'error');
-=======
-                        alert('Không thể duyệt yêu cầu. Vui lòng thử lại.');
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
                         approveBtn.disabled = false;
                     }
                 });
@@ -256,7 +232,6 @@ async function loadAdminRequests(container) {
                     const reason = prompt('Lý do từ chối yêu cầu admin (sẽ gửi thông báo cho người dùng):', 'Yêu cầu chưa đạt yêu cầu');
                     try {
                         await rejectAdminRequest(request.id);
-                        // Notify the user who requested admin
                         const recipient = request.username || request.email || null;
                         if (recipient) {
                             createUserNotification(recipient, { title: 'Yêu cầu admin không được duyệt', message: reason || 'Yêu cầu của bạn không được chấp thuận.' });
@@ -267,11 +242,7 @@ async function loadAdminRequests(container) {
                         }
                     } catch (error) {
                         console.error('Lỗi từ chối admin:', error);
-<<<<<<< HEAD
-                        showToast('Không thể từ chối yêu cầu. Vui lòng thử lại.', 'error');
-=======
-                        alert('Không thể từ chối yêu cầu. Vui lòng thử lại.');
->>>>>>> fa95cddcd1c8c81bdd1b41baf3e3f5b90f430464
+                        showToast('Không thể từ từ chối yêu cầu. Vui lòng thử lại.', 'error');
                         rejectBtn.disabled = false;
                     }
                 });
@@ -284,6 +255,72 @@ async function loadAdminRequests(container) {
     }
 }
 
+// Chức năng tải danh sách thành viên quản lý
+async function loadUsers() {
+    const container = document.getElementById('userManagementList');
+    const badge = document.getElementById('totalUsersBadge');
+    if (!container) return;
+
+    try {
+        const users = await getAllUsers();
+        if (badge) badge.textContent = `${users.length} thành viên`;
+
+        if (users.length === 0) {
+            container.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:20px;">Không có thành viên nào.</td></tr>`;
+            return;
+        }
+
+        container.innerHTML = '';
+        users.forEach(user => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <img src="${user.avatar || 'https://via.placeholder.com/32'}" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
+                        <strong>${escapeHtml(user.nickname || user.username)}</strong>
+                    </div>
+                </td>
+                <td>
+                    <div style="font-size:13px;">ID: ${user.id}</div>
+                    <div style="font-size:13px; color:gray;">Email: ${escapeHtml(user.email || 'Chưa cập nhật')}</div>
+                </td>
+                <td>
+                    <span class="badge-${user.role === 'admin' ? 'waiting' : 'approved'}" style="padding:4px 8px; border-radius:12px; font-size:12px;">
+                        ${user.role === 'admin' ? '🛡️ Admin' : '👤 Thành viên'}
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-reject btn-delete-user" style="padding: 6px 12px; font-size: 13px;">
+                        <i class="fa-solid fa-trash"></i> Xóa
+                    </button>
+                </td>
+            `;
+
+            const deleteBtn = tr.querySelector('.btn-delete-user');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', async () => {
+                    if (confirm(`Bạn có chắc chắn muốn xóa thành viên "${user.username}" khỏi hệ thống?`)) {
+                        deleteBtn.disabled = true;
+                        try {
+                            await deleteUser(user.id);
+                            showToast('Đã xóa thành viên thành công!', 'success');
+                            loadUsers(); 
+                        } catch (error) {
+                            console.error(error);
+                            showToast('Không thể xóa thành viên. Vui lòng thử lại.', 'error');
+                            deleteBtn.disabled = false;
+                        }
+                    }
+                });
+            }
+            container.appendChild(tr);
+        });
+    } catch (error) {
+        container.innerHTML = `<tr><td colspan="4" style="text-align:center; color:red; padding:20px;">Lỗi khi tải danh sách thành viên.</td></tr>`;
+    }
+}
+
+// Các hàm Helper giữ nguyên
 function escapeHtml(text) {
     return String(text)
         .replace(/&/g, '&amp;')
@@ -306,13 +343,9 @@ function formatTime(dateString) {
     return `${diffDays} ngày trước`;
 }
 
-// ==========================================
-// 3. HÀM HIỂN THỊ THÔNG BÁO LÊN ACTION CENTER WINDOWS
-// ==========================================
 function pushToWindows(title, bodyText) {
     const notification = new Notification("BlogHub Admin: " + title, {
         body: bodyText,
-        // Thay link icon dưới đây bằng logo đồ án của nhóm bạn nếu muốn xịn hơn
         icon: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
         silent: false 
     });
